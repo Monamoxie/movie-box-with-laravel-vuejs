@@ -26,7 +26,7 @@ $factory->define(Movie::class, function (Faker $faker) {
     $photoFileName = md5(time()) . '.jpg';
     Storage::disk('public_dir')->putFileAs('images', $photoFile, $photoFileName);
     return [
-        'name' => $faker->words,
+        'title' => $faker->words,
         'description' => $faker->text(),
         'release_date' => $faker->dateTime(),
         'rating' => $faker->randomElement(['1', '2', '3', '4', 5])[0],
