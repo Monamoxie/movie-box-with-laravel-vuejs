@@ -14,6 +14,6 @@ class MoviesController extends Controller
      */
     public function index(MovieService $movieService)
     {
-        return view('')
+        return view('movies.list');
     }
 }

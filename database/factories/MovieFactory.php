@@ -4,8 +4,11 @@
 
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-use App\Models\Movie;
+use App\Movie;
+use App\Helpers\Utility;
+use Illuminate\Http\File; 
 use Illuminate\Support\Facades\Storage;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +23,22 @@ use Illuminate\Support\Facades\Storage;
 
 $factory->define(Movie::class, function (Faker $faker) {
 
-    $photo = $faker->image(null, 1000, 600, 'people');
+    // $photo = $faker->image(null, 1000, 600, 'people'); Don't use this
+     
+    $photo =  Utility::generateImage(1000, 600);
+
+    if ($photo === false) {
+        dd('It seems the remote server is down. No image was generated.');
+    }
+
 
     $photoFile = new File($photo);
     $photoFileName = md5(time()) . '.jpg';
+    
     Storage::disk('public_dir')->putFileAs('images', $photoFile, $photoFileName);
+    
     return [
-        'title' => $faker->words,
+        'title' => ucfirst($faker->words[0]),
         'description' => $faker->text(),
         'release_date' => $faker->dateTime(),
         'rating' => $faker->randomElement(['1', '2', '3', '4', 5])[0],
