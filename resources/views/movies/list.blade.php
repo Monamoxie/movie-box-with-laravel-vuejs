@@ -32,8 +32,15 @@
                 </h3>
                 <p class=""> The Netflix of the modern world. </p>
             </div> 
-            
-			
 		</div>
-	</div> 
+    </div> 
+    
+    <div class="movies_container" id="movies_container">
+        <div class="processing-wrap" v-if="processing">
+            <vue-simple-spinner></vue-simple-spinner> 
+        </div>
+    </div>
+    
 @endsection
+
+    

@@ -285,7 +285,18 @@ ul.links li a {
         width: 30%;
     }
 }
-
+ 
+.nav-link {
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 2px;
+    padding: 0;
+    margin: 0 1em;
+    font-weight: 600;
+}
+.processing-wrap {
+    padding: 35px;
+}
 @media(max-width: 1366px) {}
 
 @media(max-width: 1280px) {}
@@ -333,7 +344,9 @@ ul.links li a {
         padding-top: 10em;
     }
  
-   
+    .navbar-light .navbar-nav .nav-link {
+        font-size: 14px;
+    }
 }
 
 @media(max-width: 1050px) {}
@@ -344,6 +357,11 @@ ul.links li a {
     h3.title-wthree span {
         font-size: 38px;
     }
+
+      .navbar-light .navbar-nav .nav-link {
+        margin: .6em 0;
+    }
+
 
     h3.title-wthree {
         font-size: 16px;
@@ -486,8 +504,6 @@ ul.links li a {
     p.para-bottom-wthree {
         font-size: 14px;
     }
- 
- 
   
 }
  
