@@ -16,8 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::group(['middlewarre' => 'auth:api', 'namespace' => 'API'], function() {
-    Route::get("/api/v1/movies/list", "MoviesAPIController@listMovies");
+ 
+//  
+Route::group(['middleware' => 'auth:api', 'prefix' => 'v1', 'namespace' => 'Api',  ], function() {
+    Route::post("/movies/list", "MoviesApiController@listMovies");
 });
 

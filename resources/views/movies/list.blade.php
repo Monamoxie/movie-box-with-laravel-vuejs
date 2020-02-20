@@ -40,7 +40,6 @@
             <vue-simple-spinner></vue-simple-spinner> 
         </div>
     </div>
-    
 @endsection
 
     
