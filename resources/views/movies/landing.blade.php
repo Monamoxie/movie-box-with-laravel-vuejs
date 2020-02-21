@@ -16,7 +16,7 @@
         </div>
     </div>
      
-    <img src="images/look2.png" alt="" class="img-fluid fashion-img">
+    <img src="{{ asset('images/look2.png') }}" alt="" class="img-fluid fashion-img">
 </div>
  
 @endsection
@@ -48,6 +48,10 @@
         </div>
 
     </div>
+@endsection
+
+@section('custom_script')
+    <script type="text/javascript" src="{{ asset('js/movies_list.js') }}"></script>    
 @endsection
 
     

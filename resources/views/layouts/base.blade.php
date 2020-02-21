@@ -19,5 +19,7 @@
     @yield('content_area')
 
     @include('components/footer')
+
+    @yield('custom_script')
 </body>
 </html>

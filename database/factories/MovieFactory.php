@@ -47,7 +47,7 @@ $factory->define(Movie::class, function (Faker $faker) {
         'description' => $faker->text(),
         'release_date' => $faker->dateTime(),
         'rating' => $faker->randomElement(['1', '2', '3', '4', 5])[0],
-        'ticket_price' => $faker->randomElement(['2500', '3000', '4000'])[0],
+        'ticket_price' => $faker->randomElement([2500.00, 3300.00, 1400.00])[0],
         'country' => $faker->country,
         'genre' => $faker->randomElement(['action', 'romance', 'comedy', 'classical']),
         'photo' => $photoFileName, 

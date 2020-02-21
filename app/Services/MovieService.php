@@ -16,5 +16,15 @@ class MovieService
     {
         return Movie::orderBy('release_date')->get();
     }
+
+    /**
+     * Returns the full details of a particular movie
+     * @param String $slug
+     * @return object of App\Movie
+     */
+    public function movieDetails(String $slug): object
+    {
+        return Movie::where('slug', $slug)->first();
+    }
     
 }
