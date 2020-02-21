@@ -12,8 +12,8 @@ class MoviesController extends Controller
      * @param App\Services\MovieService;
      * @return  
      */
-    public function index(MovieService $movieService)
+    public function index()
     {
-        return view('movies.list');
+        return view('movies.landing');
     }
 }

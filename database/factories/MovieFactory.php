@@ -10,6 +10,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -36,15 +37,20 @@ $factory->define(Movie::class, function (Faker $faker) {
     $photoFileName = md5(time()) . '.jpg';
     
     Storage::disk('public_dir')->putFileAs('images', $photoFile, $photoFileName);
+
+    $title = ucfirst($faker->words[0]) . ' ' . ucfirst($faker->words[0]);
+
+    $slug = Str::slug($title, '-');
     
     return [
-        'title' => ucfirst($faker->words[0]),
+        'title' => $title,
         'description' => $faker->text(),
         'release_date' => $faker->dateTime(),
         'rating' => $faker->randomElement(['1', '2', '3', '4', 5])[0],
         'ticket_price' => $faker->randomElement(['2500', '3000', '4000'])[0],
         'country' => $faker->country,
         'genre' => $faker->randomElement(['action', 'romance', 'comedy', 'classical']),
-        'photo' => $photoFileName
+        'photo' => $photoFileName, 
+        'slug' => $slug
     ];
 });

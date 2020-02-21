@@ -297,6 +297,12 @@ ul.links li a {
 .processing-wrap {
     padding: 35px;
 }
+.orange {
+    color: orange !important;
+}
+.grey {
+    color: grey !important;
+}
 @media(max-width: 1366px) {}
 
 @media(max-width: 1280px) {}

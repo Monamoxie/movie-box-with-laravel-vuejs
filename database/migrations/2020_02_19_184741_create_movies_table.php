@@ -23,6 +23,7 @@ class CreateMoviesTable extends Migration
             $table->string('country');
             $table->string('genre');
             $table->string('photo'); 
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
