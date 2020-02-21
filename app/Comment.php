@@ -2,12 +2,9 @@
 
 namespace App;
 
-use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
 
-class Movie extends Model
+class Comment extends Model
 {
-    use Uuids;
-
     protected $guarded = [];
 }

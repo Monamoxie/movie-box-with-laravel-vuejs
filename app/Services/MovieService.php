@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Movie;
+use App\Comment;
 
 class MovieService
 {
@@ -31,12 +32,18 @@ class MovieService
         return Movie::where('slug', $slug)->first();
     }
 
+   
+
     /**
+     * Returns the Id of a movie from DB using the ID
      * 
+     * @param String $slug
+     * 
+     * @return String id
      */
-    public function newMovieComment(String $slug, String $comment)
+    public function movieId(String $slug): string
     {
-        
+        return Movie::select('id')->where('slug', $slug)->first()['id'];
     }
     
 }

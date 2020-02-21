@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CommentService;
 use App\Services\MovieService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,19 +38,19 @@ class MoviesController extends Controller
      * @return Response
      */
 
-    public function storeMovie(Request $request, MovieService $movieService)
+    public function storeMovieComment(Request $request, CommentService $commentService)
     { 
         $request->validate([
             'comment' => ['required', 'string', 'min:1'],
             'slug' => ['required', 'string', 'exists:movies']
         ]);
 
-        $newMovie = $movieService->newMovieComment($request->slug, $request->comment);
+        $newMovie = $commentService->newMovieComment($request->slug, $request->comment);
         if ($newMovie === false) {
             return redirect()->back()->withInput()->with('danger', 'An error occured. Please try again');
         }
         else {
-            return back()->withInput()->with('success', 'Comment has been successfully posted');
+            return redirect("/movies/".$request->slug)->with('success', 'Comment has been successfully posted');
         }
     }
 }
