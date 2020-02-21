@@ -46,5 +46,31 @@
         </div>
     </div>
 
+    <div class="row mt-5"> 
+        <div class="post-comments-box">
+            <div class="container text-center"> 
+                   
+                    <div class="row form-wrapper">
+                        <div class="col-md-4 post-comment-title">
+                            <h3 class="text-primary"> Comments >> </h3>
+                        </div>
+                        <div class="col-md-8">
+                            @if (count($movieDetails->comments) > 0)
+                                @foreach ($movieDetails->comments as $comment)
+                                    <div class="card mb-3">
+                                        
+                                        <div class="card-body"> 
+                                        <p class="card-text text-left">{{ $comment->comment }}</p> 
+                                        
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div> 
+            </div>
+        </div> 
+    </div>
+
     
 </div>

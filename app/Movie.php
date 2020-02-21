@@ -10,4 +10,9 @@ class Movie extends Model
     use Uuids;
 
     protected $guarded = [];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

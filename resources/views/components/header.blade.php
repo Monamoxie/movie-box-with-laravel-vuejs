@@ -17,7 +17,7 @@
                             <a class="nav-link active" href="index.html">Home</a>
                         </li>
                         <li>
-                            <a class="nav-link" href="about.html">Add Movie</a>
+                            <a class="nav-link" href="/movies/create/new">Add Movie</a>
                         </li> 
 
                           <!-- Authentication Links -->

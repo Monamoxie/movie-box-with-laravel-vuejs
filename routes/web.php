@@ -19,6 +19,8 @@ Route::get("/movies", "MoviesController@index");
 Route::get("/movies/{slug}", "MoviesController@movieDetails");
 
 Route::post("/movies/comment/store", "MoviesController@storeMovieComment")->middleware('auth');
+Route::get("/movies/create/new", "MoviesController@createMovie")->middleware('auth');
+Route::post("/movies/store", "MoviesController@storeMovie")->middleware('auth');
 
 Auth::routes();
 

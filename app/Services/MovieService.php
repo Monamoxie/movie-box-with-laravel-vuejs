@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Movie;
 use App\Comment;
+use stdClass;
 
 class MovieService
 {
@@ -29,7 +30,12 @@ class MovieService
      */
     public function movieDetails(String $slug): object
     {
-        return Movie::where('slug', $slug)->first();
+        $movie = Movie::where('slug', $slug)->first();
+        if ($movie === null) {
+            $movie = new stdClass;
+        }
+        $movie->comments = $movie->comments;
+        return $movie;
     }
 
    
