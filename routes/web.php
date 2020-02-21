@@ -19,4 +19,8 @@ Route::get("/movies", "MoviesController@index");
 
 Auth::routes();
 
+Route::group(['namespace' => 'Auth'], function () {
+    Route::get('/logout', 'LoginController@logout');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');

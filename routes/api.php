@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
  
 //  
-Route::group(['middleware' => 'auth:api', 'prefix' => 'v1', 'namespace' => 'Api',  ], function() {
+Route::group(['prefix' => 'v1', 'namespace' => 'Api',  ], function() {
     Route::post("/movies/list", "MoviesApiController@listMovies");
 });
 

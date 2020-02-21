@@ -18,7 +18,7 @@
                                 @endfor
                             @endif
                         </p>
-                    <a href="/movies/{{ str_slug($movie->title, '-') .'-'. $movie->id }}" class="btn btn-primary">See Details</a>
+                    <a href="/movies/{{ $movie->slug }}" class="btn btn-primary">See Details</a>
                     </div>
                     </div>
             </div>

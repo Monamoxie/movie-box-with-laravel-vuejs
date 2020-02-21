@@ -1,9 +1,12 @@
+
+ 
+
 new Vue({
     el: "#movies_container",
 
     data: {
         processing: false,
-        movies_list: 'ffjfkkfffkf'
+        movies_list: ''
     },
 
     mounted() {
@@ -27,7 +30,8 @@ new Vue({
             }
           })
           .catch(error => {
-            console.log(error) 
+            console.log(error);
+            self.movies_list = 'An unknown error must have occured.';  
           })
           .finally(function(){
             self.processing = false;
@@ -37,3 +41,10 @@ new Vue({
 
 
 });
+
+
+
+
+
+
+ 
