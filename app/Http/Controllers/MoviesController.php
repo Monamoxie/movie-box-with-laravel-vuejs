@@ -23,10 +23,33 @@ class MoviesController extends Controller
      */
     public function movieDetails(Request $request)
     {
-
         return view('movies.details_skeleton', [
             'slug' => $request->slug,
             'userStatus' => Auth::check()
         ]);
+    }
+
+    /**
+     * Store a new movie
+     * 
+     * @param Illuminate\Http\Request, App\Services\MovieService;
+     * 
+     * @return Response
+     */
+
+    public function storeMovie(Request $request, MovieService $movieService)
+    { 
+        $request->validate([
+            'comment' => ['required', 'string', 'min:1'],
+            'slug' => ['required', 'string', 'exists:movies']
+        ]);
+
+        $newMovie = $movieService->newMovieComment($request->slug, $request->comment);
+        if ($newMovie === false) {
+            return redirect()->back()->withInput()->with('danger', 'An error occured. Please try again');
+        }
+        else {
+            return back()->withInput()->with('success', 'Comment has been successfully posted');
+        }
     }
 }

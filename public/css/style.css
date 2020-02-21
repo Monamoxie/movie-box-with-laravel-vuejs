@@ -12,7 +12,20 @@ a {
     -ms-transition: 0.5s all;
     text-decoration: none;
 }
-
+.post-comments-box .form-wrapper {
+    border-top: 1px solid #ababab;
+    padding-top: 50px;
+    padding-bottom: 90px;
+}
+.post-comments-box .post-comment-title {
+    vertical-align: middle;
+    border-right: 1px solid #ababab;
+    margin-top: -50px;
+    padding-top: 70px;
+}
+.post-comments-box .form-wrapper textarea {
+    resize: none;
+}
 a:hover {
     text-decoration: none;
     transition: 0.5s all;

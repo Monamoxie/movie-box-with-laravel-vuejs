@@ -9,7 +9,9 @@ class MovieService
 
     /**
      * Returns all the movies in the table in descending order
+     * 
      * @param null
+     * 
      * @return object of App\Movie
      */
     public function allMovies(): object
@@ -19,12 +21,22 @@ class MovieService
 
     /**
      * Returns the full details of a particular movie
+     * 
      * @param String $slug
+     * 
      * @return object of App\Movie
      */
     public function movieDetails(String $slug): object
     {
         return Movie::where('slug', $slug)->first();
+    }
+
+    /**
+     * 
+     */
+    public function newMovieComment(String $slug, String $comment)
+    {
+        
     }
     
 }

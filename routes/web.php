@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::get("/movies", "MoviesController@index");
 Route::get("/movies/{slug}", "MoviesController@movieDetails");
 
+Route::post("/movies/comment/store", "MoviesController@storeMovie")->middleware('auth');
+
 Auth::routes();
 
 Route::group(['namespace' => 'Auth'], function () {
