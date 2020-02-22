@@ -23,7 +23,7 @@ const movieDetails = new Vue({
 
       movieDetails(slug) {
         const self = this; 
-        axios.post('/api/v1/movies/details/', {
+        axios.post('/api/v1/movies/details', {
           slug: slug
         })
         .then(function(response){ 
