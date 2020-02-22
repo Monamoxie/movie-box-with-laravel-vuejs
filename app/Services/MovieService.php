@@ -66,7 +66,7 @@ class MovieService
         $data['slug'] = Str::slug($data['title'], '-');
 
         $extension = strtolower($data['photo']->extension());
-        $newFileName =  md5(time())  . '.' . $extension;
+        $newFileName =  md5($data['title'])  . '.' . $extension;
     
         if (!$data['photo']->storeAs('images', $newFileName, 'public_dir')) {
             return false;
