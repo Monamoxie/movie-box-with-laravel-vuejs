@@ -79,7 +79,7 @@ class MoviesAddCommentTest extends TestCase
 
         Storage::fake(); 
 
-        $photo = UploadedFile::fake()->image('ao.jpeg');
+        $photo = UploadedFile::fake()->image('ao.png');
          
         $title = ucfirst($this->faker->words[0]) . ' ' . ucfirst($this->faker->words[0]);
         
@@ -110,13 +110,13 @@ class MoviesAddCommentTest extends TestCase
 
 
 
-        Storage::disk('public_dir')->assertExists('images/'. md5($title) . '.jpeg');
+        Storage::disk('public_dir')->assertExists('images/'. md5($title) . '.png');
       
         //attempt removing rhe file
-        Storage::disk('public_dir')->delete('images/'. md5($title) . '.jpeg');
+        Storage::disk('public_dir')->delete('images/'. md5($title) . '.png');
 
         //check file deletetion
-        Storage::disk('public_dir')->assertMissing('images/'. md5($title).'.jpeg'); 
+        Storage::disk('public_dir')->assertMissing('images/'. md5($title).'.png'); 
 
             // Add the comment
             $comment = $this->faker->text();
