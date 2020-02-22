@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Movie;
 use App\Comment;
+use Illuminate\Support\Str;
 use stdClass;
 
 class MovieService
@@ -50,6 +51,35 @@ class MovieService
     public function movieId(String $slug): string
     {
         return Movie::select('id')->where('slug', $slug)->first()['id'];
+    }
+
+    /**
+     * Stores a new movie into the DB
+     * 
+     * @param array 
+     * 
+     * @return bool
+     */
+    public function newMovie(Array $data): bool
+    {
+        $data['release_date'] = date('Y-m-d H:i:s');
+        $data['slug'] = Str::slug($data['title'], '-');
+
+        $extension = strtolower($data['photo']->extension());
+        $newFileName =  md5(time())  . '.' . $extension;
+    
+        if (!$data['photo']->storeAs('images', $newFileName, 'public_dir')) {
+            return false;
+        }
+
+        $data['photo'] = $newFileName;
+
+        if (!Movie::create($data)) {
+            return false;
+        }
+ 
+        return true;
+
     }
     
 }

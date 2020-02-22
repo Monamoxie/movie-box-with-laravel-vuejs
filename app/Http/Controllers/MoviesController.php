@@ -72,6 +72,7 @@ class MoviesController extends Controller
             'ticket_price' => ['required', 'numeric'],
             'rating' => ['required', 'numeric'],
             'description' => ['required', 'string'],
+            'photo' => ['required', 'file', 'image', 'mimes:jpeg,jpg,png', 'max:5120']
         ]);
 
         $newMovie = $movieService->newMovie($request->all());

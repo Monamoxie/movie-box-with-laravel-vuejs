@@ -44,7 +44,7 @@ $factory->define(Movie::class, function (Faker $faker) {
     
     return [
         'title' => $title,
-        'description' => $faker->text(),
+        'description' => $faker->text(200),
         'release_date' => $faker->dateTime(),
         'rating' => rand(2, 5),
         'ticket_price' => rand(2300, 4000),
