@@ -1,11 +1,18 @@
 <p align="center"><img src="public/images/logo2.png"></p>
 
-   
+## Circle CI
+<p align="center">
 [![CircleCI](https://circleci.com/gh/Monamoxie/movie-box.svg?style=svg)](https://circleci.com/gh/Monamoxie/movie-box)
+</p>
 
 ## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Movie Box is a web based movie showcase platform built with 
+ - Laravel 
+ - Vue JS
+ - MySQL
+ - Twitter Bootsrap
+ - Axios HTTP Client
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
