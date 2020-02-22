@@ -7,7 +7,7 @@
     </div> 
     <div class="row">
         <div class="col-md-5 image-wrapper">
-            <img src="{{ asset('uploads/images/'.$movieDetails->photo) }}">
+            <img src="{{ asset('images/'.$movieDetails->photo) }}">
         </div>
         <div class="col-md-7">
             <dl class="row">
