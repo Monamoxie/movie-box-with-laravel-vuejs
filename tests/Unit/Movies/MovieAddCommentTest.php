@@ -110,13 +110,13 @@ class MoviesAddCommentTest extends TestCase
 
 
 
-        Storage::disk('public_dir')->assertExists('images/'. md5($title) . '.png');
+        Storage::disk('public_dir')->assertExists('uploads/'. md5($title) . '.png');
       
         //attempt removing rhe file
-        Storage::disk('public_dir')->delete('images/'. md5($title) . '.png');
+        Storage::disk('public_dir')->delete('uploads/'. md5($title) . '.png');
 
         //check file deletetion
-        Storage::disk('public_dir')->assertMissing('images/'. md5($title).'.png'); 
+        Storage::disk('public_dir')->assertMissing('uploads/'. md5($title).'.png'); 
 
             // Add the comment
             $comment = $this->faker->text();

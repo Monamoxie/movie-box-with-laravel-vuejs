@@ -14,7 +14,7 @@
                 <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
                     <ul class="navbar-nav mx-lg-auto">
                         <li>
-                            <a class="nav-link active" href="index.html">Home</a>
+                            <a class="nav-link active" href="/">Home</a>
                         </li>
                         <li>
                             <a class="nav-link" href="/movies/create/new">Add Movie</a>

@@ -36,7 +36,7 @@ $factory->define(Movie::class, function (Faker $faker) {
     $photoFile = new File($photo);
     $photoFileName = md5(time()) . '.jpg';
     
-    Storage::disk('public_dir')->putFileAs('images', $photoFile, $photoFileName);
+    Storage::disk('public_dir')->putFileAs('uploads', $photoFile, $photoFileName);
 
     $title = ucfirst($faker->words[0]) . ' ' . ucfirst($faker->words[0]);
 
