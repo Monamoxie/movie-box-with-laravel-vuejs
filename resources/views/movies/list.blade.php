@@ -3,7 +3,7 @@
         @foreach ($movies as $movie)
             <div class="col-md-4 movie mb-4">
                 <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ asset('images/uploads/'.$movie->photo) }}" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('images/'.$movie->photo) }}" alt="Card image cap">
                  
                     <div class="card-body">
                         <h5 class="card-title"> {{ $movie->title }} </h5>
