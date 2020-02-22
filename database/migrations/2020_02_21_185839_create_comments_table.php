@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->uuid('movie_id');
             $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
 
-            $table->string('comment');
+            $table->text('comment');
 
             $table->bigInteger('poster')->unsigned();
             $table->foreign('poster')->references('id')->on('users')->onDelete('cascade');
