@@ -1,7 +1,7 @@
-<p align="center"><img src="public/images/logo2.png" width="400"></p>
+<p align="center"><img src="public/images/logo2.png"></p>
 
 <p align="center">
-[![CircleCI](https://circleci.com/gh/Monamoxie/movie-box.svg?style=svg)](https://circleci.com/gh/Monamoxie/movie-box)
+![CircleCI](https://circleci.com/gh/Monamoxie/movie-box.svg?style=svg)](https://circleci.com/gh/Monamoxie/movie-box)
 </p>
 
 ## About Laravel
