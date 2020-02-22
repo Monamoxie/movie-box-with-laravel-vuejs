@@ -218,17 +218,7 @@ h5.card-title.mt-3 {
     letter-spacing: 1px;
     font-size: 22px;
 }
-
-a.button-3 {
-    background: linear-gradient(to right bottom, #fb4386, #ec4fae, #ce63d0, #a377ea, #6488f9);
-    padding: 14px 28px;
-}
-
-a.button-3:hover {
-    opacity: .8;
-    background: linear-gradient(to right bottom, #fb4386, #ec4fae, #ce63d0, #a377ea, #6488f9);
-    color: #fff;
-}
+ 
 
  
  
