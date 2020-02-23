@@ -28,8 +28,8 @@
   - Install Laravel passport by running *php artisan passport:install*
   - Run the database seeder with *php artisan db:seed*
 ## Please Note:
-  - Instead of using the default faker Image class to generate images, I used a custom class I created. The server generating the images for Faker is down. Faker by default uses http://lorempixel.com/ for fetching images on the fly. I am generating mine from https://picsum.photos. It's sharper and faster. 
-  - I injected the implementation directory into the faker class. You may decide to abstract it or use it as a trait if you wish.
+  - Instead of using the default faker Image class to generate images, I used a custom class I created. The server generating the images for Faker is sometimes down or very slow. Faker by default uses http://lorempixel.com/ for fetching images on the fly. I am generating mine from https://picsum.photos. It's sharper and faster. 
+  - I injected the implementation into a Helper Class called Utility and referenced it whenever I need to generate a new image. You may decide to abstract it or use it as a trait if you wish.
 - If everything works fine, then run *php artisan serve*
 - Copy the url and visit it on your web browser.
 
