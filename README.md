@@ -4,7 +4,7 @@
 [![CircleCI](https://circleci.com/gh/Monamoxie/movie-box.svg?style=svg)](https://circleci.com/gh/Monamoxie/movie-box)
 
 
-## Technology Stacks and Tools
+## Technology Stack and Tools
  
  - Laravel 
  - Vue JS
