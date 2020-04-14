@@ -13,6 +13,7 @@
         <link rel="shortcut icon" href="{{  asset('images/favicon.png') }}" type="image/x-icon"> 
         <script src="{{ asset('js/app.js') }}" defer></script> 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
     </head>
     <body>
         <div id="app"></div>   

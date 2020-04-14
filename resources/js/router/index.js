@@ -1,4 +1,4 @@
-import Base from '../views/Home'
+import Home from '../views/Home'
 
 const routes = [
     {
