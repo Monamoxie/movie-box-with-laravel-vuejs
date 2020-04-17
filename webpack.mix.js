@@ -15,4 +15,4 @@ mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
    .styles([
       'resources/css/style.css'
-   ], 'public/css/custom.css')
+   ], 'public/css/custom.css') 

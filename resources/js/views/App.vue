@@ -1,10 +1,10 @@
 <template>
     <div class="wrapper">
         <header> 
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <nav class="navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow ">
                 <span class="logo-holder float-right">
                     <a class="navbar-brand" href="/">
-                        <img src="../../../images/logo.png" class="logo img-fluid" alt="Logo">
+                        <img src="../../images/logo.png" class="logo img-fluid" alt="Logo">
                     </a> 
                 </span>
                     
@@ -58,13 +58,17 @@
                 </div>
 
             </nav>
-
-            
         </header>
+        <router-view></router-view>
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">  &copy; {{ new Date().getFullYear() }} <br/>  All rights reserved. </span>
+            </div> 
+        </footer>
     </div>    
 </template>
 <script>
 export default {
-    name: 'Base'
+    name: 'App'
 }
 </script>
