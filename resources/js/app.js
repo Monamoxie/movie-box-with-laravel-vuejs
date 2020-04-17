@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './router/index'
-import App from './views/App'
+import Base from './Base'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -14,7 +14,7 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     router,
-    render: h => h(App),
+    render: h => h(Base),
 });
 
 

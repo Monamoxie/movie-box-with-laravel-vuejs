@@ -4,7 +4,7 @@
             <nav class="navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow ">
                 <span class="logo-holder float-right">
                     <a class="navbar-brand" href="/">
-                        <img src="../../images/logo.png" class="logo img-fluid" alt="Logo">
+                        <img src="../images/logo.png" class="logo" alt="Logo">
                     </a> 
                 </span>
                     
