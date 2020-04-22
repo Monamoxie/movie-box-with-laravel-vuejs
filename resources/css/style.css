@@ -6,6 +6,8 @@ body {
     margin: 0;
     background: #ffffff;
     font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 a {
@@ -49,7 +51,7 @@ a:hover {
     -o-background-size: cover;
     -ms-background-size: cover;
     border-radius: 0 0 300px 0;
-    min-height: 42vw;
+    min-height: 40vw;
     position: relative;  
 }
 .banner-overlay {
@@ -60,7 +62,7 @@ a:hover {
     bottom: 0;
     width: 100%;
     height: 100%;
-    min-height: 42vw;
+    /* min-height: 40vw; */
     border-radius: 0 0 300px 0;
     background: rgba(0, 0, 0, 0.9);
     background: rgba(199,10,180, 0.8);
@@ -103,6 +105,41 @@ a:hover {
     font-size: 34px;
     font-weight: bold;
 }
+
+
+/* Main Responsive */
+
+/** Small Devices **/
+@media(max-width: 767px) {
+    .banner-overlay-img {
+        right: 100px;
+        top: 400px; 
+        z-index: 55;
+    }
+}
+
+/** Medium Devices **/
+@media(min-width: 768px) {
+    .banner-overlay-img {
+        right: 10px;
+        top: 200px; 
+        z-index: 55;
+    }
+}
+
+/** Large Devices **/
+@media(min-width: 992px) {
+
+}
+
+/** X Large Devices **/
+@media(min-width: 1200px) {
+    .banner-overlay-img {
+        right: 200px;
+        top: 30px;  
+    }
+} 
+ 
   
 
 
@@ -371,10 +408,7 @@ ul.links li a {
 
     h3.banner-top-text {
         font-size: 46px;
-    } 
-    .banner-overlay-img {
-        width: 30%;
-    }
+    }  
 }
  
 .nav-link {
@@ -568,7 +602,7 @@ ul.links li a {
 
 @media(max-width: 736px) {
     .landing-banner {
-        min-height: 480px;
+        min-height: 420px;
     }
 }
 
@@ -615,29 +649,38 @@ ul.links li a {
 
 @media(max-width: 1080px) {
     .landing-banner {
-        border-radius: 0 0 200px 0;
-        min-height: 650px;
-        position: relative;
+        border-radius: 0 0 210px 0;
+        min-height: 610px; 
+    }
+    .banner-overlay {
+        border-radius: 0 0 210px 0;
     }
 }
 @media(max-width: 991px) {
     .landing-banner {
-        border-radius: 0 0 180px 0;
-        min-height: 600px;
+        border-radius: 0 0 150px 0;
+        min-height: 500px;
+    }
+    .banner-overlay {
+        border-radius: 0 0 150px 0;
     }
 }
 @media(max-width: 900px) {
     .landing-banner {
-        min-height: 580px;
-    }
+        min-height: 520px;
+    } 
 }
 @media(max-width: 800px) {
     .landing-banner {
-        border-radius: 0 0 120px 0;
+        border-radius: 0 0 100px 0;
+    }
+    .banner-overlay {
+        border-radius: 0 0 100px 0;
     }
 }
 @media(max-width: 736px) {
     .landing-banner {
-        min-height: 680px;
+        min-height: 620px;
     }
 }
+

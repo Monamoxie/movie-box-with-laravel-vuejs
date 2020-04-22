@@ -72,7 +72,7 @@ export default {
     name: 'App',
     methods: {
         loadMovies() {
-            alert('in here')
+            // alert('in here')
         }
     }
 }

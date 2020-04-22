@@ -1980,8 +1980,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
   methods: {
-    loadMovies: function loadMovies() {
-      alert('in here');
+    loadMovies: function loadMovies() {// alert('in here')
     }
   }
 });
@@ -1997,6 +1996,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
