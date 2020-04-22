@@ -72,7 +72,7 @@ export default {
     name: 'App',
     methods: {
         loadMovies() {
-            // alert('in here')
+           this.$store.dispatch('loadMovies')
         }
     }
 }
