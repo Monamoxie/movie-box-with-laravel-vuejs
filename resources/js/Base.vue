@@ -59,7 +59,7 @@
 
             </nav>
         </header>
-        <router-view></router-view>
+        <router-view @loadMovies="loadMovies"></router-view>
         <footer class="footer">
             <div class="container">
                 <span class="text-muted">  &copy; {{ new Date().getFullYear() }} <br/>  All rights reserved. </span>
@@ -69,6 +69,11 @@
 </template>
 <script>
 export default {
-    name: 'App'
+    name: 'App',
+    methods: {
+        loadMovies() {
+            alert('in here')
+        }
+    }
 }
 </script>

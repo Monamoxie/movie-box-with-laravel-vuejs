@@ -58,9 +58,6 @@
                 </div>
             </div>
         </section>
-
-
-
         
     </div>   
 </template>
@@ -73,7 +70,7 @@ export default {
         }
     },
     mounted() {
-        
+        this.$emit("loadMovies")
     }
 }
 </script>
