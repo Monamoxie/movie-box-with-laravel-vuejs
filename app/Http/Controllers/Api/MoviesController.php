@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\MovieService;
 use Carbon\Carbon;
 
-class MoviesApiController extends Controller
+class MoviesController extends Controller
 {
     /**
      * List all the available movies
@@ -18,6 +18,7 @@ class MoviesApiController extends Controller
      */
     public function listMovies(Request $request, MovieService $movieService)
     {
+        dd('heheh');
         $movies = $movieService->allMovies();
         $data = view('movies.list', compact('movies'))->render();
         return $this->successResponse('Data was successfully fetched.', $data);

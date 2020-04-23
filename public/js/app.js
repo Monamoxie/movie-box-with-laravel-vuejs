@@ -1981,7 +1981,15 @@ __webpack_require__.r(__webpack_exports__);
   name: 'App',
   methods: {
     loadMovies: function loadMovies() {
-      this.$store.dispatch('loadMovies');
+      this.$store.dispatch('loadMovies').then(function (response) {
+        console.log(response.data.data);
+      })["catch"](function (error) {//   this.serverResponse = [{
+        //   'status': 'error',
+        //   'message': 'An error occured. Request was not processed',
+        //   'errors': error.response.data.errors !== null && error.response.data.errors !== undefined ? Object.values(error.response.data.errors) : []
+        //   }]   
+      })["finally"](function () {//   _self.processing = false 
+      });
     }
   }
 });
@@ -54104,6 +54112,7 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 window.axios.defaults.baseURL = "http://localhost:3030/api/v1/";
+window.axios.defaults.headers.common['Accept'] = 'application/json';
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -54163,13 +54172,13 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   mutations: {},
   actions: {
     loadMovies: function loadMovies(context) {
-      axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token;
-      context.state.todosLoading = true;
-      axios.get('/todos').then(function (response) {
-        context.state.todosLoading = false;
-        context.commit('retrieveTodos', response.data);
-      })["catch"](function (errors) {
-        console.log(errors);
+      // axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
+      return new Promise(function (resolve, reject) {
+        axios.post('/movies').then(function (response) {
+          resolve(response);
+        })["catch"](function (errors) {
+          reject(errors);
+        });
       });
     }
   }

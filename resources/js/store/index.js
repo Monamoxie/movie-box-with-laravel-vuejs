@@ -21,15 +21,15 @@ export const store = new Vuex.Store({
 
     actions: {
         loadMovies(context) {
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
-            context.state.todosLoading = true
-            axios.get('/todos')
-            .then(response => {
-                context.state.todosLoading = false
-                context.commit('retrieveTodos', response.data)
-            })
-            .catch(errors => {
-                console.log(errors)
+            // axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
+            return new Promise((resolve, reject) => {
+                axios.post('/movies')
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(errors => {
+                    reject(errors)
+                })
             })
         }
     }

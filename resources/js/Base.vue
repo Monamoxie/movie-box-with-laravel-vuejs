@@ -73,6 +73,19 @@ export default {
     methods: {
         loadMovies() {
            this.$store.dispatch('loadMovies')
+           .then((response) => {   
+              console.log(response.data.data);
+            })
+            .catch(error => { 
+            //   this.serverResponse = [{
+            //   'status': 'error',
+            //   'message': 'An error occured. Request was not processed',
+            //   'errors': error.response.data.errors !== null && error.response.data.errors !== undefined ? Object.values(error.response.data.errors) : []
+            //   }]   
+            })
+            .finally(() => {
+            //   _self.processing = false 
+          })
         }
     }
 }
