@@ -43,7 +43,8 @@
                 <div v-else class="album py-5 bg-light">
                     <div class="container">
                         <div class="row">
-                            <movie-box  v-for="(movie, key) in movies" :key="key"></movie-box>                            
+                            <movie-box  v-for="(movie, key) in movies" :key="key" 
+                             :movie="movie"></movie-box>                            
                         </div>
                     </div>
                 </div>

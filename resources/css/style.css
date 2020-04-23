@@ -193,7 +193,32 @@ a:hover {
     font-family: Arial, Helvetica, sans-serif; 
 }
  
-  
+.orange {
+    color: orange !important;
+}
+ 
+.grey {
+    color: grey !important;
+} 
+.jumbotron {
+    background-image: url('../images/banner2.jpg');
+    color: #fff;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none;
+    border-radius: 0;
+}
+.jumbotron .overlay {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: rgba(36, 5, 148, 0.78);
+    padding: 100px 50px;
+} 
+.card-img-top {
+    height: 220px;
+    width: 100%;
+}
 
 
 
@@ -472,36 +497,8 @@ ul.links li a {
     margin: 0 1em;
     font-weight: 600;
 }
-.processing-wrap {
-    padding: 35px;
-}
-.orange {
-    color: orange !important;
-}
-.movies_list {
-    padding-bottom: 80px;
-}
-.grey {
-    color: grey !important;
-}
-.movie .card {
-    margin: auto;
-}
-.jumbotron {
-    background-image: url('../images/banner2.jpg');
-    color: #fff;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: none;
-    border-radius: 0;
-}
-.jumbotron .overlay {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    background: rgba(36, 5, 148, 0.78);
-    padding: 100px 50px;
-}
+ 
+
 .movie_details {
     padding: 40px 0;
     margin: 30px auto;

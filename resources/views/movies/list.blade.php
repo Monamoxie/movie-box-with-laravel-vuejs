@@ -13,11 +13,6 @@
                                <i class="fa fa-star orange"></i> 
                             @endfor
 
-                            @if ( (5 - (int) $movie->rating) > 0)
-                                @for ($ratingScore = 1; $ratingScore <= 5 - $movie->rating; $ratingScore++)
-                                    <i class="fa fa-star grey"></i> 
-                                @endfor
-                            @endif
                         </p>
                     <a href="/movies/{{ $movie->slug }}" class="btn btn-primary">See Details</a>
                     </div>

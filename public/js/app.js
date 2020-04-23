@@ -1989,6 +1989,69 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MovieBox.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MovieBox.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "MovieBox",
+  methods: {
+    photoPath: function photoPath(photo) {
+      return '/storage/uploads/images/' + photo;
+    }
+  },
+  props: {
+    movie: {
+      type: Object,
+      required: true
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Home.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Home.vue?vue&type=script&lang=js& ***!
@@ -1999,6 +2062,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_MovieBox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/MovieBox */ "./resources/js/components/MovieBox.vue");
+//
 //
 //
 //
@@ -37581,62 +37645,95 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "col-md-4" }, [
+    _c("div", { staticClass: "card mb-4 shadow-sm" }, [
+      _c("img", {
+        staticClass: "card-img-top",
+        attrs: { src: _vm.photoPath(_vm.movie.photo), alt: "Card image cap" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("h4", { staticClass: " card-header" }, [
+          _vm._v(" " + _vm._s(_vm.movie.title) + " ")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "card-text" }, [
+          _vm._v(
+            "  \n                " +
+              _vm._s(
+                _vm.movie.description.length > 100
+                  ? _vm.movie.description.substring(0, 100) + "..."
+                  : _vm.movie.description
+              ) +
+              " \n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "d-flex justify-content-between align-items-center" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "span",
+              [
+                _vm._l(parseInt(_vm.movie.rating), function(rated, index) {
+                  return _c("i", {
+                    key: index,
+                    staticClass: "fa fa-star orange"
+                  })
+                }),
+                _vm._v(" "),
+                5 - parseInt(_vm.movie.rating) > 0
+                  ? _c(
+                      "span",
+                      _vm._l(5 - parseInt(_vm.movie.rating), function(
+                        rated,
+                        index
+                      ) {
+                        return _c("i", {
+                          key: index,
+                          staticClass: "fa fa-star grey"
+                        })
+                      }),
+                      0
+                    )
+                  : _vm._e()
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c("small", { staticClass: "text-muted" })
+          ]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("div", { staticClass: "card mb-4 shadow-sm" }, [
-        _c("img", {
-          staticClass: "card-img-top",
-          attrs: {
-            "data-src":
-              "holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail",
-            alt: "Card image cap"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("p", { staticClass: "card-text" }, [
-            _vm._v(
-              "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "d-flex justify-content-between align-items-center"
-            },
-            [
-              _c("div", { staticClass: "btn-group" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm btn-outline-secondary",
-                    attrs: { type: "button" }
-                  },
-                  [_vm._v("View")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm btn-outline-secondary",
-                    attrs: { type: "button" }
-                  },
-                  [_vm._v("Edit")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("small", { staticClass: "text-muted" }, [_vm._v("9 mins")])
-            ]
-          )
-        ])
-      ])
+    return _c("div", { staticClass: "btn-group" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-sm btn-outline-secondary",
+          attrs: { type: "button" }
+        },
+        [_vm._v("View")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-sm btn-outline-secondary",
+          attrs: { type: "button" }
+        },
+        [_vm._v("Edit")]
+      )
     ])
   }
 ]
@@ -37721,7 +37818,10 @@ var render = function() {
                       "div",
                       { staticClass: "row" },
                       _vm._l(_vm.movies, function(movie, key) {
-                        return _c("movie-box", { key: key })
+                        return _c("movie-box", {
+                          key: key,
+                          attrs: { movie: movie }
+                        })
                       }),
                       1
                     )
@@ -54175,15 +54275,17 @@ window.axios.defaults.headers.common['Accept'] = 'application/json';
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MovieBox_vue_vue_type_template_id_8572cf34___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MovieBox.vue?vue&type=template&id=8572cf34& */ "./resources/js/components/MovieBox.vue?vue&type=template&id=8572cf34&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _MovieBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MovieBox.vue?vue&type=script&lang=js& */ "./resources/js/components/MovieBox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _MovieBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _MovieBox_vue_vue_type_template_id_8572cf34___WEBPACK_IMPORTED_MODULE_0__["render"],
   _MovieBox_vue_vue_type_template_id_8572cf34___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -54197,6 +54299,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/MovieBox.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/MovieBox.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/MovieBox.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MovieBox.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MovieBox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
