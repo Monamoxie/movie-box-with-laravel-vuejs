@@ -17,11 +17,9 @@ class MoviesController extends Controller
      * @return Response
      */
     public function listMovies(Request $request, MovieService $movieService)
-    {
-        dd('heheh');
+    { 
         $movies = $movieService->allMovies();
-        $data = view('movies.list', compact('movies'))->render();
-        return $this->successResponse('Data was successfully fetched.', $data);
+        return $this->successResponse('Data was successfully fetched.', $movies);
     }
 
     /**

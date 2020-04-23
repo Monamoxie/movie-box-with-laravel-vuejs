@@ -1,13 +1,15 @@
 @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-@import url('http://fonts.googleapis.com/css?family=Montserrat:400,700'); 
+@import url('http://fonts.googleapis.com/css?family=Roboto:400,700'); 
+ 
 
 body {
     padding: 0;
     margin: 0;
     background: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif; 
     width: 100%;
     overflow-x: hidden;
+    font-size: 16px;
 }
 
 a {
@@ -106,6 +108,52 @@ a:hover {
     font-weight: bold;
 }
 
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    margin: 3px auto;
+    margin-top: 20px;
+    border: 3px solid rgb(4, 209, 4);
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: rgb(4, 209, 4) transparent transparent transparent;
+  }
+  .ring-white div {
+      border: 3px solid rgb(255, 255, 255);   
+      border-color: rgb(255, 255, 255) transparent transparent transparent;
+  }
+  .ring-blue div {
+    border: 3px solid #3f73a7;   
+    border-color: #3f73a7 transparent transparent transparent;
+}
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+   
+
 
 /* Main Responsive */
 
@@ -139,6 +187,11 @@ a:hover {
         top: 30px;  
     }
 } 
+.box-jumbotron p.muted  {
+    font-size: 18px;
+    margin-top: 8px;
+    font-family: Arial, Helvetica, sans-serif; 
+}
  
   
 

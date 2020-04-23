@@ -59,7 +59,7 @@
 
             </nav>
         </header>
-        <router-view @loadMovies="loadMovies"></router-view>
+        <router-view></router-view>
         <footer class="footer">
             <div class="container">
                 <span class="text-muted">  &copy; {{ new Date().getFullYear() }} <br/>  All rights reserved. </span>
@@ -70,23 +70,13 @@
 <script>
 export default {
     name: 'App',
-    methods: {
-        loadMovies() {
-           this.$store.dispatch('loadMovies')
-           .then((response) => {   
-              console.log(response.data.data);
-            })
-            .catch(error => { 
-            //   this.serverResponse = [{
-            //   'status': 'error',
-            //   'message': 'An error occured. Request was not processed',
-            //   'errors': error.response.data.errors !== null && error.response.data.errors !== undefined ? Object.values(error.response.data.errors) : []
-            //   }]   
-            })
-            .finally(() => {
-            //   _self.processing = false 
-          })
+    data() {
+        return {
+            movies: [],
         }
+    },
+    methods: {
+    
     }
 }
 </script>

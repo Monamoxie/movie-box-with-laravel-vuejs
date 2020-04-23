@@ -13,66 +13,85 @@
                     <img src="../../images/look2.png" alt="" class="banner-overlay-img"> 
                 </div>
             </div>
-        </div> 
-
-        <section class="box-jumbotron bg-white">
+        </div>
+ 
+        <div class="box-jumbotron bg-white">
             <div class="container">
                 <h1 class="text-center">Movie Catalogs </h1>
                 <p class="lead text-muted text-center">Something short and sweet about the box</p>
             </div>
-            
-            <div class="album py-5 bg-light" style="display:none">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                                <div class="card-body">
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                        </div>
-                                        <small class="text-muted">9 mins</small>
-                                    </div>
-                                </div>
-                            </div>
+
+            <div class="text-center" v-if="processing">
+                <div class="lds-ring mt-5">
+                    <div></div><div></div><div></div><div></div>
+                </div>
+                <p class="muted"> Loading...</p>
+            </div>
+
+            <div v-else>
+                <div v-if="serverResponse.length > 0">
+                    <div class="alert alert-danger alert-dismissible text-center">
+                        <h2 class="alert-heading">An error occured</h2>
+                        <div v-if="serverResponse[0].errors.length > 0">
+                            <p v-for="(error, key) in serverResponse[0].errors" :key="key">
+                                {{ error[0] }}
+                            </p>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-                                <div class="card-body">
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                        </div>
-                                        <small class="text-muted">9 mins</small>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+            
+                <div v-else class="album py-5 bg-light">
+                    <div class="container">
+                        <div class="row">
+                            <movie-box  v-for="(movie, key) in movies" :key="key"></movie-box>                            
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+
+        </div>
+
+       
 
 
         
     </div>   
 </template>
 <script>
+import MovieBox from '../components/MovieBox'
+
 export default {
     name: 'Home',
+    components: {
+        MovieBox
+    },
     data() {
         return {
-            backgroundImage: 'background-image:url("' + require('../../images/1.jpeg') + ' ")'
+            backgroundImage: 'background-image:url("' + require('../../images/1.jpeg') + ' ")',
+            movies: [],
+            serverResponse: [], 
+            processing: false
         }
     },
     mounted() {
-        this.$emit("loadMovies")
+        this.processing = true
+        this.$store.dispatch('loadMovies')
+        .then((response) => {   
+            console.log(response.data.data);
+            this.movies = response.data.data
+        })
+        .catch(error => { 
+          this.serverResponse = [{
+          'status': 'error',
+          'message': 'An error occured. Request was not processed',
+          'errors': error.response.data.errors !== null && error.response.data.errors !== undefined ? Object.values(error.response.data.errors) : []
+          }]
+          console.log(error.response.data)
+          console.log(this.serverResponse[0])   
+        })
+        .finally(() => {
+            this.processing = false 
+        })
     }
 }
 </script>

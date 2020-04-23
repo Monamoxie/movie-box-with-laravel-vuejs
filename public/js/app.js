@@ -1979,19 +1979,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
-  methods: {
-    loadMovies: function loadMovies() {
-      this.$store.dispatch('loadMovies').then(function (response) {
-        console.log(response.data.data);
-      })["catch"](function (error) {//   this.serverResponse = [{
-        //   'status': 'error',
-        //   'message': 'An error occured. Request was not processed',
-        //   'errors': error.response.data.errors !== null && error.response.data.errors !== undefined ? Object.values(error.response.data.errors) : []
-        //   }]   
-      })["finally"](function () {//   _self.processing = false 
-      });
-    }
-  }
+  data: function data() {
+    return {
+      movies: []
+    };
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -2005,6 +1998,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_MovieBox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/MovieBox */ "./resources/js/components/MovieBox.vue");
 //
 //
 //
@@ -2064,21 +2058,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Home',
+  components: {
+    MovieBox: _components_MovieBox__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
-      backgroundImage: 'background-image:url("' + __webpack_require__(/*! ../../images/1.jpeg */ "./resources/images/1.jpeg") + ' ")'
+      backgroundImage: 'background-image:url("' + __webpack_require__(/*! ../../images/1.jpeg */ "./resources/images/1.jpeg") + ' ")',
+      movies: [],
+      serverResponse: [],
+      processing: false
     };
   },
   mounted: function mounted() {
-    this.$emit("loadMovies");
+    var _this = this;
+
+    this.processing = true;
+    this.$store.dispatch('loadMovies').then(function (response) {
+      console.log(response.data.data);
+      _this.movies = response.data.data;
+    })["catch"](function (error) {
+      _this.serverResponse = [{
+        'status': 'error',
+        'message': 'An error occured. Request was not processed',
+        'errors': error.response.data.errors !== null && error.response.data.errors !== undefined ? Object.values(error.response.data.errors) : []
+      }];
+      console.log(error.response.data);
+      console.log(_this.serverResponse[0]);
+    })["finally"](function () {
+      _this.processing = false;
+    });
   }
 });
 
@@ -37460,7 +37471,7 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
-      _c("router-view", { on: { loadMovies: _vm.loadMovies } }),
+      _c("router-view"),
       _vm._v(" "),
       _c("footer", { staticClass: "footer" }, [
         _c("div", { staticClass: "container" }, [
@@ -37555,6 +37566,86 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MovieBox.vue?vue&type=template&id=8572cf34&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MovieBox.vue?vue&type=template&id=8572cf34& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("div", { staticClass: "card mb-4 shadow-sm" }, [
+        _c("img", {
+          staticClass: "card-img-top",
+          attrs: {
+            "data-src":
+              "holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail",
+            alt: "Card image cap"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("p", { staticClass: "card-text" }, [
+            _vm._v(
+              "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "d-flex justify-content-between align-items-center"
+            },
+            [
+              _c("div", { staticClass: "btn-group" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-outline-secondary",
+                    attrs: { type: "button" }
+                  },
+                  [_vm._v("View")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-outline-secondary",
+                    attrs: { type: "button" }
+                  },
+                  [_vm._v("Edit")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("small", { staticClass: "text-muted" }, [_vm._v("9 mins")])
+            ]
+          )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Home.vue?vue&type=template&id=63cd6604&":
 /*!**************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Home.vue?vue&type=template&id=63cd6604& ***!
@@ -37580,7 +37671,64 @@ var render = function() {
       [_vm._m(0)]
     ),
     _vm._v(" "),
-    _vm._m(1)
+    _c("div", { staticClass: "box-jumbotron bg-white" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _vm.processing
+        ? _c("div", { staticClass: "text-center" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("p", { staticClass: "muted" }, [_vm._v(" Loading...")])
+          ])
+        : _c("div", [
+            _vm.serverResponse.length > 0
+              ? _c("div", [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "alert alert-danger alert-dismissible text-center"
+                    },
+                    [
+                      _c("h2", { staticClass: "alert-heading" }, [
+                        _vm._v("An error occured")
+                      ]),
+                      _vm._v(" "),
+                      _vm.serverResponse[0].errors.length > 0
+                        ? _c(
+                            "div",
+                            _vm._l(_vm.serverResponse[0].errors, function(
+                              error,
+                              key
+                            ) {
+                              return _c("p", { key: key }, [
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(error[0]) +
+                                    "\n                        "
+                                )
+                              ])
+                            }),
+                            0
+                          )
+                        : _vm._e()
+                    ]
+                  )
+                ])
+              : _c("div", { staticClass: "album py-5 bg-light" }, [
+                  _c("div", { staticClass: "container" }, [
+                    _c(
+                      "div",
+                      { staticClass: "row" },
+                      _vm._l(_vm.movies, function(movie, key) {
+                        return _c("movie-box", { key: key })
+                      }),
+                      1
+                    )
+                  ])
+                ])
+          ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -37620,135 +37768,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "box-jumbotron bg-white" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("h1", { staticClass: "text-center" }, [_vm._v("Movie Catalogs ")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "lead text-muted text-center" }, [
-          _vm._v("Something short and sweet about the box")
-        ])
-      ]),
+    return _c("div", { staticClass: "container" }, [
+      _c("h1", { staticClass: "text-center" }, [_vm._v("Movie Catalogs ")]),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "album py-5 bg-light",
-          staticStyle: { display: "none" }
-        },
-        [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-4" }, [
-                _c("div", { staticClass: "card mb-4 shadow-sm" }, [
-                  _c("img", {
-                    staticClass: "card-img-top",
-                    attrs: {
-                      "data-src":
-                        "holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail",
-                      alt: "Card image cap"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(
-                        "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-between align-items-center"
-                      },
-                      [
-                        _c("div", { staticClass: "btn-group" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-sm btn-outline-secondary",
-                              attrs: { type: "button" }
-                            },
-                            [_vm._v("View")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-sm btn-outline-secondary",
-                              attrs: { type: "button" }
-                            },
-                            [_vm._v("Edit")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("small", { staticClass: "text-muted" }, [
-                          _vm._v("9 mins")
-                        ])
-                      ]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-4" }, [
-                _c("div", { staticClass: "card mb-4 shadow-sm" }, [
-                  _c("img", {
-                    staticClass: "card-img-top",
-                    attrs: {
-                      "data-src":
-                        "holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail",
-                      alt: "Card image cap"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("p", { staticClass: "card-text" }, [
-                      _vm._v(
-                        "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-between align-items-center"
-                      },
-                      [
-                        _c("div", { staticClass: "btn-group" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-sm btn-outline-secondary",
-                              attrs: { type: "button" }
-                            },
-                            [_vm._v("View")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-sm btn-outline-secondary",
-                              attrs: { type: "button" }
-                            },
-                            [_vm._v("Edit")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("small", { staticClass: "text-muted" }, [
-                          _vm._v("9 mins")
-                        ])
-                      ]
-                    )
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ]
-      )
+      _c("p", { staticClass: "lead text-muted text-center" }, [
+        _vm._v("Something short and sweet about the box")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "lds-ring mt-5" }, [
+      _c("div"),
+      _c("div"),
+      _c("div"),
+      _c("div")
     ])
   }
 ]
@@ -54126,6 +54162,59 @@ window.axios.defaults.headers.common['Accept'] = 'application/json';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/MovieBox.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/MovieBox.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MovieBox_vue_vue_type_template_id_8572cf34___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MovieBox.vue?vue&type=template&id=8572cf34& */ "./resources/js/components/MovieBox.vue?vue&type=template&id=8572cf34&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _MovieBox_vue_vue_type_template_id_8572cf34___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MovieBox_vue_vue_type_template_id_8572cf34___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/MovieBox.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/MovieBox.vue?vue&type=template&id=8572cf34&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/MovieBox.vue?vue&type=template&id=8572cf34& ***!
+  \*****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieBox_vue_vue_type_template_id_8572cf34___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MovieBox.vue?vue&type=template&id=8572cf34& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MovieBox.vue?vue&type=template&id=8572cf34&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieBox_vue_vue_type_template_id_8572cf34___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieBox_vue_vue_type_template_id_8572cf34___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
