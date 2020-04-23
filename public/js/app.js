@@ -1950,33 +1950,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
   data: function data() {
@@ -1998,19 +1971,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2122,6 +2082,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Home',
@@ -2130,7 +2105,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      backgroundImage: 'background-image:url("' + __webpack_require__(/*! ../../images/1.jpeg */ "./resources/images/1.jpeg") + ' ")',
+      topBannerBackgroundImage: 'background-image:url("' + __webpack_require__(/*! ../../images/1.jpeg */ "./resources/images/1.jpeg") + ' ")',
+      bottomBannerBackgroundImage: 'background-image: url("' + __webpack_require__(/*! ../../images/banner22.jpg */ "./resources/images/banner22.jpg") + '")',
       movies: [],
       serverResponse: [],
       processing: false
@@ -37533,7 +37509,132 @@ var render = function() {
     "div",
     { staticClass: "wrapper" },
     [
-      _vm._m(0),
+      _c("header", [
+        _c(
+          "nav",
+          {
+            staticClass:
+              "navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow "
+          },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-9 col-md-9" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse navbar-collapse",
+                  attrs: { id: "navbarTogglerDemo03" }
+                },
+                [
+                  _c("ul", { staticClass: "navbar-nav ml-auto top-nav" }, [
+                    _c(
+                      "li",
+                      {
+                        staticClass: "nav-item",
+                        class: this.$route.path === "/" ? "active" : ""
+                      },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "nav-link",
+                            attrs: { to: { name: "home" } }
+                          },
+                          [_vm._v("Home")]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "nav-item",
+                        class: this.$route.path === "/todo" ? "active" : ""
+                      },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "nav-link",
+                            attrs: { to: { name: "todo" } }
+                          },
+                          [_vm._v("App")]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    !_vm.loggedIn
+                      ? _c(
+                          "li",
+                          {
+                            staticClass: "nav-item",
+                            class: this.$route.path === "/login" ? "active" : ""
+                          },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: { name: "login" } }
+                              },
+                              [_vm._v("Login")]
+                            )
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.loggedIn
+                      ? _c(
+                          "li",
+                          {
+                            staticClass: "nav-item",
+                            class:
+                              this.$route.path === "/register" ? "active" : ""
+                          },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: { name: "register" } }
+                              },
+                              [_vm._v("Register")]
+                            )
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.loggedIn
+                      ? _c(
+                          "li",
+                          { staticClass: "nav-item" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "nav-link",
+                                attrs: { to: { name: "logout" } }
+                              },
+                              [_vm._v("Logout")]
+                            )
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ])
+                ]
+              )
+            ])
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c("router-view"),
       _vm._v(" "),
@@ -37555,73 +37656,36 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("header", [
-      _c(
-        "nav",
-        {
-          staticClass:
-            "navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow "
-        },
-        [
-          _c("span", { staticClass: "logo-holder float-right" }, [
-            _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
-              _c("img", {
-                staticClass: "logo",
-                attrs: { src: __webpack_require__(/*! ../images/logo.png */ "./resources/images/logo.png"), alt: "Logo" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "nav justify-content-end menu-nav" }, [
-            _c(
-              "button",
-              {
-                staticClass: "navbar-toggler",
-                attrs: {
-                  type: "button",
-                  "data-toggle": "collapse",
-                  "data-target": ".navbar-toggle",
-                  "aria-controls": "navbarNavAltMarkup",
-                  "aria-expanded": "false",
-                  "aria-label": "Toggle navigation"
-                }
-              },
-              [_c("span", { staticClass: "navbar-toggler-icon" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "collapse navbar-collapse navbar-toggle",
-                attrs: { id: "navbarNavAltMarkup" }
-              },
-              [
-                _c("ul", { staticClass: "navbar-nav mx-lg-auto" }, [
-                  _c("li", [
-                    _c(
-                      "a",
-                      { staticClass: "nav-link active", attrs: { href: "/" } },
-                      [_vm._v("Home")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "nav-link",
-                        attrs: { href: "/movies/create/new" }
-                      },
-                      [_vm._v("Add Movie")]
-                    )
-                  ])
-                ])
-              ]
-            )
-          ])
-        ]
-      )
+    return _c("div", { staticClass: "navbar-brand col-sm-3 col-md-3 mr-0" }, [
+      _c("span", { staticClass: "logo-holder" }, [
+        _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
+          _c("img", {
+            staticClass: "logo",
+            attrs: { src: __webpack_require__(/*! ../images/logo.png */ "./resources/images/logo.png"), alt: "Logo" }
+          })
+        ])
+      ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarTogglerDemo03",
+          "aria-controls": "navbarTogglerDemo03",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
+    )
   }
 ]
 render._withStripped = true
@@ -37653,9 +37717,7 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
-        _c("h4", { staticClass: " card-header" }, [
-          _vm._v(" " + _vm._s(_vm.movie.title) + " ")
-        ]),
+        _c("h4", [_vm._v(" " + _vm._s(_vm.movie.title) + " ")]),
         _vm._v(" "),
         _c("p", { staticClass: "card-text" }, [
           _vm._v(
@@ -37673,8 +37735,6 @@ var render = function() {
           "div",
           { staticClass: "d-flex justify-content-between align-items-center" },
           [
-            _vm._m(0),
-            _vm._v(" "),
             _c(
               "span",
               [
@@ -37711,32 +37771,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "btn-group" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-sm btn-outline-secondary",
-          attrs: { type: "button" }
-        },
-        [_vm._v("View")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-sm btn-outline-secondary",
-          attrs: { type: "button" }
-        },
-        [_vm._v("Edit")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37763,7 +37798,7 @@ var render = function() {
       "div",
       {
         staticClass: "landing-banner",
-        style: _vm.backgroundImage ? _vm.backgroundImage : ""
+        style: _vm.topBannerBackgroundImage ? _vm.topBannerBackgroundImage : ""
       },
       [_vm._m(0)]
     ),
@@ -37828,7 +37863,18 @@ var render = function() {
                   ])
                 ])
           ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "jumbotron",
+        style: _vm.bottomBannerBackgroundImage
+          ? _vm.bottomBannerBackgroundImage
+          : ""
+      },
+      [_vm._m(3)]
+    )
   ])
 }
 var staticRenderFns = [
@@ -37885,6 +37931,35 @@ var staticRenderFns = [
       _c("div"),
       _c("div"),
       _c("div")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "overlay" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h1", { staticClass: "display-4" }, [_vm._v("Hello, world!")]),
+        _vm._v(" "),
+        _c("p", { staticClass: "lead" }, [
+          _vm._v(
+            "\n                    In a land of myth, and a time of magic, the destiny of a great kingdom rests on the shoulders of a young boy. His name....\n                    Merlin.\n                "
+          )
+        ]),
+        _vm._v(" "),
+        _c("hr", { staticClass: "my-4" }),
+        _vm._v(" "),
+        _c("p", [_vm._v(" A quote from the drama series Merlin ")]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-primary btn-lg",
+            attrs: { href: "javascript:void(0)", role: "button" }
+          },
+          [_vm._v("Learn more")]
+        )
+      ])
     ])
   }
 ]
@@ -54083,6 +54158,17 @@ module.exports = function(module) {
 /***/ (function(module, exports) {
 
 module.exports = "/images/1.jpeg?0caef3c0d0b15203d98f4af511a4b79f";
+
+/***/ }),
+
+/***/ "./resources/images/banner22.jpg":
+/*!***************************************!*\
+  !*** ./resources/images/banner22.jpg ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/banner22.jpg?d9d56c971271cb65bcfcbaf821250b0f";
 
 /***/ }),
 
