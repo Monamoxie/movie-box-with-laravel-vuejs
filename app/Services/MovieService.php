@@ -29,11 +29,11 @@ class MovieService
      * 
      * @return object of App\Movie
      */
-    public function movieDetails(String $slug): object
+    public function movieDetails(String $id): ?object
     {
-        $movie = Movie::where('slug', $slug)->first();
+        $movie = Movie::where('id', $id)->first();
         if ($movie === null) {
-            $movie = new stdClass;
+            return null;
         }
         $movie->comments = $movie->comments;
         return $movie;

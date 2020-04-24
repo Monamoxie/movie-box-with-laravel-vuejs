@@ -1,8 +1,10 @@
 @extends('layouts.base')
 
 @section('content_area') 
-    <div class="movies_container" id="movie_details">
-        <div class="container text-center">
+
+    <div>
+        
+        <div>
             @if(session()->has('danger'))
             <div class="alert alert-danger alert-dismissible"> 
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -17,6 +19,8 @@
                 </div>
             @endif
         </div>
+
+        
         <div class="processing-wrap" v-if="processing">
             <vue-simple-spinner></vue-simple-spinner> 
         </div>

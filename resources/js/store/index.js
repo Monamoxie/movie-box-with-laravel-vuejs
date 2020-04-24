@@ -31,6 +31,17 @@ export const store = new Vuex.Store({
                     reject(errors)
                 })
             })
+        },
+        movieDetails(context, payload) {
+            return new Promise((resolve, reject) => {
+                axios.get('/movies/' + payload.id)
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(errors => {
+                    reject(errors)
+                })
+            })
         }
     }
 })

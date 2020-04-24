@@ -228,7 +228,11 @@ a:hover {
     width: 100%;
     cursor:pointer;
 }
-
+.movies_container {
+    min-height: 500px;
+    padding-top: 50px;
+    padding-bottom: 0px;
+}
 
 
 

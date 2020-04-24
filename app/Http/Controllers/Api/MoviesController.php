@@ -29,21 +29,16 @@ class MoviesController extends Controller
      * 
      * @return Response
      */
-    public function getMovieDetails(Request $request, MovieService $movieService)
-    {
-        $request->validate([
-            'slug' => ['required', 'string', 'exists:movies']
-        ]);
-
-        $movieDetails = $movieService->movieDetails(preg_replace('#[^a-z0-9-]#i', '', $request->slug));
-
+    public function movieDetails(Request $request, MovieService $movieService)
+    {   
+        $movieDetails = $movieService->movieDetails(preg_replace('#[^a-z0-9-]#i', '', $request->id));
         if ($movieDetails !== null) {
             $init = Carbon::parse($movieDetails->release_date);
             $movieDetails->formated_release_date = $init->format('Y M d');
-        }
-
-        $data = view('movies.details', compact('movieDetails'))->render();
-        return $this->successResponse('Data was successfully fetched.', $data);
+            return $this->successResponse('Data was successfully fetched.', $movieDetails);
+        } 
+        return $this->errorResponse('An error occured');
+        
     }
 
     

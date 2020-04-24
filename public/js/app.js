@@ -2000,10 +2000,11 @@ __webpack_require__.r(__webpack_exports__);
     photoPath: function photoPath(photo) {
       return '/storage/uploads/images/' + photo;
     },
-    movieDetails: function movieDetails(slug) {
+    movieDetails: function movieDetails(id, slug) {
       this.$router.push({
         name: 'movieDetails',
         params: {
+          id: id,
           slug: slug
         }
       });
@@ -2124,7 +2125,6 @@ __webpack_require__.r(__webpack_exports__);
 
     this.processing = true;
     this.$store.dispatch('loadMovies').then(function (response) {
-      console.log(response.data.data);
       _this.movies = response.data.data;
     })["catch"](function (error) {
       _this.serverResponse = [{
@@ -2132,8 +2132,6 @@ __webpack_require__.r(__webpack_exports__);
         'message': 'An error occured. Request was not processed',
         'errors': error.response.data.errors !== null && error.response.data.errors !== undefined ? Object.values(error.response.data.errors) : []
       }];
-      console.log(error.response.data);
-      console.log(_this.serverResponse[0]);
     })["finally"](function () {
       _this.processing = false;
     });
@@ -2151,13 +2149,159 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "MovieDetails"
+  name: "MovieDetails",
+  data: function data() {
+    return {
+      processingDetails: false,
+      serverResponse: [],
+      movieDetails: {},
+      bottomBannerBackgroundImage: 'background-image: url("' + __webpack_require__(/*! ../../images/banner22.jpg */ "./resources/images/banner22.jpg") + '")'
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.processingDetails = true;
+    this.$store.dispatch('movieDetails', {
+      id: this.$route.params.id
+    }).then(function (response) {
+      _this.movieDetails = response.data.data;
+    })["catch"](function (error) {
+      var errDisplay = '';
+
+      if (error.response.data.errors !== null && error.response.data.errors !== undefined) {
+        errDisplay = _typeof(error.response.data.errors) === 'object' ? Object.values(error.response.data.errors) : [error.response.data.errors];
+      } else {
+        errDisplay = [];
+      }
+
+      _this.serverResponse = [{
+        'status': 'error',
+        'message': 'An error occured. Request was not processed',
+        'errors': errDisplay
+      }];
+    })["finally"](function () {
+      _this.processingDetails = false;
+    });
+  }
 });
 
 /***/ }),
@@ -37636,7 +37780,7 @@ var render = function() {
         attrs: { src: _vm.photoPath(_vm.movie.photo), alt: "Card image cap" },
         on: {
           click: function($event) {
-            return _vm.movieDetails(_vm.movie.slug)
+            return _vm.movieDetails(_vm.movie.id, _vm.movie.slug)
           }
         }
       }),
@@ -37663,20 +37807,17 @@ var render = function() {
             _c(
               "span",
               [
-                _vm._l(parseInt(_vm.movie.rating), function(rated, index) {
+                _vm._l(_vm.movie.rating, function(rated, index) {
                   return _c("i", {
                     key: index,
                     staticClass: "fa fa-star orange"
                   })
                 }),
                 _vm._v(" "),
-                5 - parseInt(_vm.movie.rating) > 0
+                5 - _vm.movie.rating > 0
                   ? _c(
                       "span",
-                      _vm._l(5 - parseInt(_vm.movie.rating), function(
-                        rated,
-                        index
-                      ) {
+                      _vm._l(5 - _vm.movie.rating, function(rated, index) {
                         return _c("i", {
                           key: index,
                           staticClass: "fa fa-star grey"
@@ -37909,9 +38050,243 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    The details of the movie\n")])
+  return _c("div", { staticClass: "movies_container" }, [
+    _c("div", { staticClass: "container text-center" }, [
+      _vm.processingDetails
+        ? _c("div", { staticClass: "text-center" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("p", { staticClass: "muted" }, [_vm._v(" Loading...")])
+          ])
+        : _c("div", [
+            _vm.serverResponse.length > 0
+              ? _c("div", [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "alert alert-danger alert-dismissible text-center"
+                    },
+                    [
+                      _c("h2", { staticClass: "alert-heading" }, [
+                        _vm._v("An error occured")
+                      ]),
+                      _vm._v(" "),
+                      _vm.serverResponse[0].errors.length > 0
+                        ? _c(
+                            "div",
+                            _vm._l(_vm.serverResponse[0].errors, function(
+                              error,
+                              key
+                            ) {
+                              return _c("p", { key: key }, [
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(error) +
+                                    "\n                        "
+                                )
+                              ])
+                            }),
+                            0
+                          )
+                        : _vm._e()
+                    ]
+                  )
+                ])
+              : _c("div", { staticClass: "movie_details" }, [
+                  _c("div", { staticClass: "header-layer" }, [
+                    _c("h3", { staticClass: "title-wthree mb-2" }, [
+                      _vm._v("\n                        Movie title "),
+                      _c(
+                        "span",
+                        { staticClass: "mt-2 text-uppercase font-weight-bold" },
+                        [_vm._v(" " + _vm._s(_vm.movieDetails.title) + " ")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", {}, [
+                      _c(
+                        "span",
+                        { staticClass: " font-weight-bold text-primary" },
+                        [
+                          _vm._v(
+                            "A \n                        " +
+                              _vm._s(
+                                new Date(
+                                  _vm.movieDetails.release_date
+                                ).getFullYear()
+                              ) +
+                              " blockbuster "
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-5 image-wrapper" }, [
+                      _c("img", {
+                        attrs: {
+                          src:
+                            "/storage/uploads/images/" + _vm.movieDetails.photo,
+                          alt: _vm.movieDetails.photo
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-7" }, [
+                      _c("dl", { staticClass: "row" }, [
+                        _c("dt", { staticClass: "col-sm-3" }, [
+                          _vm._v("Release Date")
+                        ]),
+                        _vm._v(" "),
+                        _c("dd", { staticClass: "col-sm-9" }, [
+                          _vm._v(
+                            " " +
+                              _vm._s(_vm.movieDetails.formated_release_date) +
+                              " "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("dt", { staticClass: "col-sm-3" }, [
+                          _vm._v("Rating")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "dd",
+                          { staticClass: "col-sm-9" },
+                          [
+                            _vm._l(_vm.movieDetails.rating, function(
+                              rated,
+                              index
+                            ) {
+                              return _c("i", {
+                                key: index,
+                                staticClass: "fa fa-star orange"
+                              })
+                            }),
+                            _vm._v(" "),
+                            5 - _vm.movieDetails.rating > 0
+                              ? _c(
+                                  "span",
+                                  _vm._l(5 - _vm.movieDetails.rating, function(
+                                    rated,
+                                    index
+                                  ) {
+                                    return _c("i", {
+                                      key: index,
+                                      staticClass: "fa fa-star grey"
+                                    })
+                                  }),
+                                  0
+                                )
+                              : _vm._e()
+                          ],
+                          2
+                        ),
+                        _vm._v(" "),
+                        _c("dt", { staticClass: "col-sm-3" }, [
+                          _vm._v("Ticket Price")
+                        ]),
+                        _vm._v(" "),
+                        _c("dd", { staticClass: "col-sm-9" }, [
+                          _vm._v(
+                            " ₦ " + _vm._s(_vm.movieDetails.ticket_price) + " "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("dt", { staticClass: "col-sm-3 text-truncate" }, [
+                          _vm._v("Country")
+                        ]),
+                        _vm._v(" "),
+                        _c("dd", { staticClass: "col-sm-9" }, [
+                          _vm._v(" " + _vm._s(_vm.movieDetails.country) + " ")
+                        ]),
+                        _vm._v(" "),
+                        _c("dt", { staticClass: "col-sm-3" }, [
+                          _vm._v("Genre")
+                        ]),
+                        _vm._v(" "),
+                        _c("dd", { staticClass: "col-sm-9" }, [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(_vm.movieDetails.genre) +
+                              "\n                            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("dt", { staticClass: "col-sm-3" }, [
+                          _vm._v("Description")
+                        ]),
+                        _vm._v(" "),
+                        _c("dd", { staticClass: "col-sm-9" }, [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(_vm.movieDetails.description) +
+                              "\n                            "
+                          )
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+          ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "jumbotron",
+        style: _vm.bottomBannerBackgroundImage
+          ? _vm.bottomBannerBackgroundImage
+          : ""
+      },
+      [_vm._m(1)]
+    )
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "lds-ring mt-5" }, [
+      _c("div"),
+      _c("div"),
+      _c("div"),
+      _c("div")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "overlay" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h1", { staticClass: "display-4" }, [_vm._v("Hello, world!")]),
+        _vm._v(" "),
+        _c("p", { staticClass: "lead" }, [
+          _vm._v(
+            "\n                    In a land of myth, and a time of magic, the destiny of a great kingdom rests on the shoulders of a young boy. His name....\n                    Merlin.\n                "
+          )
+        ]),
+        _vm._v(" "),
+        _c("hr", { staticClass: "my-4" }),
+        _vm._v(" "),
+        _c("p", [_vm._v(" A quote from the drama series Merlin ")]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-primary btn-lg",
+            attrs: { href: "javascript:void(0)", role: "button" }
+          },
+          [_vm._v("Learn more")]
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -54387,7 +54762,7 @@ var routes = [{
   name: 'home',
   component: _views_Home__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
-  path: '/movies/:slug',
+  path: '/movies/:id/:slug',
   name: 'movieDetails',
   component: _views_MovieDetails__WEBPACK_IMPORTED_MODULE_1__["default"]
 }];
@@ -54421,6 +54796,15 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       // axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
       return new Promise(function (resolve, reject) {
         axios.post('/movies').then(function (response) {
+          resolve(response);
+        })["catch"](function (errors) {
+          reject(errors);
+        });
+      });
+    },
+    movieDetails: function movieDetails(context, payload) {
+      return new Promise(function (resolve, reject) {
+        axios.get('/movies/' + payload.id).then(function (response) {
           resolve(response);
         })["catch"](function (errors) {
           reject(errors);

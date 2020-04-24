@@ -12,7 +12,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected function errorResponse($errors, $message=null, $code=200) {
+    protected function errorResponse($errors, $message=null, $code=500) {
         if($message == null && is_string($errors))
             $message = $errors;
         return Response::json([

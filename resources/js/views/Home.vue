@@ -93,8 +93,7 @@ export default {
     mounted() {
         this.processing = true
         this.$store.dispatch('loadMovies')
-        .then((response) => {   
-            console.log(response.data.data);
+        .then((response) => {    
             this.movies = response.data.data
         })
         .catch(error => { 
@@ -102,9 +101,7 @@ export default {
           'status': 'error',
           'message': 'An error occured. Request was not processed',
           'errors': error.response.data.errors !== null && error.response.data.errors !== undefined ? Object.values(error.response.data.errors) : []
-          }]
-          console.log(error.response.data)
-          console.log(this.serverResponse[0])   
+          }]   
         })
         .finally(() => {
             this.processing = false 
