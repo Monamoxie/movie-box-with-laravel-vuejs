@@ -18,11 +18,11 @@
 
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul class="navbar-nav ml-auto top-nav">
-                            <li class="nav-item" :class="this.$route.path === '/' ? 'active' : '' "><router-link class="nav-link" :to="{ name : 'home' }">Home</router-link></li>
-                            <li class="nav-item" :class="this.$route.path === '/todo' ? 'active' : '' "><router-link class="nav-link" :to="{ name : 'todo' }">App</router-link></li>
-                            <li class="nav-item" :class="this.$route.path === '/login' ? 'active' : '' " v-if="!loggedIn"><router-link class="nav-link" :to="{ name : 'login' }">Login</router-link></li>
+                            <!-- <li class="nav-item" :class="this.$route.path === '/' ? 'active' : '' "><router-link class="nav-link" :to="{ name : 'home' }">Home</router-link></li>
+                            <li class="nav-item" :class="this.$route.path === '/todo' ? 'active' : '' "><router-link class="nav-link" :to="{ name : 'todo' }">App</router-link></li> -->
+                            <!-- <li class="nav-item" :class="this.$route.path === '/login' ? 'active' : '' " v-if="!loggedIn"><router-link class="nav-link" :to="{ name : 'login' }">Login</router-link></li>
                             <li class="nav-item" :class="this.$route.path === '/register' ? 'active' : '' " v-if="!loggedIn"><router-link class="nav-link" :to="{ name : 'register' }">Register</router-link></li>
-                            <li class="nav-item" v-if="loggedIn"><router-link  class="nav-link" :to="{ name : 'logout' }">Logout</router-link></li>
+                            <li class="nav-item" v-if="loggedIn"><router-link  class="nav-link" :to="{ name : 'logout' }">Logout</router-link></li> -->
                         </ul>
                     </div>
                 </div>

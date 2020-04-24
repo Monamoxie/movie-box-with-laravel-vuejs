@@ -1994,12 +1994,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MovieBox",
   methods: {
     photoPath: function photoPath(photo) {
       return '/storage/uploads/images/' + photo;
+    },
+    movieDetails: function movieDetails(slug) {
+      this.$router.push({
+        name: 'movieDetails',
+        params: {
+          slug: slug
+        }
+      });
     }
   },
   props: {
@@ -2131,6 +2138,26 @@ __webpack_require__.r(__webpack_exports__);
       _this.processing = false;
     });
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/MovieDetails.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/MovieDetails.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "MovieDetails"
 });
 
 /***/ }),
@@ -37509,132 +37536,7 @@ var render = function() {
     "div",
     { staticClass: "wrapper" },
     [
-      _c("header", [
-        _c(
-          "nav",
-          {
-            staticClass:
-              "navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow "
-          },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-9 col-md-9" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "collapse navbar-collapse",
-                  attrs: { id: "navbarTogglerDemo03" }
-                },
-                [
-                  _c("ul", { staticClass: "navbar-nav ml-auto top-nav" }, [
-                    _c(
-                      "li",
-                      {
-                        staticClass: "nav-item",
-                        class: this.$route.path === "/" ? "active" : ""
-                      },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: { name: "home" } }
-                          },
-                          [_vm._v("Home")]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass: "nav-item",
-                        class: this.$route.path === "/todo" ? "active" : ""
-                      },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: { name: "todo" } }
-                          },
-                          [_vm._v("App")]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    !_vm.loggedIn
-                      ? _c(
-                          "li",
-                          {
-                            staticClass: "nav-item",
-                            class: this.$route.path === "/login" ? "active" : ""
-                          },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: { to: { name: "login" } }
-                              },
-                              [_vm._v("Login")]
-                            )
-                          ],
-                          1
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    !_vm.loggedIn
-                      ? _c(
-                          "li",
-                          {
-                            staticClass: "nav-item",
-                            class:
-                              this.$route.path === "/register" ? "active" : ""
-                          },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: { to: { name: "register" } }
-                              },
-                              [_vm._v("Register")]
-                            )
-                          ],
-                          1
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.loggedIn
-                      ? _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: { to: { name: "logout" } }
-                              },
-                              [_vm._v("Logout")]
-                            )
-                          ],
-                          1
-                        )
-                      : _vm._e()
-                  ])
-                ]
-              )
-            ])
-          ]
-        )
-      ]),
+      _vm._m(0),
       _vm._v(" "),
       _c("router-view"),
       _vm._v(" "),
@@ -37656,36 +37558,54 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "navbar-brand col-sm-3 col-md-3 mr-0" }, [
-      _c("span", { staticClass: "logo-holder" }, [
-        _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
-          _c("img", {
-            staticClass: "logo",
-            attrs: { src: __webpack_require__(/*! ../images/logo.png */ "./resources/images/logo.png"), alt: "Logo" }
-          })
-        ])
-      ])
+    return _c("header", [
+      _c(
+        "nav",
+        {
+          staticClass:
+            "navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow "
+        },
+        [
+          _c("div", { staticClass: "navbar-brand col-sm-3 col-md-3 mr-0" }, [
+            _c("span", { staticClass: "logo-holder" }, [
+              _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
+                _c("img", {
+                  staticClass: "logo",
+                  attrs: { src: __webpack_require__(/*! ../images/logo.png */ "./resources/images/logo.png"), alt: "Logo" }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-9 col-md-9" }, [
+            _c(
+              "button",
+              {
+                staticClass: "navbar-toggler",
+                attrs: {
+                  type: "button",
+                  "data-toggle": "collapse",
+                  "data-target": "#navbarTogglerDemo03",
+                  "aria-controls": "navbarTogglerDemo03",
+                  "aria-expanded": "false",
+                  "aria-label": "Toggle navigation"
+                }
+              },
+              [_c("span", { staticClass: "navbar-toggler-icon" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse navbar-collapse",
+                attrs: { id: "navbarTogglerDemo03" }
+              },
+              [_c("ul", { staticClass: "navbar-nav ml-auto top-nav" })]
+            )
+          ])
+        ]
+      )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarTogglerDemo03",
-          "aria-controls": "navbarTogglerDemo03",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("span", { staticClass: "navbar-toggler-icon" })]
-    )
   }
 ]
 render._withStripped = true
@@ -37713,7 +37633,12 @@ var render = function() {
     _c("div", { staticClass: "card mb-4 shadow-sm" }, [
       _c("img", {
         staticClass: "card-img-top",
-        attrs: { src: _vm.photoPath(_vm.movie.photo), alt: "Card image cap" }
+        attrs: { src: _vm.photoPath(_vm.movie.photo), alt: "Card image cap" },
+        on: {
+          click: function($event) {
+            return _vm.movieDetails(_vm.movie.slug)
+          }
+        }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
@@ -37963,6 +37888,30 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/MovieDetails.vue?vue&type=template&id=1ff216de&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/MovieDetails.vue?vue&type=template&id=1ff216de& ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._v("\n    The details of the movie\n")])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -54430,11 +54379,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/Home */ "./resources/js/views/Home.vue");
+/* harmony import */ var _views_MovieDetails__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/MovieDetails */ "./resources/js/views/MovieDetails.vue");
+
 
 var routes = [{
   path: '/',
   name: 'home',
   component: _views_Home__WEBPACK_IMPORTED_MODULE_0__["default"]
+}, {
+  path: '/movies/:slug',
+  name: 'movieDetails',
+  component: _views_MovieDetails__WEBPACK_IMPORTED_MODULE_1__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
@@ -54541,6 +54496,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_63cd6604___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_63cd6604___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/MovieDetails.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/views/MovieDetails.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MovieDetails_vue_vue_type_template_id_1ff216de___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MovieDetails.vue?vue&type=template&id=1ff216de& */ "./resources/js/views/MovieDetails.vue?vue&type=template&id=1ff216de&");
+/* harmony import */ var _MovieDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MovieDetails.vue?vue&type=script&lang=js& */ "./resources/js/views/MovieDetails.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _MovieDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MovieDetails_vue_vue_type_template_id_1ff216de___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MovieDetails_vue_vue_type_template_id_1ff216de___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/MovieDetails.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/MovieDetails.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/views/MovieDetails.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MovieDetails.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/MovieDetails.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/MovieDetails.vue?vue&type=template&id=1ff216de&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/views/MovieDetails.vue?vue&type=template&id=1ff216de& ***!
+  \****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieDetails_vue_vue_type_template_id_1ff216de___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MovieDetails.vue?vue&type=template&id=1ff216de& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/MovieDetails.vue?vue&type=template&id=1ff216de&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieDetails_vue_vue_type_template_id_1ff216de___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieDetails_vue_vue_type_template_id_1ff216de___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
