@@ -42,7 +42,10 @@
             
                 <div v-else class="album py-5 bg-light">
                     <div class="container"> 
-                        <movie-box :movies="movies"></movie-box>   
+                        <movie-box :movies="movies"></movie-box>
+                        <div class="mt-4 mb-4 p-3 text-center">
+                            <button type="button" class="btn btn-primary btn-lg" @click="$router.push({ name: 'movies' })">View All</button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1997,10 +1997,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MovieBox",
   methods: {
@@ -2027,40 +2023,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/mixins/MovieBoxMixin.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/mixins/MovieBoxMixin.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    var _this = this;
-
-    this.processing = true;
-    this.$store.dispatch('loadMovies').then(function (response) {
-      _this.movies = response.data.data.data;
-      _this.paginationParam = response.data.data; // remove the data part from the object and leave the remaining as pagination data
-
-      delete _this.paginationParam.data;
-      console.log(_this.paginationParam);
-    })["catch"](function (error) {
-      _this.serverResponse = [{
-        'status': 'error',
-        'message': 'An error occured. Request was not processed',
-        'errors': error.response.data.errors !== null && error.response.data.errors !== undefined ? Object.values(error.response.data.errors) : []
-      }];
-    })["finally"](function () {
-      _this.processing = false;
-    });
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Home.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Home.vue?vue&type=script&lang=js& ***!
@@ -2071,7 +2033,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_MovieBox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/MovieBox */ "./resources/js/components/MovieBox.vue");
-/* harmony import */ var _mixins_MovieBoxMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/MovieBoxMixin */ "./resources/js/mixins/MovieBoxMixin.vue");
+/* harmony import */ var _mixins_MovieBoxMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/MovieBoxMixin */ "./resources/js/mixins/MovieBoxMixin.js");
+//
+//
+//
 //
 //
 //
@@ -2339,7 +2304,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_MovieBox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/MovieBox */ "./resources/js/components/MovieBox.vue");
-/* harmony import */ var _mixins_MovieBoxMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/MovieBoxMixin */ "./resources/js/mixins/MovieBoxMixin.vue");
+/* harmony import */ var _mixins_MovieBoxMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/MovieBoxMixin */ "./resources/js/mixins/MovieBoxMixin.js");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37890,96 +37861,74 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "row" },
-    [
-      _vm._l(_vm.movies, function(movie, key) {
-        return _c("div", { key: key, staticClass: "col-md-4" }, [
-          _c("div", { staticClass: "card mb-4 shadow-sm" }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { src: _vm.photoPath(movie.photo), alt: "Card image cap" },
-              on: {
-                click: function($event) {
-                  return _vm.movieDetails(movie.id, movie.slug)
-                }
+    _vm._l(_vm.movies, function(movie, key) {
+      return _c("div", { key: key, staticClass: "col-md-4" }, [
+        _c("div", { staticClass: "card mb-4 shadow-sm" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: _vm.photoPath(movie.photo), alt: "Card image cap" },
+            on: {
+              click: function($event) {
+                return _vm.movieDetails(movie.id, movie.slug)
               }
-            }),
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", [_vm._v(" " + _vm._s(movie.title) + " ")]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h4", [_vm._v(" " + _vm._s(movie.title) + " ")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(
-                  "  \n                    " +
-                    _vm._s(
-                      movie.description.length > 100
-                        ? movie.description.substring(0, 100) + "..."
-                        : movie.description
-                    ) +
-                    " \n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "d-flex justify-content-between align-items-center"
-                },
-                [
-                  _c(
-                    "span",
-                    [
-                      _vm._l(movie.rating, function(rated, index) {
-                        return _c("i", {
-                          key: index,
-                          staticClass: "fa fa-star orange"
-                        })
-                      }),
-                      _vm._v(" "),
-                      5 - movie.rating > 0
-                        ? _c(
-                            "span",
-                            _vm._l(5 - movie.rating, function(rated, index) {
-                              return _c("i", {
-                                key: index,
-                                staticClass: "fa fa-star grey"
-                              })
-                            }),
-                            0
-                          )
-                        : _vm._e()
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c("small", { staticClass: "text-muted" })
-                ]
+            _c("p", { staticClass: "card-text" }, [
+              _vm._v(
+                "  \n                    " +
+                  _vm._s(
+                    movie.description.length > 100
+                      ? movie.description.substring(0, 100) + "..."
+                      : movie.description
+                  ) +
+                  " \n                "
               )
-            ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "d-flex justify-content-between align-items-center"
+              },
+              [
+                _c(
+                  "span",
+                  [
+                    _vm._l(movie.rating, function(rated, index) {
+                      return _c("i", {
+                        key: index,
+                        staticClass: "fa fa-star orange"
+                      })
+                    }),
+                    _vm._v(" "),
+                    5 - movie.rating > 0
+                      ? _c(
+                          "span",
+                          _vm._l(5 - movie.rating, function(rated, index) {
+                            return _c("i", {
+                              key: index,
+                              staticClass: "fa fa-star grey"
+                            })
+                          }),
+                          0
+                        )
+                      : _vm._e()
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c("small", { staticClass: "text-muted" })
+              ]
+            )
           ])
         ])
-      }),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-md-12 col-sm-12 mt-4 mb-4 p-3 text-center" },
-        [
-          this.$route.path === "/"
-            ? _c("div", [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary btn-lg",
-                    attrs: { type: "button" }
-                  },
-                  [_vm._v("View All")]
-                )
-              ])
-            : _vm._e()
-        ]
-      )
-    ],
-    2
+      ])
+    }),
+    0
   )
 }
 var staticRenderFns = []
@@ -38062,7 +38011,25 @@ var render = function() {
                   _c(
                     "div",
                     { staticClass: "container" },
-                    [_c("movie-box", { attrs: { movies: _vm.movies } })],
+                    [
+                      _c("movie-box", { attrs: { movies: _vm.movies } }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mt-4 mb-4 p-3 text-center" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary btn-lg",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.$router.push({ name: "movies" })
+                              }
+                            }
+                          },
+                          [_vm._v("View All")]
+                        )
+                      ])
+                    ],
                     1
                   )
                 ])
@@ -38447,7 +38414,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "box-jumbotron bg-white" }, [
+    _c("div", { staticClass: "box-jumbotron bg-white " }, [
       _vm._m(0),
       _vm._v(" "),
       _vm.processing
@@ -38495,7 +38462,11 @@ var render = function() {
                   _c(
                     "div",
                     { staticClass: "container" },
-                    [_c("movie-box", { attrs: { movies: _vm.movies } })],
+                    [
+                      _c("movie-box", { attrs: { movies: _vm.movies } }),
+                      _vm._v(" "),
+                      _vm._m(2)
+                    ],
                     1
                   )
                 ])
@@ -38510,7 +38481,7 @@ var render = function() {
           ? _vm.bottomBannerBackgroundImage
           : ""
       },
-      [_vm._m(2)]
+      [_vm._m(3)]
     )
   ])
 }
@@ -38520,7 +38491,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("h1", { staticClass: "text-center" }, [_vm._v("Movie Catalogs ")]),
+      _c("h1", { staticClass: "text-center" }, [_vm._v("Movie Catalogs")]),
       _vm._v(" "),
       _c("p", { staticClass: "lead text-muted text-center" }, [
         _vm._v("Something short and sweet about the box")
@@ -38536,6 +38507,46 @@ var staticRenderFns = [
       _c("div"),
       _c("div"),
       _c("div")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-2 text-center" }, [
+      _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
+        _c("ul", { staticClass: "pagination" }, [
+          _c("li", { staticClass: "page-item" }, [
+            _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
+              _vm._v("Previous")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "page-item" }, [
+            _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
+              _vm._v("1")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "page-item" }, [
+            _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
+              _vm._v("2")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "page-item" }, [
+            _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
+              _vm._v("3")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "page-item" }, [
+            _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
+              _vm._v("Next")
+            ])
+          ])
+        ])
+      ])
     ])
   },
   function() {
@@ -55025,53 +55036,37 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/mixins/MovieBoxMixin.vue":
-/*!***********************************************!*\
-  !*** ./resources/js/mixins/MovieBoxMixin.vue ***!
-  \***********************************************/
+/***/ "./resources/js/mixins/MovieBoxMixin.js":
+/*!**********************************************!*\
+  !*** ./resources/js/mixins/MovieBoxMixin.js ***!
+  \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _MovieBoxMixin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MovieBoxMixin.vue?vue&type=script&lang=js& */ "./resources/js/mixins/MovieBoxMixin.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-var render, staticRenderFns
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    var _this = this;
 
+    this.processing = true;
+    this.$store.dispatch('loadMovies').then(function (response) {
+      _this.movies = response.data.data.data;
+      _this.paginationParam = response.data.data; // remove the data part from the object and leave the remaining as pagination data
 
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  _MovieBoxMixin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
-  render,
-  staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/mixins/MovieBoxMixin.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/mixins/MovieBoxMixin.vue?vue&type=script&lang=js&":
-/*!************************************************************************!*\
-  !*** ./resources/js/mixins/MovieBoxMixin.vue?vue&type=script&lang=js& ***!
-  \************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieBoxMixin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MovieBoxMixin.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/mixins/MovieBoxMixin.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieBoxMixin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+      delete _this.paginationParam.data;
+      console.log(_this.paginationParam);
+    })["catch"](function (error) {
+      _this.serverResponse = [{
+        'status': 'error',
+        'message': 'An error occured. Request was not processed',
+        'errors': error.response.data.errors !== null && error.response.data.errors !== undefined ? Object.values(error.response.data.errors) : []
+      }];
+    })["finally"](function () {
+      _this.processing = false;
+    });
+  }
+});
 
 /***/ }),
 

@@ -55,6 +55,7 @@ a:hover {
     border-radius: 0 0 300px 0;
     min-height: 40vw;
     position: relative;  
+    overflow-y: hidden;
 }
 .banner-overlay {
     position: absolute;
@@ -97,11 +98,10 @@ a:hover {
     top: 30px; 
     z-index: 55;
 }
-.box-jumbotron {
-    z-index: 6033;
+.box-jumbotron { 
     position: relative; 
-    padding-top: 120px;
-    padding-bottom: 50px; 
+    padding-top: 50px;
+    padding-bottom: 50px;  
 }
 .box-jumbotron h1 {
     font-size: 34px;
@@ -161,8 +161,7 @@ a:hover {
 @media(max-width: 767px) {
     .banner-overlay-img {
         right: 100px;
-        top: 400px; 
-        z-index: 55;
+        top: 400px;  
     }
 }
 
@@ -170,8 +169,7 @@ a:hover {
 @media(min-width: 768px) {
     .banner-overlay-img {
         right: 10px;
-        top: 200px; 
-        z-index: 55;
+        top: 200px;  
     }
 }
 
@@ -288,9 +286,9 @@ a:hover {
     position: absolute;
     top: -9px;
     left: 21px;
-    width: 150px;
-    height: 150px;
-    z-index:9999;
+    width: 100px;
+    height: 100px; 
+    z-index: 6234 !important;
 }
 .logo-holder img {
     width: 100%;

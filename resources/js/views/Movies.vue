@@ -1,9 +1,8 @@
 <template>
     <div>
-    
-        <div class="box-jumbotron bg-white">
+        <div class="box-jumbotron bg-white ">
             <div class="container">
-                <h1 class="text-center">Movie Catalogs </h1>
+                <h1 class="text-center">Movie Catalogs</h1>
                 <p class="lead text-muted text-center">Something short and sweet about the box</p>
             </div>
 
@@ -28,7 +27,18 @@
             
                 <div v-else class="album py-5 bg-light">
                     <div class="container"> 
-                        <movie-box :movies="movies"></movie-box>   
+                        <movie-box :movies="movies"></movie-box> 
+                        <div class="mt-2 text-center">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                </ul>
+                            </nav>
+                        </div>  
                     </div>
                 </div>
             </div>
@@ -49,10 +59,6 @@
                 </div>
             </div>
         </div>
-        
-       
-
-
         
     </div>   
 </template>

@@ -21,11 +21,7 @@
                 </div>
             </div>
         </div> 
-        <div class="col-md-12 col-sm-12 mt-4 mb-4 p-3 text-center">
-            <div v-if="this.$route.path === '/'">
-                <button type="button" class="btn btn-primary btn-lg">View All</button>
-            </div>
-        </div>
+        
     </div>
 </template>
 <script>
