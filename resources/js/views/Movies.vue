@@ -1,20 +1,6 @@
 <template>
     <div>
-      <div class="landing-banner"  :style="topBannerBackgroundImage ? topBannerBackgroundImage : '' ">
-            <div class="banner-overlay">
-                <div class="container">
-                  <div class="banner-text" > 
-                         <div class="header-img-text">
-                            <h2> LATEST & EXCLUSIVE </h2> 
-                            <p class="mt-3 mb-5 banner-para-wthree"><span class="text-white font-weight-bold ">Movie</span> Shows from around the world</p>
-                            <a href="/movies" class="btn button-style">Explore the Box</a>
-                        </div>  
-                    </div>
-                    <img src="../../images/look2.png" alt="" class="banner-overlay-img"> 
-                </div>
-            </div>
-        </div>
- 
+    
         <div class="box-jumbotron bg-white">
             <div class="container">
                 <h1 class="text-center">Movie Catalogs </h1>
@@ -64,29 +50,33 @@
             </div>
         </div>
         
+       
+
+
         
     </div>   
 </template>
 <script>
-import MovieBox from '../components/MovieBox'
-import MovieBoxMixin from '../mixins/MovieBoxMixin'
-export default {
-    name: 'Home',
-    components: {
-        MovieBox
-    },
-    mixins: [
-        MovieBoxMixin
-    ],
-    data() {
-        return {
-            topBannerBackgroundImage: 'background-image:url("' + require('../../images/1.jpeg') + ' ")',
-            bottomBannerBackgroundImage: 'background-image: url("' + require('../../images/banner22.jpg') + '")',
-            movies: [],
-            paginationParam: [],
-            serverResponse: {}, 
-            processing: false
-        } 
+    import MovieBox from '../components/MovieBox'
+    import MovieBoxMixin from '../mixins/MovieBoxMixin'
+    export default {
+        name: 'Home',
+        components: {
+            MovieBox
+        },
+        mixins: [
+            MovieBoxMixin
+        ],
+        data() {
+            return {
+                topBannerBackgroundImage: 'background-image:url("' + require('../../images/1.jpeg') + ' ")',
+                bottomBannerBackgroundImage: 'background-image: url("' + require('../../images/banner22.jpg') + '")',
+                movies: [],
+                paginationParam: [],
+                serverResponse: {}, 
+                processing: false
+            } 
+        },
+        
     }
-}
 </script>

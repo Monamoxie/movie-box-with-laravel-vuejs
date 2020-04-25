@@ -13,6 +13,13 @@
  - Axios HTTP Client
  - PHPUnit
  - Circle CI
+
+## Features
+
+  - Pagination
+  - Login/Register System
+  - Movie Rating
+  - 
   
 ## Set up Instruction
   - Clone the repo
