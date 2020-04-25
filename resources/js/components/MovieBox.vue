@@ -6,7 +6,7 @@
                 No record found
             </div>
         </div>
-        
+
         <div class="row" v-else> 
             <div class="col-md-4"  v-for="(movie, key) in movies" :key="key">
                 <div class="card mb-4 shadow-sm">
@@ -29,6 +29,30 @@
                     </div>
                 </div>
             </div> 
+
+            <div class="col-mg-12 col-md-12 mt-4 mb-4 p-3 text-center">
+               
+                <div v-if="this.$route.path === '/'" >
+                     <button type="button" class="btn btn-primary btn-lg" @click="$router.push({ name: 'movies' })">View All</button>
+                </div>
+               
+                <div class="mt-2 " v-else>
+                    <nav aria-label="Page navigation" >
+                        <ul class="pagination text-center">
+                            <li class="page-item" v-if="paginationParam.prev_page_url !== null">
+                                <a class="page-link" :href="paginationParam.prev_page_url">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+
+                            <li class="page-item" v-if="paginationParam.next_page_url !== null">
+                                <a class="page-link" :href="paginationParam.next_page_url">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>  
+            </div> 
         </div>
         
         
@@ -38,7 +62,6 @@
 <script>
 export default {
     name: "MovieBox",
-    
     methods: {
         photoPath(photo) {
             return '/storage/uploads/images/' + photo 
@@ -56,6 +79,10 @@ export default {
     props: {
         movies: {
             type: Array,
+            required: true
+        },
+        paginationParam: {
+            type: Object,
             required: true
         }
     },

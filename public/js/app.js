@@ -2008,6 +2008,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MovieBox",
   methods: {
@@ -2027,6 +2051,10 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     movies: {
       type: Array,
+      required: true
+    },
+    paginationParam: {
+      type: Object,
       required: true
     }
   }
@@ -2114,9 +2142,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2130,7 +2155,7 @@ __webpack_require__.r(__webpack_exports__);
       topBannerBackgroundImage: 'background-image:url("' + __webpack_require__(/*! ../../images/1.jpeg */ "./resources/images/1.jpeg") + ' ")',
       bottomBannerBackgroundImage: 'background-image: url("' + __webpack_require__(/*! ../../images/banner22.jpg */ "./resources/images/banner22.jpg") + '")',
       movies: [],
-      paginationParam: [],
+      paginationParam: {},
       serverResponse: {},
       processing: false
     };
@@ -2369,22 +2394,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2398,7 +2407,7 @@ __webpack_require__.r(__webpack_exports__);
       topBannerBackgroundImage: 'background-image:url("' + __webpack_require__(/*! ../../images/1.jpeg */ "./resources/images/1.jpeg") + ' ")',
       bottomBannerBackgroundImage: 'background-image: url("' + __webpack_require__(/*! ../../images/banner22.jpg */ "./resources/images/banner22.jpg") + '")',
       movies: [],
-      paginationParam: [],
+      paginationParam: {},
       serverResponse: {},
       processing: false
     };
@@ -37884,85 +37893,180 @@ var render = function() {
       : _c(
           "div",
           { staticClass: "row" },
-          _vm._l(_vm.movies, function(movie, key) {
-            return _c("div", { key: key, staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "card mb-4 shadow-sm" }, [
-                _c("img", {
-                  staticClass: "card-img-top",
-                  attrs: {
-                    src: _vm.photoPath(movie.photo),
-                    alt: "Card image cap"
-                  },
-                  on: {
-                    click: function($event) {
-                      return _vm.movieDetails(movie.id, movie.slug)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("h4", [_vm._v(" " + _vm._s(movie.title) + " ")]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v(
-                      "  \n                        " +
-                        _vm._s(
-                          movie.description.length > 100
-                            ? movie.description.substring(0, 100) + "..."
-                            : movie.description
-                        ) +
-                        " \n                    "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "d-flex justify-content-between align-items-center"
+          [
+            _vm._l(_vm.movies, function(movie, key) {
+              return _c("div", { key: key, staticClass: "col-md-4" }, [
+                _c("div", { staticClass: "card mb-4 shadow-sm" }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: {
+                      src: _vm.photoPath(movie.photo),
+                      alt: "Card image cap"
                     },
-                    [
-                      _c(
-                        "span",
-                        [
-                          _vm._l(movie.rating, function(rated, index) {
-                            return _c("i", {
-                              key: index,
-                              staticClass: "fa fa-star orange"
-                            })
-                          }),
-                          _vm._v(" "),
-                          5 - movie.rating > 0
-                            ? _c(
-                                "span",
-                                _vm._l(5 - movie.rating, function(
-                                  rated,
-                                  index
-                                ) {
-                                  return _c("i", {
-                                    key: index,
-                                    staticClass: "fa fa-star grey"
-                                  })
-                                }),
-                                0
-                              )
-                            : _vm._e()
-                        ],
-                        2
-                      ),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "text-muted" })
-                    ]
-                  )
+                    on: {
+                      click: function($event) {
+                        return _vm.movieDetails(movie.id, movie.slug)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("h4", [_vm._v(" " + _vm._s(movie.title) + " ")]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "card-text" }, [
+                      _vm._v(
+                        "  \n                        " +
+                          _vm._s(
+                            movie.description.length > 100
+                              ? movie.description.substring(0, 100) + "..."
+                              : movie.description
+                          ) +
+                          " \n                    "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "d-flex justify-content-between align-items-center"
+                      },
+                      [
+                        _c(
+                          "span",
+                          [
+                            _vm._l(movie.rating, function(rated, index) {
+                              return _c("i", {
+                                key: index,
+                                staticClass: "fa fa-star orange"
+                              })
+                            }),
+                            _vm._v(" "),
+                            5 - movie.rating > 0
+                              ? _c(
+                                  "span",
+                                  _vm._l(5 - movie.rating, function(
+                                    rated,
+                                    index
+                                  ) {
+                                    return _c("i", {
+                                      key: index,
+                                      staticClass: "fa fa-star grey"
+                                    })
+                                  }),
+                                  0
+                                )
+                              : _vm._e()
+                          ],
+                          2
+                        ),
+                        _vm._v(" "),
+                        _c("small", { staticClass: "text-muted" })
+                      ]
+                    )
+                  ])
                 ])
               ])
-            ])
-          }),
-          0
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-mg-12 col-md-12 mt-4 mb-4 p-3 text-center" },
+              [
+                this.$route.path === "/"
+                  ? _c("div", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary btn-lg",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.$router.push({ name: "movies" })
+                            }
+                          }
+                        },
+                        [_vm._v("View All")]
+                      )
+                    ])
+                  : _c("div", { staticClass: "mt-2 " }, [
+                      _c(
+                        "nav",
+                        { attrs: { "aria-label": "Page navigation" } },
+                        [
+                          _c("ul", { staticClass: "pagination text-center" }, [
+                            _vm.paginationParam.prev_page_url !== null
+                              ? _c("li", { staticClass: "page-item" }, [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "page-link",
+                                      attrs: {
+                                        href: _vm.paginationParam.prev_page_url
+                                      }
+                                    },
+                                    [_vm._v("Previous")]
+                                  )
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm._m(0),
+                            _vm._v(" "),
+                            _vm._m(1),
+                            _vm._v(" "),
+                            _vm._m(2),
+                            _vm._v(" "),
+                            _vm.paginationParam.next_page_url !== null
+                              ? _c("li", { staticClass: "page-item" }, [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "page-link",
+                                      attrs: {
+                                        href: _vm.paginationParam.next_page_url
+                                      }
+                                    },
+                                    [_vm._v("Next")]
+                                  )
+                                ])
+                              : _vm._e()
+                          ])
+                        ]
+                      )
+                    ])
+              ]
+            )
+          ],
+          2
         )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "page-item" }, [
+      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [_vm._v("1")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "page-item" }, [
+      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [_vm._v("2")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "page-item" }, [
+      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [_vm._v("3")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -38043,23 +38147,12 @@ var render = function() {
                     "div",
                     { staticClass: "container" },
                     [
-                      _c("movie-box", { attrs: { movies: _vm.movies } }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "mt-4 mb-4 p-3 text-center" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary btn-lg",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.$router.push({ name: "movies" })
-                              }
-                            }
-                          },
-                          [_vm._v("View All")]
-                        )
-                      ])
+                      _c("movie-box", {
+                        attrs: {
+                          movies: _vm.movies,
+                          paginationParam: _vm.paginationParam
+                        }
+                      })
                     ],
                     1
                   )
@@ -38494,59 +38587,12 @@ var render = function() {
                     "div",
                     { staticClass: "container" },
                     [
-                      _c("movie-box", { attrs: { movies: _vm.movies } }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "mt-2 " }, [
-                        _c(
-                          "nav",
-                          { attrs: { "aria-label": "Page navigation" } },
-                          [
-                            _c(
-                              "ul",
-                              { staticClass: "pagination text-center" },
-                              [
-                                _vm.paginationParam.prev_page_url !== null
-                                  ? _c("li", { staticClass: "page-item" }, [
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "page-link",
-                                          attrs: {
-                                            href:
-                                              _vm.paginationParam.prev_page_url
-                                          }
-                                        },
-                                        [_vm._v("Previous")]
-                                      )
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _vm._m(2),
-                                _vm._v(" "),
-                                _vm._m(3),
-                                _vm._v(" "),
-                                _vm._m(4),
-                                _vm._v(" "),
-                                _vm.paginationParam.next_page_url !== null
-                                  ? _c("li", { staticClass: "page-item" }, [
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "page-link",
-                                          attrs: {
-                                            href:
-                                              _vm.paginationParam.next_page_url
-                                          }
-                                        },
-                                        [_vm._v("Next")]
-                                      )
-                                    ])
-                                  : _vm._e()
-                              ]
-                            )
-                          ]
-                        )
-                      ])
+                      _c("movie-box", {
+                        attrs: {
+                          movies: _vm.movies,
+                          paginationParam: _vm.paginationParam
+                        }
+                      })
                     ],
                     1
                   )
@@ -38562,7 +38608,7 @@ var render = function() {
           ? _vm.bottomBannerBackgroundImage
           : ""
       },
-      [_vm._m(5)]
+      [_vm._m(2)]
     )
   ])
 }
@@ -38588,30 +38634,6 @@ var staticRenderFns = [
       _c("div"),
       _c("div"),
       _c("div")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "page-item" }, [
-      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [_vm._v("1")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "page-item" }, [
-      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [_vm._v("2")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "page-item" }, [
-      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [_vm._v("3")])
     ])
   },
   function() {

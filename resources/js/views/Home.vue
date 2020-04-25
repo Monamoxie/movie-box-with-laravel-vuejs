@@ -42,10 +42,7 @@
             
                 <div v-else class="album py-5 bg-light">
                     <div class="container"> 
-                        <movie-box :movies="movies"></movie-box>
-                        <div class="mt-4 mb-4 p-3 text-center">
-                            <button type="button" class="btn btn-primary btn-lg" @click="$router.push({ name: 'movies' })">View All</button>
-                        </div>
+                        <movie-box :movies="movies" :paginationParam="paginationParam"></movie-box>
                     </div>
                 </div>
             </div>
@@ -86,7 +83,7 @@ export default {
             topBannerBackgroundImage: 'background-image:url("' + require('../../images/1.jpeg') + ' ")',
             bottomBannerBackgroundImage: 'background-image: url("' + require('../../images/banner22.jpg') + '")',
             movies: [],
-            paginationParam: [],
+            paginationParam: {},
             serverResponse: {}, 
             processing: false
         } 

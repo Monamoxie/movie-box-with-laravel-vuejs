@@ -27,23 +27,7 @@
             
                 <div v-else class="album py-5 bg-light">
                     <div class="container"> 
-                        <movie-box :movies="movies"></movie-box> 
-                        <div class="mt-2 ">
-                            <nav aria-label="Page navigation" >
-                                <ul class="pagination text-center">
-                                    <li class="page-item" v-if="paginationParam.prev_page_url !== null">
-                                        <a class="page-link" :href="paginationParam.prev_page_url">Previous</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-
-                                    <li class="page-item" v-if="paginationParam.next_page_url !== null">
-                                        <a class="page-link" :href="paginationParam.next_page_url">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>  
+                        <movie-box :movies="movies" :paginationParam="paginationParam"></movie-box> 
                     </div>
                 </div>
             </div>
@@ -83,7 +67,7 @@
                 topBannerBackgroundImage: 'background-image:url("' + require('../../images/1.jpeg') + ' ")',
                 bottomBannerBackgroundImage: 'background-image: url("' + require('../../images/banner22.jpg') + '")',
                 movies: [],
-                paginationParam: [],
+                paginationParam: {},
                 serverResponse: {}, 
                 processing: false
             } 
