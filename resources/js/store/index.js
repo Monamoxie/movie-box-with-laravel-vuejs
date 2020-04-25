@@ -20,10 +20,10 @@ export const store = new Vuex.Store({
     },
 
     actions: {
-        loadMovies(context) {
+        loadMovies(context, payload) {
             // axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
             return new Promise((resolve, reject) => {
-                axios.post('/movies')
+                axios.get('/movies?page=' + payload.page)
                 .then(response => {
                     resolve(response)
                 })

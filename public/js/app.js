@@ -2369,6 +2369,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -38465,7 +38470,57 @@ var render = function() {
                     [
                       _c("movie-box", { attrs: { movies: _vm.movies } }),
                       _vm._v(" "),
-                      _vm._m(2)
+                      _c("div", { staticClass: "mt-2 " }, [
+                        _c(
+                          "nav",
+                          { attrs: { "aria-label": "Page navigation" } },
+                          [
+                            _c(
+                              "ul",
+                              { staticClass: "pagination text-center" },
+                              [
+                                _vm.paginationParam.prev_page_url !== null
+                                  ? _c("li", { staticClass: "page-item" }, [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "page-link",
+                                          attrs: {
+                                            href:
+                                              _vm.paginationParam.prev_page_url
+                                          }
+                                        },
+                                        [_vm._v("Previous")]
+                                      )
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm._m(2),
+                                _vm._v(" "),
+                                _vm._m(3),
+                                _vm._v(" "),
+                                _vm._m(4),
+                                _vm._v(" "),
+                                _vm.paginationParam.next_page_url !== null
+                                  ? _c("li", { staticClass: "page-item" }, [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "page-link",
+                                          attrs: {
+                                            href:
+                                              _vm.paginationParam.next_page_url
+                                          }
+                                        },
+                                        [_vm._v("Next")]
+                                      )
+                                    ])
+                                  : _vm._e()
+                              ]
+                            )
+                          ]
+                        )
+                      ])
                     ],
                     1
                   )
@@ -38481,7 +38536,7 @@ var render = function() {
           ? _vm.bottomBannerBackgroundImage
           : ""
       },
-      [_vm._m(3)]
+      [_vm._m(5)]
     )
   ])
 }
@@ -38513,40 +38568,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-2 text-center" }, [
-      _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
-        _c("ul", { staticClass: "pagination" }, [
-          _c("li", { staticClass: "page-item" }, [
-            _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-              _vm._v("Previous")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "page-item" }, [
-            _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-              _vm._v("1")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "page-item" }, [
-            _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-              _vm._v("2")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "page-item" }, [
-            _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-              _vm._v("3")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "page-item" }, [
-            _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-              _vm._v("Next")
-            ])
-          ])
-        ])
-      ])
+    return _c("li", { staticClass: "page-item" }, [
+      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [_vm._v("1")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "page-item" }, [
+      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [_vm._v("2")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "page-item" }, [
+      _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [_vm._v("3")])
     ])
   },
   function() {
@@ -55050,12 +55089,14 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.processing = true;
-    this.$store.dispatch('loadMovies').then(function (response) {
+    var page = this.$route.params.hasOwnProperty('page') && this.$route.params.page !== '' && typeof parseInt(this.$route.params.page) === 'number' ? this.$route.params.page : 1;
+    this.$store.dispatch('loadMovies', {
+      page: page
+    }).then(function (response) {
       _this.movies = response.data.data.data;
       _this.paginationParam = response.data.data; // remove the data part from the object and leave the remaining as pagination data
 
-      delete _this.paginationParam.data;
-      console.log(_this.paginationParam);
+      delete _this.paginationParam.data; // console.log(this.paginationParam) 
     })["catch"](function (error) {
       _this.serverResponse = [{
         'status': 'error',
@@ -55097,6 +55138,10 @@ var routes = [{
   path: '/movies',
   name: 'movies',
   component: _views_Movies__WEBPACK_IMPORTED_MODULE_2__["default"]
+}, {
+  path: '/movies/:page',
+  name: 'movies',
+  component: _views_Movies__WEBPACK_IMPORTED_MODULE_2__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
@@ -55124,10 +55169,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   getters: {},
   mutations: {},
   actions: {
-    loadMovies: function loadMovies(context) {
+    loadMovies: function loadMovies(context, payload) {
       // axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
       return new Promise(function (resolve, reject) {
-        axios.post('/movies').then(function (response) {
+        axios.get('/movies?page=' + payload.page).then(function (response) {
           resolve(response);
         })["catch"](function (errors) {
           reject(errors);

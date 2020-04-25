@@ -232,7 +232,11 @@ a:hover {
     padding-bottom: 0px;
 }
 
-
+.pagination {
+    width: 400px;
+    max-width: 100%;
+    margin:auto;
+}
 
 
 

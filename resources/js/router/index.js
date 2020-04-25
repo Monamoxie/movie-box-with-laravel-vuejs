@@ -16,6 +16,11 @@ const routes = [
     {
         path: '/movies',
         name: 'movies',
+        component: Movies,
+    },
+    {
+        path: '/movies/:page',
+        name: 'movies',
         component: Movies
     }
 ]

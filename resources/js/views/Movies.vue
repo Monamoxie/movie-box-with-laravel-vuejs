@@ -28,14 +28,19 @@
                 <div v-else class="album py-5 bg-light">
                     <div class="container"> 
                         <movie-box :movies="movies"></movie-box> 
-                        <div class="mt-2 text-center">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <div class="mt-2 ">
+                            <nav aria-label="Page navigation" >
+                                <ul class="pagination text-center">
+                                    <li class="page-item" v-if="paginationParam.prev_page_url !== null">
+                                        <a class="page-link" :href="paginationParam.prev_page_url">Previous</a>
+                                    </li>
                                     <li class="page-item"><a class="page-link" href="#">1</a></li>
                                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                                     <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+
+                                    <li class="page-item" v-if="paginationParam.next_page_url !== null">
+                                        <a class="page-link" :href="paginationParam.next_page_url">Next</a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>  
