@@ -1997,6 +1997,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MovieBox",
   methods: {
@@ -37863,78 +37874,93 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "row" },
-    _vm._l(_vm.movies, function(movie, key) {
-      return _c("div", { key: key, staticClass: "col-md-4" }, [
-        _c("div", { staticClass: "card mb-4 shadow-sm" }, [
-          _c("img", {
-            staticClass: "card-img-top",
-            attrs: { src: _vm.photoPath(movie.photo), alt: "Card image cap" },
-            on: {
-              click: function($event) {
-                return _vm.movieDetails(movie.id, movie.slug)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h4", [_vm._v(" " + _vm._s(movie.title) + " ")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v(
-                "  \n                    " +
-                  _vm._s(
-                    movie.description.length > 100
-                      ? movie.description.substring(0, 100) + "..."
-                      : movie.description
-                  ) +
-                  " \n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "d-flex justify-content-between align-items-center"
-              },
-              [
-                _c(
-                  "span",
-                  [
-                    _vm._l(movie.rating, function(rated, index) {
-                      return _c("i", {
-                        key: index,
-                        staticClass: "fa fa-star orange"
-                      })
-                    }),
-                    _vm._v(" "),
-                    5 - movie.rating > 0
-                      ? _c(
-                          "span",
-                          _vm._l(5 - movie.rating, function(rated, index) {
-                            return _c("i", {
-                              key: index,
-                              staticClass: "fa fa-star grey"
-                            })
-                          }),
-                          0
-                        )
-                      : _vm._e()
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _c("small", { staticClass: "text-muted" })
-              ]
-            )
+  return _c("div", [
+    _vm.movies.length < 1
+      ? _c("div", { staticClass: "text-center" }, [
+          _c("div", { staticClass: "alert alert-danger" }, [
+            _vm._v("\n            No record found\n        ")
           ])
         ])
-      ])
-    }),
-    0
-  )
+      : _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.movies, function(movie, key) {
+            return _c("div", { key: key, staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "card mb-4 shadow-sm" }, [
+                _c("img", {
+                  staticClass: "card-img-top",
+                  attrs: {
+                    src: _vm.photoPath(movie.photo),
+                    alt: "Card image cap"
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.movieDetails(movie.id, movie.slug)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("h4", [_vm._v(" " + _vm._s(movie.title) + " ")]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(
+                      "  \n                        " +
+                        _vm._s(
+                          movie.description.length > 100
+                            ? movie.description.substring(0, 100) + "..."
+                            : movie.description
+                        ) +
+                        " \n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "d-flex justify-content-between align-items-center"
+                    },
+                    [
+                      _c(
+                        "span",
+                        [
+                          _vm._l(movie.rating, function(rated, index) {
+                            return _c("i", {
+                              key: index,
+                              staticClass: "fa fa-star orange"
+                            })
+                          }),
+                          _vm._v(" "),
+                          5 - movie.rating > 0
+                            ? _c(
+                                "span",
+                                _vm._l(5 - movie.rating, function(
+                                  rated,
+                                  index
+                                ) {
+                                  return _c("i", {
+                                    key: index,
+                                    staticClass: "fa fa-star grey"
+                                  })
+                                }),
+                                0
+                              )
+                            : _vm._e()
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c("small", { staticClass: "text-muted" })
+                    ]
+                  )
+                ])
+              ])
+            ])
+          }),
+          0
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -55096,7 +55122,8 @@ __webpack_require__.r(__webpack_exports__);
       _this.movies = response.data.data.data;
       _this.paginationParam = response.data.data; // remove the data part from the object and leave the remaining as pagination data
 
-      delete _this.paginationParam.data; // console.log(this.paginationParam) 
+      delete _this.paginationParam.data;
+      console.log(_this.paginationParam);
     })["catch"](function (error) {
       _this.serverResponse = [{
         'status': 'error',
@@ -55172,7 +55199,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     loadMovies: function loadMovies(context, payload) {
       // axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
       return new Promise(function (resolve, reject) {
-        axios.get('/movies?page=' + payload.page).then(function (response) {
+        axios.post('/movies?page=' + payload.page).then(function (response) {
           resolve(response);
         })["catch"](function (errors) {
           reject(errors);

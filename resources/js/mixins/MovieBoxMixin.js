@@ -12,7 +12,7 @@ export default {
             this.paginationParam = response.data.data
             // remove the data part from the object and leave the remaining as pagination data
             delete this.paginationParam.data
-            // console.log(this.paginationParam) 
+            console.log(this.paginationParam) 
         })
         .catch(error => { 
         this.serverResponse = [{

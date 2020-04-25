@@ -10,7 +10,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // 
 Route::group(['prefix' => 'v1', 'namespace' => 'Api',  ], function() {
 
-    Route::get("/movies?{page}", "MoviesController@listMovies");
+    Route::post("/movies", "MoviesController@listMovies");
     Route::get("/movies/{id}", "MoviesController@movieDetails");
     
    
