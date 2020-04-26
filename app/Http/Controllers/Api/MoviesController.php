@@ -32,13 +32,10 @@ class MoviesController extends Controller
     public function movieDetails(Request $request, MovieService $movieService)
     {   
         $movieDetails = $movieService->movieDetails(preg_replace('#[^a-z0-9-]#i', '', $request->id));
-        if ($movieDetails !== null) {
-            $init = Carbon::parse($movieDetails->release_date);
-            $movieDetails->formated_release_date = $init->format('Y M d');
-            return $this->successResponse('Data was successfully fetched.', $movieDetails);
-        } 
-        return $this->errorResponse('An error occured');
-        
+
+            return $movieDetails->movie !== null ?
+                $this->successResponse('Data was successfully fetched.', $movieDetails) : 
+                $this->errorResponse('An error occured'); 
     }
 
     

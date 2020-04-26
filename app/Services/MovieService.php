@@ -5,7 +5,8 @@ namespace App\Services;
 use App\Movie;
 use App\Comment;
 use Carbon\Carbon;
-use Illuminate\Support\Str; 
+use Illuminate\Support\Str;
+use stdClass;
 
 class MovieService
 {
@@ -31,14 +32,25 @@ class MovieService
         if ($movie === null) {
             return null;
         }
-        $movie->comments = $movie->comments;
-        if(gettype($movie->comments) === 'object' && count($movie->comments) > 0) {
-            foreach ($movie->comments as $key => $comment) {
-                $date = Carbon::createFromFormat('Y-m-d H:i:s', $comment->created_at);
-                $movie->comments->created_at = $date->toRfc7231String();
+
+        $init = Carbon::parse($movie->release_date);
+        $movie->formated_release_date = $init->format('Y M d');
+
+        $data = new stdClass;
+        
+        $data->movie = $movie; 
+        
+        $comments = $movie->comments;
+         
+        if(gettype($comments) === 'object' && count($comments) > 0) {
+            foreach ($comments as $comment) {        
+                $init = Carbon::parse($comment->created_at); 
+                $comment->formatted_created_at = $init->toRfc7231String();
+                $comment->poster_name = $comment->user->name;
             }  
         }  
-        return $movie;
+        $data->comments = $comments;
+        return $data;
     }
 
    

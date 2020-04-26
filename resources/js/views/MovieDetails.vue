@@ -75,13 +75,14 @@
                                             <h3 class="text-primary"> Comments >> </h3>
                                         </div>
                                         <div class="col-md-8">
-                                            <div v-if="movieDetails.comments.length > 0"> 
+                                            <div v-if="movieComments.length > 0"> 
                                                 <div class="card mb-3" v-for="(comment, key) in movieDetails.comments" :key="key">
                                                         <div class="card-body"> 
                                                             <p class="card-text text-left">{{ comment.comment }}</p> 
                                                         </div>
-                                                        <div class="card-footer text-muted">
-                                                            {{comment}}
+                                                        <div class="card-footer text-muted"> 
+                                                            <div class=" float-left"> {{ comment.formatted_created_at }}</div>
+                                                            <div class=" float-right"> {{ comment.poster_name }}</div>
                                                         </div>
                                                     </div>
                                                 </div> 
@@ -120,6 +121,7 @@ export default {
             processingDetails: false,
             serverResponse: [], 
             movieDetails: {},
+            movieComments: [],
             bottomBannerBackgroundImage: 'background-image: url("' + require('../../images/banner22.jpg') + '")'
         }
     },
@@ -129,8 +131,10 @@ export default {
             id: this.$route.params.id
         })
         .then((response) => {    
-            this.movieDetails = response.data.data
-            console.log(movieDetails)
+            // console.log(this.movieDetails)
+            this.movieDetails = response.data.data.movie
+            this.movieComments = response.data.data.comments
+            console.log(this.movieDetails)
         })
         .catch(error => { 
             let errDisplay = ''

@@ -2365,6 +2365,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MovieDetails",
   data: function data() {
@@ -2372,6 +2373,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       processingDetails: false,
       serverResponse: [],
       movieDetails: {},
+      movieComments: [],
       bottomBannerBackgroundImage: 'background-image: url("' + __webpack_require__(/*! ../../images/banner22.jpg */ "./resources/images/banner22.jpg") + '")'
     };
   },
@@ -2382,8 +2384,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     this.$store.dispatch('movieDetails', {
       id: this.$route.params.id
     }).then(function (response) {
-      _this.movieDetails = response.data.data;
-      console.log(movieDetails);
+      // console.log(this.movieDetails)
+      _this.movieDetails = response.data.data.movie;
+      _this.movieComments = response.data.data.comments;
+      console.log(_this.movieDetails);
     })["catch"](function (error) {
       var errDisplay = '';
 
@@ -38642,7 +38646,7 @@ var render = function() {
                           _vm._m(1),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-8" }, [
-                            _vm.movieDetails.comments.length > 0
+                            _vm.movieComments.length > 0
                               ? _c(
                                   "div",
                                   _vm._l(_vm.movieDetails.comments, function(
@@ -38675,10 +38679,28 @@ var render = function() {
                                               "card-footer text-muted"
                                           },
                                           [
-                                            _vm._v(
-                                              "\n                                                        " +
-                                                _vm._s(comment) +
-                                                "\n                                                    "
+                                            _c(
+                                              "div",
+                                              { staticClass: " float-left" },
+                                              [
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(
+                                                      comment.formatted_created_at
+                                                    )
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: " float-right" },
+                                              [
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(comment.poster_name)
+                                                )
+                                              ]
                                             )
                                           ]
                                         )
