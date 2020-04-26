@@ -13,6 +13,8 @@ const router = new VueRouter({
     routes,
     mode: 'history'
 })
+
+require('./router/guards')(router)
   
 const app = new Vue({
     el: '#app',

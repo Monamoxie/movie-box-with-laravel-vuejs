@@ -55257,6 +55257,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: _router_index__WEBPACK_IMPORTED_MODULE_2__["default"],
   mode: 'history'
 });
+
+__webpack_require__(/*! ./router/guards */ "./resources/js/router/guards.js")(router);
+
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   router: router,
@@ -55491,6 +55494,46 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/router/guards.js":
+/*!***************************************!*\
+  !*** ./resources/js/router/guards.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function (router) {
+  router.beforeEach(function (to, from, next) {
+    if (to.matched.some(function (record) {
+      return record.meta.guard === 'auth:api';
+    })) {
+      if (!store.getters.isLoggedIn) {
+        next({
+          name: 'login',
+          query: {
+            redirect: to.fullPath
+          }
+        });
+      } else {
+        next();
+      }
+    } else if (to.matched.some(function (record) {
+      return record.meta.guard === 'guest';
+    })) {
+      if (store.getters.loggedIn) {
+        next({
+          name: 'movies'
+        });
+      } else {
+        next();
+      }
+    } else {
+      next(); // make sure to always call next()!
+    }
+  });
+};
+
+/***/ }),
+
 /***/ "./resources/js/router/index.js":
 /*!**************************************!*\
   !*** ./resources/js/router/index.js ***!
@@ -55509,19 +55552,31 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [{
   path: '/',
   name: 'home',
-  component: _views_Home__WEBPACK_IMPORTED_MODULE_0__["default"]
+  component: _views_Home__WEBPACK_IMPORTED_MODULE_0__["default"] // meta: { 
+  //     guard: 'guest',
+  // },
+
 }, {
   path: '/movies/:id/:slug',
   name: 'movieDetails',
-  component: _views_MovieDetails__WEBPACK_IMPORTED_MODULE_1__["default"]
+  component: _views_MovieDetails__WEBPACK_IMPORTED_MODULE_1__["default"] // meta: { 
+  //     guard: 'guest',
+  // },
+
 }, {
   path: '/movies',
   name: 'movies',
-  component: _views_Movies__WEBPACK_IMPORTED_MODULE_2__["default"]
+  component: _views_Movies__WEBPACK_IMPORTED_MODULE_2__["default"] // meta: { 
+  //     guard: 'guest',
+  // },
+
 }, {
   path: '/movies/:page',
   name: 'moviesPaged',
-  component: _views_Movies__WEBPACK_IMPORTED_MODULE_2__["default"]
+  component: _views_Movies__WEBPACK_IMPORTED_MODULE_2__["default"] // meta: { 
+  //     guard: 'guest',
+  // },
+
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
@@ -55545,7 +55600,9 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
-  state: {},
+  state: {
+    accessToken: localStorage.getItem('access_token') || null
+  },
   getters: {},
   mutations: {},
   actions: {
