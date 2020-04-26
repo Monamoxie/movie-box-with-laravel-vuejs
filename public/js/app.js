@@ -2117,11 +2117,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
       var pagesExpected = this.paginationParam.total / this.paginationParam.per_page;
-
-      if (this.paginationParam.current_page < pagesExpected - 3) {
-        this.dotter = '...';
-      } // run previous pager
-
+      this.dotter = this.paginationParam.current_page < pagesExpected - 3 ? '...' : this.dotter = ''; // run previous pager
 
       if (this.paginationParam.current_page !== this.paginationParam.last_page) {
         var _endPoint = this.paginationParam.current_page + 3 <= this.paginationParam.last_page ? this.paginationParam.current_page + 3 : paginationParam.last_page;
@@ -38115,9 +38111,9 @@ var render = function() {
                   staticClass: "page-link",
                   on: {
                     click: function($event) {
-                      return this.$router.push({
+                      return _vm.$router.push({
                         name: "moviesPaged",
-                        params: { page: this.paginationParam.current_page - 1 }
+                        params: { page: _vm.paginationParam.current_page - 1 }
                       })
                     }
                   }
@@ -38135,7 +38131,7 @@ var render = function() {
                 staticClass: "page-link",
                 on: {
                   click: function($event) {
-                    return this.$router.push({
+                    return _vm.$router.push({
                       name: "moviesPaged",
                       params: { page: prev }
                     })
@@ -38163,7 +38159,7 @@ var render = function() {
                 staticClass: "page-link",
                 on: {
                   click: function($event) {
-                    return this.$router.push({
+                    return _vm.$router.push({
                       name: "moviesPaged",
                       params: { page: next }
                     })
@@ -38183,9 +38179,9 @@ var render = function() {
                   staticClass: "page-link",
                   on: {
                     click: function($event) {
-                      return this.$router.push({
+                      return _vm.$router.push({
                         name: "moviesPaged",
-                        params: { page: this.paginationParam.current_page + 1 }
+                        params: { page: _vm.paginationParam.current_page + 1 }
                       })
                     }
                   }
