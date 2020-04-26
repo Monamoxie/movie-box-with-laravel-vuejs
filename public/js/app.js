@@ -2130,10 +2130,6 @@ __webpack_require__.r(__webpack_exports__);
           this.nextPages.push(_i);
         }
       }
-
-      console.log(this.prevPages);
-      console.log(this.dotter);
-      console.log(this.nextPages);
     }
   }
 });
@@ -38134,8 +38130,18 @@ var render = function() {
         _vm._l(_vm.prevPages, function(prev, key) {
           return _c("li", { key: "prev" + key, staticClass: "page-item" }, [
             _c(
-              "a",
-              { staticClass: "page-link", attrs: { href: "/movies/" + prev } },
+              "span",
+              {
+                staticClass: "page-link",
+                on: {
+                  click: function($event) {
+                    return this.$router.push({
+                      name: "moviesPaged",
+                      params: { page: prev }
+                    })
+                  }
+                }
+              },
               [_vm._v(_vm._s(prev))]
             )
           ])
@@ -38152,8 +38158,18 @@ var render = function() {
         _vm._l(_vm.nextPages, function(next, index) {
           return _c("li", { key: "next" + index, staticClass: "page-item" }, [
             _c(
-              "a",
-              { staticClass: "page-link", attrs: { href: "/movies/" + next } },
+              "span",
+              {
+                staticClass: "page-link",
+                on: {
+                  click: function($event) {
+                    return this.$router.push({
+                      name: "moviesPaged",
+                      params: { page: next }
+                    })
+                  }
+                }
+              },
               [_vm._v(_vm._s(next))]
             )
           ])

@@ -6,14 +6,14 @@
             </li>
 
             <li class="page-item" v-for="(prev, key) in prevPages" :key="'prev' + key">
-                <a class="page-link" :href="`/movies/${ prev }`">{{ prev }}</a>
+                <span class="page-link"  @click=" this.$router.push({ name: 'moviesPaged', params: { page: prev }  })">{{ prev }}</span>
             </li> 
             <li v-if="dotter !== ''" class="page-item">
                 <span class="page-link">{{ dotter }}</span>
             </li> 
                 
             <li class="page-item" v-for="(next, index) in nextPages" :key="'next' + index">
-                <a class="page-link" :href="`/movies/${ next }`">{{ next }}</a>
+               <span class="page-link"  @click=" this.$router.push({ name: 'moviesPaged', params: { page: next }  })">{{ next }}</span>
             </li> 
 
             <li class="page-item" v-if="paginationParam.next_page_url !== null">
@@ -64,10 +64,7 @@ export default {
                 for (let i = this.paginationParam.current_page + 1; i <= endPoint; i++) {
                     this.nextPages.push(i);
                 }
-            }
-            console.log(this.prevPages)
-            console.log(this.dotter)
-            console.log(this.nextPages)
+            } 
 
         } 
         
