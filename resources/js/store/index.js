@@ -12,7 +12,9 @@ export const store = new Vuex.Store({
     },
 
     getters: {
-       
+       isLoggedIn(state) {
+         return state.accessToken !== null
+       }
     },
 
     mutations: {

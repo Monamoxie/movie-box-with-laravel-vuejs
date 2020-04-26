@@ -240,6 +240,21 @@ a:hover {
 .page-link {
     cursor: pointer;
 }
+.nav-link {
+    cursor: pointer;
+}
+.nav-item {
+    padding: 7px 5px;
+    margin-right: 3px;
+}
+.nav-item.active, .nav-item:hover {
+    background: rgba(23, 10, 199, 0.9); 
+    border-radius: 4px;
+}
+.nav-item.active .nav-link, 
+.nav-item:hover .nav-link  {
+    color: #ffffff !important;
+}
 
 
 

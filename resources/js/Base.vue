@@ -18,9 +18,28 @@
 
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul class="navbar-nav ml-auto top-nav">
-                            <!-- <li class="nav-item" :class="this.$route.path === '/' ? 'active' : '' "><router-link class="nav-link" :to="{ name : 'home' }">Home</router-link></li>
-                            <li class="nav-item" :class="this.$route.path === '/todo' ? 'active' : '' "><router-link class="nav-link" :to="{ name : 'todo' }">App</router-link></li> -->
-                            <!-- <li class="nav-item" :class="this.$route.path === '/login' ? 'active' : '' " v-if="!loggedIn"><router-link class="nav-link" :to="{ name : 'login' }">Login</router-link></li>
+                            <li class="nav-item" :class="this.$route.path === '/' ? 'active' : '' " 
+                                @click="$router.push({ name: 'home' })">
+                                <span class="nav-link">Home</span>
+                            </li>
+                            <li class="nav-item" :class="this.$route.path === '/movies' ? 'active' : '' " 
+                                @click="$router.push({ name: 'movies' })">
+                                <span class="nav-link">New Review</span>
+                            </li>
+                            <li class="nav-item" :class="this.$route.path === '/' ? 'login' : '' "  v-if="!$store.getters.isLoggedIn "
+                                @click="$router.push({ name: 'login' })">
+                                <span class="nav-link">Login</span>
+                            </li>
+                            <li class="nav-item" :class="this.$route.path === '/' ? 'register' : '' "  v-if="!$store.getters.isLoggedIn "
+                                @click="$router.push({ name: 'register' })">
+                                <span class="nav-link">Register</span>
+                            </li>
+                            <li class="nav-item" :class="this.$route.path === '/' ? 'active' : '' "  v-if="$store.getters.isLoggedIn "
+                                @click="$router.push({ name: 'logout' })">
+                                <span class="nav-link">Logout</span>
+                            </li>
+                            
+                            <!-- <li class="nav-item"><router-link class="nav-link" :to="{ name : 'login' }">Login</router-link></li>
                             <li class="nav-item" :class="this.$route.path === '/register' ? 'active' : '' " v-if="!loggedIn"><router-link class="nav-link" :to="{ name : 'register' }">Register</router-link></li>
                             <li class="nav-item" v-if="loggedIn"><router-link  class="nav-link" :to="{ name : 'logout' }">Logout</router-link></li> -->
                         </ul>
@@ -48,8 +67,6 @@ export default {
             movies: [],
         }
     },
-    methods: {
-    
-    }
+ 
 }
 </script>

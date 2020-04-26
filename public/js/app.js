@@ -1950,14 +1950,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
   data: function data() {
     return {
       movies: []
     };
-  },
-  methods: {}
+  }
 });
 
 /***/ }),
@@ -37867,7 +37885,129 @@ var render = function() {
     "div",
     { staticClass: "wrapper" },
     [
-      _vm._m(0),
+      _c("header", [
+        _c(
+          "nav",
+          {
+            staticClass:
+              "navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow "
+          },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-9 col-md-9" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse navbar-collapse",
+                  attrs: { id: "navbarTogglerDemo03" }
+                },
+                [
+                  _c("ul", { staticClass: "navbar-nav ml-auto top-nav" }, [
+                    _c(
+                      "li",
+                      {
+                        staticClass: "nav-item",
+                        class: this.$route.path === "/" ? "active" : "",
+                        on: {
+                          click: function($event) {
+                            return _vm.$router.push({ name: "home" })
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "nav-link" }, [
+                          _vm._v("Home")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "nav-item",
+                        class: this.$route.path === "/movies" ? "active" : "",
+                        on: {
+                          click: function($event) {
+                            return _vm.$router.push({ name: "movies" })
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "nav-link" }, [
+                          _vm._v("New Review")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    !_vm.$store.getters.isLoggedIn
+                      ? _c(
+                          "li",
+                          {
+                            staticClass: "nav-item",
+                            class: this.$route.path === "/" ? "login" : "",
+                            on: {
+                              click: function($event) {
+                                return _vm.$router.push({ name: "login" })
+                              }
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "nav-link" }, [
+                              _vm._v("Login")
+                            ])
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.$store.getters.isLoggedIn
+                      ? _c(
+                          "li",
+                          {
+                            staticClass: "nav-item",
+                            class: this.$route.path === "/" ? "register" : "",
+                            on: {
+                              click: function($event) {
+                                return _vm.$router.push({ name: "register" })
+                              }
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "nav-link" }, [
+                              _vm._v("Register")
+                            ])
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.$store.getters.isLoggedIn
+                      ? _c(
+                          "li",
+                          {
+                            staticClass: "nav-item",
+                            class: this.$route.path === "/" ? "active" : "",
+                            on: {
+                              click: function($event) {
+                                return _vm.$router.push({ name: "logout" })
+                              }
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "nav-link" }, [
+                              _vm._v("Logout")
+                            ])
+                          ]
+                        )
+                      : _vm._e()
+                  ])
+                ]
+              )
+            ])
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c("router-view", { key: _vm.$route.fullPath }),
       _vm._v(" "),
@@ -37889,54 +38029,36 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("header", [
-      _c(
-        "nav",
-        {
-          staticClass:
-            "navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow "
-        },
-        [
-          _c("div", { staticClass: "navbar-brand col-sm-3 col-md-3 mr-0" }, [
-            _c("span", { staticClass: "logo-holder" }, [
-              _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
-                _c("img", {
-                  staticClass: "logo",
-                  attrs: { src: __webpack_require__(/*! ../images/logo.png */ "./resources/images/logo.png"), alt: "Logo" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-9 col-md-9" }, [
-            _c(
-              "button",
-              {
-                staticClass: "navbar-toggler",
-                attrs: {
-                  type: "button",
-                  "data-toggle": "collapse",
-                  "data-target": "#navbarTogglerDemo03",
-                  "aria-controls": "navbarTogglerDemo03",
-                  "aria-expanded": "false",
-                  "aria-label": "Toggle navigation"
-                }
-              },
-              [_c("span", { staticClass: "navbar-toggler-icon" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "collapse navbar-collapse",
-                attrs: { id: "navbarTogglerDemo03" }
-              },
-              [_c("ul", { staticClass: "navbar-nav ml-auto top-nav" })]
-            )
-          ])
-        ]
-      )
+    return _c("div", { staticClass: "navbar-brand col-sm-3 col-md-3 mr-0" }, [
+      _c("span", { staticClass: "logo-holder" }, [
+        _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
+          _c("img", {
+            staticClass: "logo",
+            attrs: { src: __webpack_require__(/*! ../images/logo.png */ "./resources/images/logo.png"), alt: "Logo" }
+          })
+        ])
+      ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarTogglerDemo03",
+          "aria-controls": "navbarTogglerDemo03",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
+    )
   }
 ]
 render._withStripped = true
@@ -55603,7 +55725,11 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
     accessToken: localStorage.getItem('access_token') || null
   },
-  getters: {},
+  getters: {
+    isLoggedIn: function isLoggedIn(state) {
+      return state.accessToken !== null;
+    }
+  },
   mutations: {},
   actions: {
     loadMovies: function loadMovies(context, payload) {
