@@ -69,7 +69,6 @@
                     <div class="row mt-5"> 
                         <div class="post-comments-box">
                             <div class="container text-center"> 
-                                
                                     <div class="row form-wrapper">
                                         <div class="col-md-4 post-comment-title">
                                             <h3 class="text-primary"> Comments >> </h3>
@@ -130,11 +129,9 @@ export default {
         this.$store.dispatch('movieDetails', {
             id: this.$route.params.id
         })
-        .then((response) => {    
-            // console.log(this.movieDetails)
+        .then((response) => {     
             this.movieDetails = response.data.data.movie
-            this.movieComments = response.data.data.comments
-            console.log(this.movieDetails)
+            this.movieComments = response.data.data.comments 
         })
         .catch(error => { 
             let errDisplay = ''

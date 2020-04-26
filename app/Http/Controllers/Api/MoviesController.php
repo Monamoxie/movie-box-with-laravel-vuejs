@@ -5,15 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\MovieService;
-use Carbon\Carbon;
 
 class MoviesController extends Controller
 {
     /**
      * List all the available movies
-     * 
      * @param Illuminate\Http\Request, App\Services\MovieService;
-     * 
      * @return Response
      */
     public function listMovies(Request $request, MovieService $movieService)
@@ -24,9 +21,7 @@ class MoviesController extends Controller
 
     /**
      * Returns full details of a movie
-     * 
      * @param Illuminate\Http\Request, App\Services\MovieService;
-     * 
      * @return Response
      */
     public function movieDetails(Request $request, MovieService $movieService)

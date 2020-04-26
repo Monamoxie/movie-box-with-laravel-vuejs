@@ -2365,7 +2365,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MovieDetails",
   data: function data() {
@@ -2384,10 +2383,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     this.$store.dispatch('movieDetails', {
       id: this.$route.params.id
     }).then(function (response) {
-      // console.log(this.movieDetails)
       _this.movieDetails = response.data.data.movie;
       _this.movieComments = response.data.data.comments;
-      console.log(_this.movieDetails);
     })["catch"](function (error) {
       var errDisplay = '';
 
