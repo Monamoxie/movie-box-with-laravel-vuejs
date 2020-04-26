@@ -66,7 +66,7 @@
                         </div>
                     </div>
 
-                    <!-- <div class="row mt-5"> 
+                    <div class="row mt-5"> 
                         <div class="post-comments-box">
                             <div class="container text-center"> 
                                 
@@ -75,22 +75,21 @@
                                             <h3 class="text-primary"> Comments >> </h3>
                                         </div>
                                         <div class="col-md-8">
-                                            @if (count($movieDetails->comments) > 0)
-                                                @foreach ($movieDetails->comments as $comment)
-                                                    <div class="card mb-3">
-                                                        
+                                            <div v-if="movieDetails.comments.length > 0"> 
+                                                <div class="card mb-3" v-for="(comment, key) in movieDetails.comments" :key="key">
                                                         <div class="card-body"> 
-                                                        <p class="card-text text-left">{{ $comment->comment }}</p> 
-                                                        
+                                                            <p class="card-text text-left">{{ comment.comment }}</p> 
+                                                        </div>
+                                                        <div class="card-footer text-muted">
+                                                            {{comment}}
                                                         </div>
                                                     </div>
-                                                @endforeach
-                                            @endif
+                                                </div> 
                                         </div>
                                     </div> 
                             </div>
                         </div> 
-                    </div>        -->
+                    </div>       
                 </div>
             </div>
 
@@ -131,6 +130,7 @@ export default {
         })
         .then((response) => {    
             this.movieDetails = response.data.data
+            console.log(movieDetails)
         })
         .catch(error => { 
             let errDisplay = ''

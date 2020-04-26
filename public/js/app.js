@@ -2365,7 +2365,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MovieDetails",
   data: function data() {
@@ -2384,6 +2383,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       id: this.$route.params.id
     }).then(function (response) {
       _this.movieDetails = response.data.data;
+      console.log(movieDetails);
     })["catch"](function (error) {
       var errDisplay = '';
 
@@ -38633,6 +38633,65 @@ var render = function() {
                         ])
                       ])
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row mt-5" }, [
+                    _c("div", { staticClass: "post-comments-box" }, [
+                      _c("div", { staticClass: "container text-center" }, [
+                        _c("div", { staticClass: "row form-wrapper" }, [
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-8" }, [
+                            _vm.movieDetails.comments.length > 0
+                              ? _c(
+                                  "div",
+                                  _vm._l(_vm.movieDetails.comments, function(
+                                    comment,
+                                    key
+                                  ) {
+                                    return _c(
+                                      "div",
+                                      { key: key, staticClass: "card mb-3" },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "card-body" },
+                                          [
+                                            _c(
+                                              "p",
+                                              {
+                                                staticClass:
+                                                  "card-text text-left"
+                                              },
+                                              [_vm._v(_vm._s(comment.comment))]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "card-footer text-muted"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                        " +
+                                                _vm._s(comment) +
+                                                "\n                                                    "
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  }),
+                                  0
+                                )
+                              : _vm._e()
+                          ])
+                        ])
+                      ])
+                    ])
                   ])
                 ])
           ])
@@ -38646,7 +38705,7 @@ var render = function() {
           ? _vm.bottomBannerBackgroundImage
           : ""
       },
-      [_vm._m(1)]
+      [_vm._m(2)]
     )
   ])
 }
@@ -38660,6 +38719,14 @@ var staticRenderFns = [
       _c("div"),
       _c("div"),
       _c("div")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4 post-comment-title" }, [
+      _c("h3", { staticClass: "text-primary" }, [_vm._v(" Comments >> ")])
     ])
   },
   function() {
