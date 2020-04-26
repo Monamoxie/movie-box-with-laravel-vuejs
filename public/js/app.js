@@ -1970,12 +1970,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
   data: function data() {
     return {
       movies: []
     };
+  },
+  mounted: function mounted() {
+    console.log(this.$route);
   }
 });
 
@@ -37925,6 +37931,47 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "nav-item",
+                        class:
+                          this.$route.name === "movies" ||
+                          this.$route.name === "moviesPaged"
+                            ? "active"
+                            : "",
+                        on: {
+                          click: function($event) {
+                            return _vm.$router.push({ name: "movies" })
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "nav-link" }, [
+                          _vm._v("Movies")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "nav-item",
+                        class:
+                          this.$route.path === "/movies/new" ? "active" : "",
+                        on: {
+                          click: function($event) {
+                            return _vm.$router.push({ name: "movies" })
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "nav-link" }, [
+                          _vm._v("Review")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
                     !_vm.$store.getters.isLoggedIn
                       ? _c(
                           "li",
@@ -37966,24 +38013,6 @@ var render = function() {
                           ]
                         )
                       : _vm._e(),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass: "nav-item",
-                        class: this.$route.path === "/movies" ? "active" : "",
-                        on: {
-                          click: function($event) {
-                            return _vm.$router.push({ name: "movies" })
-                          }
-                        }
-                      },
-                      [
-                        _c("span", { staticClass: "nav-link" }, [
-                          _vm._v("Review")
-                        ])
-                      ]
-                    ),
                     _vm._v(" "),
                     _vm.$store.getters.isLoggedIn
                       ? _c(
