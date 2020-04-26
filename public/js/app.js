@@ -2087,6 +2087,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Pagination',
   data: function data() {
@@ -2117,10 +2123,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
       var pagesExpected = this.paginationParam.total / this.paginationParam.per_page;
-      this.dotter = this.paginationParam.current_page < pagesExpected - 3 ? '...' : this.dotter = ''; // run previous pager
+      this.dotter = this.paginationParam.current_page < pagesExpected - 3 ? '...' : this.dotter = ''; // run next pager
 
       if (this.paginationParam.current_page !== this.paginationParam.last_page) {
-        var _endPoint = this.paginationParam.current_page + 3 <= this.paginationParam.last_page ? this.paginationParam.current_page + 3 : paginationParam.last_page;
+        var _endPoint = this.paginationParam.current_page + 3 <= this.paginationParam.last_page ? this.paginationParam.current_page + 3 : this.paginationParam.last_page;
 
         for (var _i = this.paginationParam.current_page + 1; _i <= _endPoint; _i++) {
           this.nextPages.push(_i);
@@ -38098,102 +38104,143 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { attrs: { "aria-label": "Page navigation" } }, [
-    _c(
-      "ul",
-      { staticClass: "pagination text-center" },
-      [
-        _vm.paginationParam.prev_page_url !== null
-          ? _c("li", { staticClass: "page-item" }, [
-              _c(
-                "span",
-                {
-                  staticClass: "page-link",
-                  on: {
-                    click: function($event) {
-                      return _vm.$router.push({
-                        name: "moviesPaged",
-                        params: { page: _vm.paginationParam.current_page - 1 }
-                      })
+  return _vm.paginationParam.per_page !== _vm.paginationParam.total
+    ? _c("nav", { attrs: { "aria-label": "Page navigation" } }, [
+        _c(
+          "ul",
+          { staticClass: "pagination text-center" },
+          [
+            _vm.paginationParam.prev_page_url !== null
+              ? _c("li", { staticClass: "page-item" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "page-link",
+                      on: {
+                        click: function($event) {
+                          return _vm.$router.push({
+                            name: "moviesPaged",
+                            params: {
+                              page: _vm.paginationParam.current_page - 1
+                            }
+                          })
+                        }
+                      }
+                    },
+                    [_vm._v("Previous")]
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._l(_vm.prevPages, function(prev, key) {
+              return _c("li", { key: "prev" + key, staticClass: "page-item" }, [
+                _c(
+                  "span",
+                  {
+                    staticClass: "page-link",
+                    on: {
+                      click: function($event) {
+                        return _vm.$router.push({
+                          name: "moviesPaged",
+                          params: { page: prev }
+                        })
+                      }
                     }
-                  }
-                },
-                [_vm._v("Previous")]
-              )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm._l(_vm.prevPages, function(prev, key) {
-          return _c("li", { key: "prev" + key, staticClass: "page-item" }, [
-            _c(
-              "span",
-              {
-                staticClass: "page-link",
-                on: {
-                  click: function($event) {
-                    return _vm.$router.push({
-                      name: "moviesPaged",
-                      params: { page: prev }
-                    })
-                  }
-                }
-              },
-              [_vm._v(_vm._s(prev))]
-            )
-          ])
-        }),
-        _vm._v(" "),
-        _vm.dotter !== ""
-          ? _c("li", { staticClass: "page-item" }, [
-              _c("span", { staticClass: "page-link" }, [
-                _vm._v(_vm._s(_vm.dotter))
+                  },
+                  [_vm._v(_vm._s(prev))]
+                )
               ])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm._l(_vm.nextPages, function(next, index) {
-          return _c("li", { key: "next" + index, staticClass: "page-item" }, [
-            _c(
-              "span",
-              {
-                staticClass: "page-link",
-                on: {
-                  click: function($event) {
-                    return _vm.$router.push({
-                      name: "moviesPaged",
-                      params: { page: next }
-                    })
-                  }
-                }
-              },
-              [_vm._v(_vm._s(next))]
-            )
-          ])
-        }),
-        _vm._v(" "),
-        _vm.paginationParam.next_page_url !== null
-          ? _c("li", { staticClass: "page-item" }, [
-              _c(
-                "span",
-                {
-                  staticClass: "page-link",
-                  on: {
-                    click: function($event) {
-                      return _vm.$router.push({
-                        name: "moviesPaged",
-                        params: { page: _vm.paginationParam.current_page + 1 }
-                      })
-                    }
-                  }
-                },
-                [_vm._v("Next")]
+            }),
+            _vm._v(" "),
+            _c("li", { staticClass: "page-item active" }, [
+              _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
+                _vm._v(
+                  " " +
+                    _vm._s(_vm.paginationParam.current_page) +
+                    "\n                "
+                ),
+                _c("span", { staticClass: "sr-only" }, [_vm._v("(current)")])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.nextPages, function(next, index) {
+              return _c(
+                "li",
+                { key: "next" + index, staticClass: "page-item" },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "page-link",
+                      on: {
+                        click: function($event) {
+                          return _vm.$router.push({
+                            name: "moviesPaged",
+                            params: { page: next }
+                          })
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(next))]
+                  )
+                ]
               )
-            ])
-          : _vm._e()
-      ],
-      2
-    )
-  ])
+            }),
+            _vm._v(" "),
+            _vm.dotter !== ""
+              ? _c("li", { staticClass: "page-item" }, [
+                  _c("span", { staticClass: "page-link" }, [
+                    _vm._v(_vm._s(_vm.dotter))
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.dotter !== ""
+              ? _c("li", { staticClass: "page-item" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "page-link",
+                      on: {
+                        click: function($event) {
+                          return _vm.$router.push({
+                            name: "moviesPaged",
+                            params: { page: _vm.paginationParam.last_page }
+                          })
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.paginationParam.last_page))]
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.paginationParam.next_page_url !== null
+              ? _c("li", { staticClass: "page-item" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "page-link",
+                      on: {
+                        click: function($event) {
+                          return _vm.$router.push({
+                            name: "moviesPaged",
+                            params: {
+                              page: _vm.paginationParam.current_page + 1
+                            }
+                          })
+                        }
+                      }
+                    },
+                    [_vm._v("Next")]
+                  )
+                ])
+              : _vm._e()
+          ],
+          2
+        )
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true

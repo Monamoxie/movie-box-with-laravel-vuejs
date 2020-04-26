@@ -19,7 +19,7 @@ class MovieService
      */
     public function allMovies(): object
     {
-        return Movie::orderBy('release_date')->paginate(1);
+        return Movie::orderBy('release_date')->paginate(6);
     }
 
     /**
