@@ -1969,6 +1969,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
   data: function data() {
@@ -37924,30 +37925,13 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass: "nav-item",
-                        class: this.$route.path === "/movies" ? "active" : "",
-                        on: {
-                          click: function($event) {
-                            return _vm.$router.push({ name: "movies" })
-                          }
-                        }
-                      },
-                      [
-                        _c("span", { staticClass: "nav-link" }, [
-                          _vm._v("New Review")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
                     !_vm.$store.getters.isLoggedIn
                       ? _c(
                           "li",
                           {
                             staticClass: "nav-item",
-                            class: this.$route.path === "/" ? "login" : "",
+                            class:
+                              this.$route.path === "/login" ? "active" : "",
                             on: {
                               click: function($event) {
                                 return _vm.$router.push({ name: "login" })
@@ -37967,7 +37951,8 @@ var render = function() {
                           "li",
                           {
                             staticClass: "nav-item",
-                            class: this.$route.path === "/" ? "register" : "",
+                            class:
+                              this.$route.path === "/register" ? "active" : "",
                             on: {
                               click: function($event) {
                                 return _vm.$router.push({ name: "register" })
@@ -37982,12 +37967,31 @@ var render = function() {
                         )
                       : _vm._e(),
                     _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "nav-item",
+                        class: this.$route.path === "/movies" ? "active" : "",
+                        on: {
+                          click: function($event) {
+                            return _vm.$router.push({ name: "movies" })
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "nav-link" }, [
+                          _vm._v("Review")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
                     _vm.$store.getters.isLoggedIn
                       ? _c(
                           "li",
                           {
                             staticClass: "nav-item",
-                            class: this.$route.path === "/" ? "active" : "",
+                            class:
+                              this.$route.path === "/logout" ? "active" : "",
                             on: {
                               click: function($event) {
                                 return _vm.$router.push({ name: "logout" })

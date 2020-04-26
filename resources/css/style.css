@@ -243,10 +243,15 @@ a:hover {
 .nav-link {
     cursor: pointer;
 }
-.nav-item {
-    padding: 7px 5px;
-    margin-right: 3px;
-    text-align: center;
+.nav-item { 
+    text-align: center !important; 
+}
+.nav-item.active {
+    margin-right: 20px;
+}
+.nav-link {
+    padding: 7px 2px !important;
+    text-align: center !important; 
 }
 .nav-item.active, .nav-item:hover {
     background: rgba(23, 10, 199, 0.9); 
