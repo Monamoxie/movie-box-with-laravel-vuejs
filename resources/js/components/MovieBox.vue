@@ -68,42 +68,6 @@ export default {
             }) 
         },
     },
-    mounted() {
-        
-        if(this.movies.length > 0) {
-
-            // run previous pager
-            if(this.paginationParam.current_page !== 1) { 
-                const endPoint = this.paginationParam.current_page <= 3 ? 1 : this.paginationParam.current_page - 3
-               
-                for (let i = this.paginationParam.current_page - 1; i >= endPoint; i--) {
-                    this.prevPages.push(i);
-                }
-                (this.prevPages.length > 1) ? this.prevPages.reverse() : this.prevPages
-            }
-
-            // run dotter 
-            const pagesExpected = this.paginationParam.total / this.paginationParam.per_page
-            if(this.paginationParam.current_page < pagesExpected - 3) {
-                this.dotter = '...'
-            }
-
-            // run previous pager
-            if(this.paginationParam.current_page !== this.paginationParam.last_page) {
-                const endPoint = this.paginationParam.current_page + 3 <= this.paginationParam.last_page ? this.paginationParam.current_page + 3 : paginationParam.last_page
-                for (let i = this.paginationParam.current_page + 1; i <= endPoint; i++) {
-                    this.nextPages.push(i);
-                }
-            }
-            console.log(this.prevPages)
-            console.log(this.dotter)
-            console.log(this.nextPages)
-
-        }
-    
-        //run next pager
-        
-    },
     props: {
         movies: {
             type: Array,

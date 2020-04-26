@@ -2040,41 +2040,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  mounted: function mounted() {
-    if (this.movies.length > 0) {
-      // run previous pager
-      if (this.paginationParam.current_page !== 1) {
-        var endPoint = this.paginationParam.current_page <= 3 ? 1 : this.paginationParam.current_page - 3;
-
-        for (var i = this.paginationParam.current_page - 1; i >= endPoint; i--) {
-          this.prevPages.push(i);
-        }
-
-        this.prevPages.length > 1 ? this.prevPages.reverse() : this.prevPages;
-      } // run dotter 
-
-
-      var pagesExpected = this.paginationParam.total / this.paginationParam.per_page;
-
-      if (this.paginationParam.current_page < pagesExpected - 3) {
-        this.dotter = '...';
-      } // run previous pager
-
-
-      if (this.paginationParam.current_page !== this.paginationParam.last_page) {
-        var _endPoint = this.paginationParam.current_page + 3 <= this.paginationParam.last_page ? this.paginationParam.current_page + 3 : paginationParam.last_page;
-
-        for (var _i = this.paginationParam.current_page + 1; _i <= _endPoint; _i++) {
-          this.nextPages.push(_i);
-        }
-      }
-
-      console.log(this.prevPages);
-      console.log(this.dotter);
-      console.log(this.nextPages);
-    } //run next pager
-
-  },
   props: {
     movies: {
       type: Array,
@@ -2135,6 +2100,40 @@ __webpack_require__.r(__webpack_exports__);
     paginationParam: {
       type: Object,
       required: true
+    }
+  },
+  mounted: function mounted() {
+    if (Object.keys(this.paginationParam).length > 0) {
+      // run previous pager
+      if (this.paginationParam.current_page !== 1) {
+        var endPoint = this.paginationParam.current_page <= 3 ? 1 : this.paginationParam.current_page - 3;
+
+        for (var i = this.paginationParam.current_page - 1; i >= endPoint; i--) {
+          this.prevPages.push(i);
+        }
+
+        this.prevPages.length > 1 ? this.prevPages.reverse() : this.prevPages;
+      } // run dotter 
+
+
+      var pagesExpected = this.paginationParam.total / this.paginationParam.per_page;
+
+      if (this.paginationParam.current_page < pagesExpected - 3) {
+        this.dotter = '...';
+      } // run previous pager
+
+
+      if (this.paginationParam.current_page !== this.paginationParam.last_page) {
+        var _endPoint = this.paginationParam.current_page + 3 <= this.paginationParam.last_page ? this.paginationParam.current_page + 3 : paginationParam.last_page;
+
+        for (var _i = this.paginationParam.current_page + 1; _i <= _endPoint; _i++) {
+          this.nextPages.push(_i);
+        }
+      }
+
+      console.log(this.prevPages);
+      console.log(this.dotter);
+      console.log(this.nextPages);
     }
   }
 });
@@ -38120,7 +38119,7 @@ var render = function() {
                   staticClass: "page-link",
                   on: {
                     click: function($event) {
-                      return _vm.$router.push({
+                      return this.$router.push({
                         name: "moviesPaged",
                         params: { page: this.paginationParam.current_page - 1 }
                       })
@@ -38168,7 +38167,7 @@ var render = function() {
                   staticClass: "page-link",
                   on: {
                     click: function($event) {
-                      return _vm.$router.push({
+                      return this.$router.push({
                         name: "moviesPaged",
                         params: { page: this.paginationParam.current_page + 1 }
                       })
