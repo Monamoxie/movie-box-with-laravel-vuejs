@@ -246,9 +246,7 @@ a:hover {
 .nav-item { 
     text-align: center !important; 
 }
-.nav-item.active {
-    margin-right: 20px;
-}
+ 
 .nav-link {
     padding: 7px 2px !important;
     text-align: center !important; 
