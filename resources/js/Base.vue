@@ -32,7 +32,7 @@
         </header>
 
         
-        <router-view></router-view>
+        <router-view :key="$route.fullPath"></router-view>
         <footer class="footer">
             <div class="container">
                 <span class="text-muted">  &copy; {{ new Date().getFullYear() }} <br/>  All rights reserved. </span>

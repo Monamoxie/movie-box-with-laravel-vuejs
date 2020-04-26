@@ -37,20 +37,7 @@
                 </div>
                
                 <div class="mt-2 " v-else>
-                    <nav aria-label="Page navigation" >
-                        <ul class="pagination text-center">
-                            <li class="page-item" v-if="paginationParam.prev_page_url !== null">
-                                <a class="page-link" :href="paginationParam.prev_page_url">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-
-                            <li class="page-item" v-if="paginationParam.next_page_url !== null">
-                                <a class="page-link" :href="paginationParam.next_page_url">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <pagination :paginationParam="paginationParam"></pagination>
                 </div>  
             </div> 
         </div>
@@ -60,8 +47,13 @@
     </div>
 </template>
 <script>
+import Pagination from './Pagination'
+
 export default {
     name: "MovieBox",
+    components: {
+        Pagination
+    },
     methods: {
         photoPath(photo) {
             return '/storage/uploads/images/' + photo 
@@ -74,7 +66,43 @@ export default {
                     slug
                 },
             }) 
+        },
+    },
+    mounted() {
+        
+        if(this.movies.length > 0) {
+
+            // run previous pager
+            if(this.paginationParam.current_page !== 1) { 
+                const endPoint = this.paginationParam.current_page <= 3 ? 1 : this.paginationParam.current_page - 3
+               
+                for (let i = this.paginationParam.current_page - 1; i >= endPoint; i--) {
+                    this.prevPages.push(i);
+                }
+                (this.prevPages.length > 1) ? this.prevPages.reverse() : this.prevPages
+            }
+
+            // run dotter 
+            const pagesExpected = this.paginationParam.total / this.paginationParam.per_page
+            if(this.paginationParam.current_page < pagesExpected - 3) {
+                this.dotter = '...'
+            }
+
+            // run previous pager
+            if(this.paginationParam.current_page !== this.paginationParam.last_page) {
+                const endPoint = this.paginationParam.current_page + 3 <= this.paginationParam.last_page ? this.paginationParam.current_page + 3 : paginationParam.last_page
+                for (let i = this.paginationParam.current_page + 1; i <= endPoint; i++) {
+                    this.nextPages.push(i);
+                }
+            }
+            console.log(this.prevPages)
+            console.log(this.dotter)
+            console.log(this.nextPages)
+
         }
+    
+        //run next pager
+        
     },
     props: {
         movies: {
@@ -85,6 +113,6 @@ export default {
             type: Object,
             required: true
         }
-    },
+    }, 
 }
 </script>
