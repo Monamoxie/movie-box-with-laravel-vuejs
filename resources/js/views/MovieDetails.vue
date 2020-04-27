@@ -10,7 +10,7 @@
 
             <div v-else>
 
-                 <div v-if="serverResponse.length > 0">
+                <div v-if="serverResponse.length > 0">
                     <div class="alert alert-danger alert-dismissible text-center">
                         <h2 class="alert-heading">An error occured</h2>
                         <div v-if="serverResponse[0].errors.length > 0">
@@ -68,7 +68,10 @@
 
                     <div class="row mt-5"> 
                        <MovieComments :movieComments="movieComments"></MovieComments>
-                    </div>       
+                    </div>  
+
+
+                
                 </div>
             </div>
 

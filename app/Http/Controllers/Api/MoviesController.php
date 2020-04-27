@@ -28,9 +28,9 @@ class MoviesController extends Controller
     {   
         $movieDetails = $movieService->movieDetails(preg_replace('#[^a-z0-9-]#i', '', $request->id));
 
-            return $movieDetails->movie !== null ?
+            return $movieDetails !== null ?
                 $this->successResponse('Data was successfully fetched.', $movieDetails) : 
-                $this->errorResponse('An error occured'); 
+                $this->errorResponse('No record found'); 
     }
 
     
