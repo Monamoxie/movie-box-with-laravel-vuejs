@@ -1979,9 +1979,6 @@ __webpack_require__.r(__webpack_exports__);
     return {
       movies: []
     };
-  },
-  mounted: function mounted() {
-    console.log(this.$route);
   }
 });
 
@@ -37937,6 +37934,7 @@ var render = function() {
                         staticClass: "nav-item",
                         class:
                           this.$route.name === "movies" ||
+                          this.$route.name === "movieDetails" ||
                           this.$route.name === "moviesPaged"
                             ? "active"
                             : "",
@@ -37967,7 +37965,7 @@ var render = function() {
                       },
                       [
                         _c("span", { staticClass: "nav-link" }, [
-                          _vm._v("Review")
+                          _vm._v("New Review")
                         ])
                       ]
                     ),
@@ -55707,31 +55705,19 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [{
   path: '/',
   name: 'home',
-  component: _views_Home__WEBPACK_IMPORTED_MODULE_0__["default"] // meta: { 
-  //     guard: 'guest',
-  // },
-
+  component: _views_Home__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
   path: '/movies/:id/:slug',
   name: 'movieDetails',
-  component: _views_MovieDetails__WEBPACK_IMPORTED_MODULE_1__["default"] // meta: { 
-  //     guard: 'guest',
-  // },
-
+  component: _views_MovieDetails__WEBPACK_IMPORTED_MODULE_1__["default"]
 }, {
   path: '/movies',
   name: 'movies',
-  component: _views_Movies__WEBPACK_IMPORTED_MODULE_2__["default"] // meta: { 
-  //     guard: 'guest',
-  // },
-
+  component: _views_Movies__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: '/movies/:page',
   name: 'moviesPaged',
-  component: _views_Movies__WEBPACK_IMPORTED_MODULE_2__["default"] // meta: { 
-  //     guard: 'guest',
-  // },
-
+  component: _views_Movies__WEBPACK_IMPORTED_MODULE_2__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 

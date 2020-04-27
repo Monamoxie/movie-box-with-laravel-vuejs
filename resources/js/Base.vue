@@ -22,13 +22,13 @@
                                 @click="$router.push({ name: 'home' })">
                                 <span class="nav-link">Home</span>
                             </li>
-                            <li class="nav-item" :class="this.$route.name === 'movies' || this.$route.name === 'moviesPaged' ? 'active' : '' "
+                            <li class="nav-item" :class="this.$route.name === 'movies' || this.$route.name === 'movieDetails' || this.$route.name === 'moviesPaged' ? 'active' : '' "
                                 @click="$router.push({ name: 'movies' })">
                                 <span class="nav-link">Movies</span>
                             </li>
                             <li class="nav-item" :class="this.$route.path === '/movies/new' ? 'active' : '' " 
                                 @click="$router.push({ name: 'movies' })">
-                                <span class="nav-link">Review</span>
+                                <span class="nav-link">New Review</span>
                             </li>
                             <li class="nav-item" :class="this.$route.path === '/login' ? 'active' : '' "  v-if="!$store.getters.isLoggedIn "
                                 @click="$router.push({ name: 'login' })">
@@ -70,10 +70,7 @@ export default {
         return {
             movies: [],
         }
-    },
-    mounted() {
-        console.log(this.$route)
-    }
+    }, 
  
 }
 </script>

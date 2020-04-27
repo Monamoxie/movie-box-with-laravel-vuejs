@@ -7,33 +7,21 @@ const routes = [
         path: '/',
         name: 'home',
         component: Home,
-        // meta: { 
-        //     guard: 'guest',
-        // },
     },
     {
         path: '/movies/:id/:slug',
         name: 'movieDetails',
         component: MovieDetails,
-        // meta: { 
-        //     guard: 'guest',
-        // },
     },
     {
         path: '/movies',
         name: 'movies',
         component: Movies,
-        // meta: { 
-        //     guard: 'guest',
-        // },
     },
     {
         path: '/movies/:page',
         name: 'moviesPaged',
         component: Movies,
-        // meta: { 
-        //     guard: 'guest',
-        // },
     }
 ]
 

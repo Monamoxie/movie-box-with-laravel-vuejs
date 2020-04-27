@@ -245,10 +245,13 @@ a:hover {
 }
 .nav-item { 
     text-align: center !important; 
+    margin-left: 3px;
+    padding: 6px 10px;
 }
  
 .nav-link {
-    padding: 7px 2px !important;
+    margin: 0 !important;
+    padding: 0 !important;
     text-align: center !important; 
 }
 .nav-item.active, .nav-item:hover {
