@@ -1,6 +1,7 @@
 import Home from '../views/Home'
 import MovieDetails from '../views/MovieDetails'
 import Movies from '../views/Movies'
+import Login from '../views/Login'
 
 const routes = [
     {
@@ -22,6 +23,12 @@ const routes = [
         path: '/movies/:page',
         name: 'moviesPaged',
         component: Movies,
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: Login,
+        guard: 'guest'
     }
 ]
 
