@@ -30,11 +30,11 @@
                                 @click="$router.push({ name: 'movies' })">
                                 <span class="nav-link">New Review</span>
                             </li>
-                            <li class="nav-item" :class="this.$route.path === '/login' ? 'active' : '' "  v-if="!$store.getters.isLoggedIn "
+                            <li class="nav-item" :class="this.$route.path === '/login' ? 'active' : '' "  v-if="!$store.getters.isLoggedIn"
                                 @click="$router.push({ name: 'login' })">
                                 <span class="nav-link">Login</span>
                             </li>
-                            <li class="nav-item" :class="this.$route.path === '/register' ? 'active' : '' "  v-if="!$store.getters.isLoggedIn "
+                            <li class="nav-item" :class="this.$route.path === '/register' ? 'active' : '' "  v-if="!$store.getters.isLoggedIn"
                                 @click="$router.push({ name: 'register' })">
                                 <span class="nav-link">Register</span>
                             </li>

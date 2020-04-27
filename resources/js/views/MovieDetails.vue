@@ -21,58 +21,64 @@
                     </div>
                 </div>
 
-                <div v-else class="movie_details">
-                    <div class="header-layer">
-                        <h3 class="title-wthree mb-2">
-                            Movie title <span class="mt-2 text-uppercase font-weight-bold"> {{ movieDetails.title }} </span>
-                        </h3>
-                        <p class=""> <span class=" font-weight-bold text-primary">A 
-                            {{ new Date(movieDetails.release_date).getFullYear() }} blockbuster </span>
-                        </p>
-                    </div> 
-                    <div class="row">
-                        <div class="col-md-5 image-wrapper">
-                            <img :src="`/storage/uploads/images/${ movieDetails.photo }`" :alt="movieDetails.photo">
-                        </div>
-                        <div class="col-md-7">
-                            <dl class="row">
-                                <dt class="col-sm-3">Release Date</dt>
-                                <dd class="col-sm-9"> {{ movieDetails.formated_release_date }} </dd>
-                            
-                                <dt class="col-sm-3">Rating</dt>
-                                <dd class="col-sm-9">
-                                     <i class="fa fa-star orange" v-for="(rated, index) in movieDetails.rating" :key="index"></i>
-                                    <span v-if="5 - movieDetails.rating > 0">
-                                        <i class="fa fa-star grey" v-for="(rated, index) in 5 - movieDetails.rating" :key="index"></i>
-                                    </span>
-                                </dd>
-                            
-                                <dt class="col-sm-3">Ticket Price</dt>
-                                <dd class="col-sm-9"> &#8358; {{ movieDetails.ticket_price }} </dd>
-                            
-                                <dt class="col-sm-3 text-truncate">Country</dt>
-                                <dd class="col-sm-9"> {{ movieDetails.country }} </dd>
-                            
-                                <dt class="col-sm-3">Genre</dt>
-                                <dd class="col-sm-9">
-                                    {{ movieDetails.genre }}
-                                </dd>
+                <div v-else class="movie-details">
 
-                                <dt class="col-sm-3">Description</dt>
-                                <dd class="col-sm-9">
-                                    {{ movieDetails.description }}
-                                </dd>
-                            </dl>
+                    <div v-if="Object.keys(movieDetails).length > 0">
+                        
+                        <div class="header-layer">
+                            <h3 class="title-wthree mb-2">
+                                Movie title <span class="mt-2 text-uppercase font-weight-bold"> {{ movieDetails.title }} </span>
+                            </h3>
+                            <p class=""> <span class=" font-weight-bold text-primary">A 
+                                {{ new Date(movieDetails.release_date).getFullYear() }} blockbuster </span>
+                            </p>
+                        </div> 
+
+                        <div class="row">
+                            <div class="col-md-5 image-wrapper">
+                                <img :src="`/storage/uploads/images/${ movieDetails.photo }`" :alt="movieDetails.photo">
+                            </div>
+                            <div class="col-md-7">
+                                <dl class="row">
+                                    <dt class="col-sm-3">Release Date</dt>
+                                    <dd class="col-sm-9"> {{ movieDetails.formated_release_date }} </dd>
+                                
+                                    <dt class="col-sm-3">Rating</dt>
+                                    <dd class="col-sm-9">
+                                        <i class="fa fa-star orange" v-for="(rated, index) in movieDetails.rating" :key="index"></i>
+                                        <span v-if="5 - movieDetails.rating > 0">
+                                            <i class="fa fa-star grey" v-for="(rated, index) in 5 - movieDetails.rating" :key="index"></i>
+                                        </span>
+                                    </dd>
+                                
+                                    <dt class="col-sm-3">Ticket Price</dt>
+                                    <dd class="col-sm-9"> &#8358; {{ movieDetails.ticket_price }} </dd>
+                                
+                                    <dt class="col-sm-3 text-truncate">Country</dt>
+                                    <dd class="col-sm-9"> {{ movieDetails.country }} </dd>
+                                
+                                    <dt class="col-sm-3">Genre</dt>
+                                    <dd class="col-sm-9">
+                                        {{ movieDetails.genre }}
+                                    </dd>
+
+                                    <dt class="col-sm-3">Description</dt>
+                                    <dd class="col-sm-9">
+                                        {{ movieDetails.description }}
+                                    </dd>
+                                </dl>
+                            </div>
                         </div>
+
+                        <div class="row mt-5"> 
+                            <MovieComments :movieComments="movieComments"></MovieComments>
+                        </div>   
+
+                        <PostComment :movieId="movieDetails.id"></PostComment>
                     </div>
 
-                    <div class="row mt-5"> 
-                       <MovieComments :movieComments="movieComments"></MovieComments>
-                    </div>  
-
-
-                
                 </div>
+
             </div>
 
         </div>
@@ -84,11 +90,13 @@
 <script>
 import MovieComments from '../components/MovieComments'
 import ZedBanner from '../components/ZedBanner'
+import PostComment from '../components/PostComment'
 export default {
     name: "MovieDetails",
     components: {
         MovieComments,
-        ZedBanner
+        ZedBanner,
+        PostComment
     },
     data() {
         return {
@@ -105,7 +113,7 @@ export default {
         })
         .then((response) => {     
             this.movieDetails = response.data.data.movie
-            this.movieComments = response.data.data.comments 
+            this.movieComments = response.data.data.comments
         })
         .catch(error => { 
             let errDisplay = ''

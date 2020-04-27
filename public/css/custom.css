@@ -262,6 +262,19 @@ a:hover {
 .nav-item:hover .nav-link  {
     color: #ffffff !important;
 }
+.movie-details {
+    padding: 40px 0;
+    margin: 30px auto;
+} 
+ 
+
+
+
+
+
+
+
+
 
 
 
@@ -539,13 +552,7 @@ ul.links li a {
 }
  
 
-.movie_details {
-    padding: 40px 0;
-    margin: 30px auto;
-}
-@media(max-width: 1366px) {}
 
-@media(max-width: 1280px) {}
 
 @media(max-width: 1080px) {
     .icon-button-w3 i {
