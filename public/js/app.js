@@ -2476,15 +2476,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Login'
 });
@@ -38728,7 +38719,7 @@ var render = function() {
               _c(
                 "a",
                 {
-                  staticClass: "btn btn-primary",
+                  staticClass: "btn btn-primary text-white",
                   on: {
                     click: function($event) {
                       return _vm.$router.push({ name: "login" })
@@ -38741,7 +38732,7 @@ var render = function() {
               _c(
                 "a",
                 {
-                  staticClass: "btn btn-success",
+                  staticClass: "btn btn-success text-white",
                   on: {
                     click: function($event) {
                       return _vm.$router.push({ name: "register" })
@@ -39080,8 +39071,8 @@ var render = function() {
   return _c("div", { staticClass: "container higher-dv" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v(" LOGIN ")]),
+        _c("div", { staticClass: "card shadow" }, [
+          _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c(
@@ -39095,15 +39086,7 @@ var render = function() {
                   }
                 }
               },
-              [
-                _vm._m(0),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
-                _vm._m(3)
-              ]
+              [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3)]
             )
           ])
         ])
@@ -39112,6 +39095,14 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header text-center" }, [
+      _c("h4", { staticClass: "p-0 m-0" }, [_c("b", [_vm._v("LOGIN")])])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -39136,7 +39127,8 @@ var staticRenderFns = [
             value: "",
             required: "",
             autocomplete: "email",
-            autofocus: ""
+            autofocus: "",
+            placeholder: "Email address"
           }
         })
       ])
@@ -39164,29 +39156,10 @@ var staticRenderFns = [
             type: "password",
             name: "password",
             required: "",
-            autocomplete: "current-password"
+            autocomplete: "current-password",
+            placeholder: "Password"
           }
         })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-md-6 offset-md-4" }, [
-        _c("div", { staticClass: "form-check" }, [
-          _c("input", {
-            staticClass: "form-check-input",
-            attrs: { type: "checkbox", name: "remember", id: "remember" }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "form-check-label",
-            attrs: { for: "remember" }
-          })
-        ])
       ])
     ])
   },
