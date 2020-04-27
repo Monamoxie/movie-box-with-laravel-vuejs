@@ -2076,6 +2076,51 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MovieComments.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MovieComments.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'MovieComments',
+  props: {
+    movieComments: {
+      type: Array,
+      require: true
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Pagination.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Pagination.vue?vue&type=script&lang=js& ***!
@@ -2160,6 +2205,42 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ZedBanner.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ZedBanner.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'ZedBanner',
+  data: function data() {
+    return {
+      bottomBannerBackgroundImage: 'background-image: url("' + __webpack_require__(/*! ../../images/banner22.jpg */ "./resources/images/banner22.jpg") + '")'
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Home.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Home.vue?vue&type=script&lang=js& ***!
@@ -2171,6 +2252,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_MovieBox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/MovieBox */ "./resources/js/components/MovieBox.vue");
 /* harmony import */ var _mixins_MovieBoxMixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins/MovieBoxMixin */ "./resources/js/mixins/MovieBoxMixin.js");
+/* harmony import */ var _components_ZedBanner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/ZedBanner */ "./resources/js/components/ZedBanner.vue");
 //
 //
 //
@@ -2227,25 +2309,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Home',
   components: {
-    MovieBox: _components_MovieBox__WEBPACK_IMPORTED_MODULE_0__["default"]
+    MovieBox: _components_MovieBox__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ZedBanner: _components_ZedBanner__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   mixins: [_mixins_MovieBoxMixin__WEBPACK_IMPORTED_MODULE_1__["default"]],
   data: function data() {
@@ -2271,6 +2342,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_MovieComments__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/MovieComments */ "./resources/js/components/MovieComments.vue");
+/* harmony import */ var _components_ZedBanner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/ZedBanner */ "./resources/js/components/ZedBanner.vue");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 //
@@ -2353,49 +2426,20 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MovieDetails",
+  components: {
+    MovieComments: _components_MovieComments__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ZedBanner: _components_ZedBanner__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   data: function data() {
     return {
       processingDetails: false,
       serverResponse: [],
       movieDetails: {},
-      movieComments: [],
-      bottomBannerBackgroundImage: 'background-image: url("' + __webpack_require__(/*! ../../images/banner22.jpg */ "./resources/images/banner22.jpg") + '")'
+      movieComments: []
     };
   },
   mounted: function mounted() {
@@ -38243,6 +38287,73 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MovieComments.vue?vue&type=template&id=7a4c2ae9&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MovieComments.vue?vue&type=template&id=7a4c2ae9& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "post-comments-box" }, [
+    _c("div", { staticClass: "container text-center" }, [
+      _c("div", { staticClass: "row form-wrapper" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-8" }, [
+          _vm.movieComments.length > 0
+            ? _c(
+                "div",
+                _vm._l(_vm.movieComments, function(comment, key) {
+                  return _c("div", { key: key, staticClass: "card mb-3" }, [
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("p", { staticClass: "card-text text-left" }, [
+                        _vm._v(_vm._s(comment.comment))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-footer text-muted" }, [
+                      _c("div", { staticClass: " float-left" }, [
+                        _vm._v(" " + _vm._s(comment.formatted_created_at))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: " float-right" }, [
+                        _vm._v(" " + _vm._s(comment.poster_name))
+                      ])
+                    ])
+                  ])
+                }),
+                0
+              )
+            : _vm._e()
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4 post-comment-title" }, [
+      _c("h3", { staticClass: "text-primary" }, [_vm._v(" Comments >> ")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Pagination.vue?vue&type=template&id=d7acf176&":
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Pagination.vue?vue&type=template&id=d7acf176& ***!
@@ -38403,6 +38514,69 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ZedBanner.vue?vue&type=template&id=43ebbaca&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ZedBanner.vue?vue&type=template&id=43ebbaca& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "jumbotron",
+      style: _vm.bottomBannerBackgroundImage
+        ? _vm.bottomBannerBackgroundImage
+        : ""
+    },
+    [_vm._m(0)]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "overlay" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h1", { staticClass: "display-4" }, [_vm._v("Hello, world!")]),
+        _vm._v(" "),
+        _c("p", { staticClass: "lead" }, [
+          _vm._v(
+            "\n                    In a land of myth, and a time of magic, the destiny of a great kingdom rests on the shoulders of a young boy. His name....\n                    Merlin.\n                "
+          )
+        ]),
+        _vm._v(" "),
+        _c("hr", { staticClass: "my-4" }),
+        _vm._v(" "),
+        _c("p", [_vm._v(" A quote from the drama series Merlin ")]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-primary btn-lg",
+            attrs: { href: "javascript:void(0)", role: "button" }
+          },
+          [_vm._v("Learn more")]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Home.vue?vue&type=template&id=63cd6604&":
 /*!**************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Home.vue?vue&type=template&id=63cd6604& ***!
@@ -38418,89 +38592,86 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass: "landing-banner",
-        style: _vm.topBannerBackgroundImage ? _vm.topBannerBackgroundImage : ""
-      },
-      [_vm._m(0)]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "box-jumbotron bg-white" }, [
-      _vm._m(1),
+  return _c(
+    "div",
+    [
+      _c(
+        "div",
+        {
+          staticClass: "landing-banner",
+          style: _vm.topBannerBackgroundImage
+            ? _vm.topBannerBackgroundImage
+            : ""
+        },
+        [_vm._m(0)]
+      ),
       _vm._v(" "),
-      _vm.processing
-        ? _c("div", { staticClass: "text-center" }, [
-            _vm._m(2),
-            _vm._v(" "),
-            _c("p", { staticClass: "muted" }, [_vm._v(" Loading...")])
-          ])
-        : _c("div", [
-            _vm.serverResponse.length > 0
-              ? _c("div", [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "alert alert-danger alert-dismissible text-center"
-                    },
-                    [
-                      _c("h2", { staticClass: "alert-heading" }, [
-                        _vm._v("An error occured")
-                      ]),
-                      _vm._v(" "),
-                      _vm.serverResponse[0].errors.length > 0
-                        ? _c(
-                            "div",
-                            _vm._l(_vm.serverResponse[0].errors, function(
-                              error,
-                              key
-                            ) {
-                              return _c("p", { key: key }, [
-                                _vm._v(
-                                  "\n                            " +
-                                    _vm._s(error[0]) +
-                                    "\n                        "
-                                )
-                              ])
-                            }),
-                            0
-                          )
-                        : _vm._e()
-                    ]
-                  )
-                ])
-              : _c("div", { staticClass: "album py-5 bg-light" }, [
-                  _c(
-                    "div",
-                    { staticClass: "container" },
-                    [
-                      _c("movie-box", {
-                        attrs: {
-                          movies: _vm.movies,
-                          paginationParam: _vm.paginationParam
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ])
-          ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "jumbotron",
-        style: _vm.bottomBannerBackgroundImage
-          ? _vm.bottomBannerBackgroundImage
-          : ""
-      },
-      [_vm._m(3)]
-    )
-  ])
+      _c("div", { staticClass: "box-jumbotron bg-white" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _vm.processing
+          ? _c("div", { staticClass: "text-center" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("p", { staticClass: "muted" }, [_vm._v(" Loading...")])
+            ])
+          : _c("div", [
+              _vm.serverResponse.length > 0
+                ? _c("div", [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "alert alert-danger alert-dismissible text-center"
+                      },
+                      [
+                        _c("h2", { staticClass: "alert-heading" }, [
+                          _vm._v("An error occured")
+                        ]),
+                        _vm._v(" "),
+                        _vm.serverResponse[0].errors.length > 0
+                          ? _c(
+                              "div",
+                              _vm._l(_vm.serverResponse[0].errors, function(
+                                error,
+                                key
+                              ) {
+                                return _c("p", { key: key }, [
+                                  _vm._v(
+                                    "\n                            " +
+                                      _vm._s(error[0]) +
+                                      "\n                        "
+                                  )
+                                ])
+                              }),
+                              0
+                            )
+                          : _vm._e()
+                      ]
+                    )
+                  ])
+                : _c("div", { staticClass: "album py-5 bg-light" }, [
+                    _c(
+                      "div",
+                      { staticClass: "container" },
+                      [
+                        _c("movie-box", {
+                          attrs: {
+                            movies: _vm.movies,
+                            paginationParam: _vm.paginationParam
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+            ])
+      ]),
+      _vm._v(" "),
+      _c("ZedBanner")
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -38557,35 +38728,6 @@ var staticRenderFns = [
       _c("div"),
       _c("div")
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "overlay" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("h1", { staticClass: "display-4" }, [_vm._v("Hello, world!")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "lead" }, [
-          _vm._v(
-            "\n                    In a land of myth, and a time of magic, the destiny of a great kingdom rests on the shoulders of a young boy. His name....\n                    Merlin.\n                "
-          )
-        ]),
-        _vm._v(" "),
-        _c("hr", { staticClass: "my-4" }),
-        _vm._v(" "),
-        _c("p", [_vm._v(" A quote from the drama series Merlin ")]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-primary btn-lg",
-            attrs: { href: "javascript:void(0)", role: "button" }
-          },
-          [_vm._v("Learn more")]
-        )
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -38609,277 +38751,212 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "movies_container" }, [
-    _c("div", { staticClass: "container text-center" }, [
-      _vm.processingDetails
-        ? _c("div", { staticClass: "text-center" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("p", { staticClass: "muted" }, [_vm._v(" Loading...")])
-          ])
-        : _c("div", [
-            _vm.serverResponse.length > 0
-              ? _c("div", [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "alert alert-danger alert-dismissible text-center"
-                    },
-                    [
-                      _c("h2", { staticClass: "alert-heading" }, [
-                        _vm._v("An error occured")
+  return _c(
+    "div",
+    { staticClass: "movies_container" },
+    [
+      _c("div", { staticClass: "container text-center" }, [
+        _vm.processingDetails
+          ? _c("div", { staticClass: "text-center" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("p", { staticClass: "muted" }, [_vm._v(" Loading...")])
+            ])
+          : _c("div", [
+              _vm.serverResponse.length > 0
+                ? _c("div", [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "alert alert-danger alert-dismissible text-center"
+                      },
+                      [
+                        _c("h2", { staticClass: "alert-heading" }, [
+                          _vm._v("An error occured")
+                        ]),
+                        _vm._v(" "),
+                        _vm.serverResponse[0].errors.length > 0
+                          ? _c(
+                              "div",
+                              _vm._l(_vm.serverResponse[0].errors, function(
+                                error,
+                                key
+                              ) {
+                                return _c("p", { key: key }, [
+                                  _vm._v(
+                                    "\n                            " +
+                                      _vm._s(error) +
+                                      "\n                        "
+                                  )
+                                ])
+                              }),
+                              0
+                            )
+                          : _vm._e()
+                      ]
+                    )
+                  ])
+                : _c("div", { staticClass: "movie_details" }, [
+                    _c("div", { staticClass: "header-layer" }, [
+                      _c("h3", { staticClass: "title-wthree mb-2" }, [
+                        _vm._v("\n                        Movie title "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "mt-2 text-uppercase font-weight-bold"
+                          },
+                          [_vm._v(" " + _vm._s(_vm.movieDetails.title) + " ")]
+                        )
                       ]),
                       _vm._v(" "),
-                      _vm.serverResponse[0].errors.length > 0
-                        ? _c(
-                            "div",
-                            _vm._l(_vm.serverResponse[0].errors, function(
-                              error,
-                              key
-                            ) {
-                              return _c("p", { key: key }, [
-                                _vm._v(
-                                  "\n                            " +
-                                    _vm._s(error) +
-                                    "\n                        "
-                                )
-                              ])
-                            }),
-                            0
-                          )
-                        : _vm._e()
-                    ]
-                  )
-                ])
-              : _c("div", { staticClass: "movie_details" }, [
-                  _c("div", { staticClass: "header-layer" }, [
-                    _c("h3", { staticClass: "title-wthree mb-2" }, [
-                      _vm._v("\n                        Movie title "),
-                      _c(
-                        "span",
-                        { staticClass: "mt-2 text-uppercase font-weight-bold" },
-                        [_vm._v(" " + _vm._s(_vm.movieDetails.title) + " ")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", {}, [
-                      _c(
-                        "span",
-                        { staticClass: " font-weight-bold text-primary" },
-                        [
-                          _vm._v(
-                            "A \n                        " +
-                              _vm._s(
-                                new Date(
-                                  _vm.movieDetails.release_date
-                                ).getFullYear()
-                              ) +
-                              " blockbuster "
-                          )
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-5 image-wrapper" }, [
-                      _c("img", {
-                        attrs: {
-                          src:
-                            "/storage/uploads/images/" + _vm.movieDetails.photo,
-                          alt: _vm.movieDetails.photo
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-7" }, [
-                      _c("dl", { staticClass: "row" }, [
-                        _c("dt", { staticClass: "col-sm-3" }, [
-                          _vm._v("Release Date")
-                        ]),
-                        _vm._v(" "),
-                        _c("dd", { staticClass: "col-sm-9" }, [
-                          _vm._v(
-                            " " +
-                              _vm._s(_vm.movieDetails.formated_release_date) +
-                              " "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("dt", { staticClass: "col-sm-3" }, [
-                          _vm._v("Rating")
-                        ]),
-                        _vm._v(" "),
+                      _c("p", {}, [
                         _c(
-                          "dd",
-                          { staticClass: "col-sm-9" },
+                          "span",
+                          { staticClass: " font-weight-bold text-primary" },
                           [
-                            _vm._l(_vm.movieDetails.rating, function(
-                              rated,
-                              index
-                            ) {
-                              return _c("i", {
-                                key: index,
-                                staticClass: "fa fa-star orange"
-                              })
-                            }),
-                            _vm._v(" "),
-                            5 - _vm.movieDetails.rating > 0
-                              ? _c(
-                                  "span",
-                                  _vm._l(5 - _vm.movieDetails.rating, function(
-                                    rated,
-                                    index
-                                  ) {
-                                    return _c("i", {
-                                      key: index,
-                                      staticClass: "fa fa-star grey"
-                                    })
-                                  }),
-                                  0
-                                )
-                              : _vm._e()
-                          ],
-                          2
-                        ),
-                        _vm._v(" "),
-                        _c("dt", { staticClass: "col-sm-3" }, [
-                          _vm._v("Ticket Price")
-                        ]),
-                        _vm._v(" "),
-                        _c("dd", { staticClass: "col-sm-9" }, [
-                          _vm._v(
-                            " ₦ " + _vm._s(_vm.movieDetails.ticket_price) + " "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("dt", { staticClass: "col-sm-3 text-truncate" }, [
-                          _vm._v("Country")
-                        ]),
-                        _vm._v(" "),
-                        _c("dd", { staticClass: "col-sm-9" }, [
-                          _vm._v(" " + _vm._s(_vm.movieDetails.country) + " ")
-                        ]),
-                        _vm._v(" "),
-                        _c("dt", { staticClass: "col-sm-3" }, [
-                          _vm._v("Genre")
-                        ]),
-                        _vm._v(" "),
-                        _c("dd", { staticClass: "col-sm-9" }, [
-                          _vm._v(
-                            "\n                                " +
-                              _vm._s(_vm.movieDetails.genre) +
-                              "\n                            "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("dt", { staticClass: "col-sm-3" }, [
-                          _vm._v("Description")
-                        ]),
-                        _vm._v(" "),
-                        _c("dd", { staticClass: "col-sm-9" }, [
-                          _vm._v(
-                            "\n                                " +
-                              _vm._s(_vm.movieDetails.description) +
-                              "\n                            "
-                          )
-                        ])
+                            _vm._v(
+                              "A \n                        " +
+                                _vm._s(
+                                  new Date(
+                                    _vm.movieDetails.release_date
+                                  ).getFullYear()
+                                ) +
+                                " blockbuster "
+                            )
+                          ]
+                        )
                       ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row mt-5" }, [
-                    _c("div", { staticClass: "post-comments-box" }, [
-                      _c("div", { staticClass: "container text-center" }, [
-                        _c("div", { staticClass: "row form-wrapper" }, [
-                          _vm._m(1),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-md-5 image-wrapper" }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "/storage/uploads/images/" +
+                              _vm.movieDetails.photo,
+                            alt: _vm.movieDetails.photo
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-7" }, [
+                        _c("dl", { staticClass: "row" }, [
+                          _c("dt", { staticClass: "col-sm-3" }, [
+                            _vm._v("Release Date")
+                          ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "col-md-8" }, [
-                            _vm.movieComments.length > 0
-                              ? _c(
-                                  "div",
-                                  _vm._l(_vm.movieDetails.comments, function(
-                                    comment,
-                                    key
-                                  ) {
-                                    return _c(
-                                      "div",
-                                      { key: key, staticClass: "card mb-3" },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "card-body" },
-                                          [
-                                            _c(
-                                              "p",
-                                              {
-                                                staticClass:
-                                                  "card-text text-left"
-                                              },
-                                              [_vm._v(_vm._s(comment.comment))]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "card-footer text-muted"
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: " float-left" },
-                                              [
-                                                _vm._v(
-                                                  " " +
-                                                    _vm._s(
-                                                      comment.formatted_created_at
-                                                    )
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              { staticClass: " float-right" },
-                                              [
-                                                _vm._v(
-                                                  " " +
-                                                    _vm._s(comment.poster_name)
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  }),
-                                  0
-                                )
-                              : _vm._e()
+                          _c("dd", { staticClass: "col-sm-9" }, [
+                            _vm._v(
+                              " " +
+                                _vm._s(_vm.movieDetails.formated_release_date) +
+                                " "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("dt", { staticClass: "col-sm-3" }, [
+                            _vm._v("Rating")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "dd",
+                            { staticClass: "col-sm-9" },
+                            [
+                              _vm._l(_vm.movieDetails.rating, function(
+                                rated,
+                                index
+                              ) {
+                                return _c("i", {
+                                  key: index,
+                                  staticClass: "fa fa-star orange"
+                                })
+                              }),
+                              _vm._v(" "),
+                              5 - _vm.movieDetails.rating > 0
+                                ? _c(
+                                    "span",
+                                    _vm._l(
+                                      5 - _vm.movieDetails.rating,
+                                      function(rated, index) {
+                                        return _c("i", {
+                                          key: index,
+                                          staticClass: "fa fa-star grey"
+                                        })
+                                      }
+                                    ),
+                                    0
+                                  )
+                                : _vm._e()
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("dt", { staticClass: "col-sm-3" }, [
+                            _vm._v("Ticket Price")
+                          ]),
+                          _vm._v(" "),
+                          _c("dd", { staticClass: "col-sm-9" }, [
+                            _vm._v(
+                              " ₦ " +
+                                _vm._s(_vm.movieDetails.ticket_price) +
+                                " "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("dt", { staticClass: "col-sm-3 text-truncate" }, [
+                            _vm._v("Country")
+                          ]),
+                          _vm._v(" "),
+                          _c("dd", { staticClass: "col-sm-9" }, [
+                            _vm._v(" " + _vm._s(_vm.movieDetails.country) + " ")
+                          ]),
+                          _vm._v(" "),
+                          _c("dt", { staticClass: "col-sm-3" }, [
+                            _vm._v("Genre")
+                          ]),
+                          _vm._v(" "),
+                          _c("dd", { staticClass: "col-sm-9" }, [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.movieDetails.genre) +
+                                "\n                            "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("dt", { staticClass: "col-sm-3" }, [
+                            _vm._v("Description")
+                          ]),
+                          _vm._v(" "),
+                          _c("dd", { staticClass: "col-sm-9" }, [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.movieDetails.description) +
+                                "\n                            "
+                            )
                           ])
                         ])
                       ])
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "row mt-5" },
+                      [
+                        _c("MovieComments", {
+                          attrs: { movieComments: _vm.movieComments }
+                        })
+                      ],
+                      1
+                    )
                   ])
-                ])
-          ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "jumbotron",
-        style: _vm.bottomBannerBackgroundImage
-          ? _vm.bottomBannerBackgroundImage
-          : ""
-      },
-      [_vm._m(2)]
-    )
-  ])
+            ])
+      ]),
+      _vm._v(" "),
+      _c("ZedBanner")
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -38891,43 +38968,6 @@ var staticRenderFns = [
       _c("div"),
       _c("div"),
       _c("div")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4 post-comment-title" }, [
-      _c("h3", { staticClass: "text-primary" }, [_vm._v(" Comments >> ")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "overlay" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("h1", { staticClass: "display-4" }, [_vm._v("Hello, world!")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "lead" }, [
-          _vm._v(
-            "\n                    In a land of myth, and a time of magic, the destiny of a great kingdom rests on the shoulders of a young boy. His name....\n                    Merlin.\n                "
-          )
-        ]),
-        _vm._v(" "),
-        _c("hr", { staticClass: "my-4" }),
-        _vm._v(" "),
-        _c("p", [_vm._v(" A quote from the drama series Merlin ")]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-primary btn-lg",
-            attrs: { href: "javascript:void(0)", role: "button" }
-          },
-          [_vm._v("Learn more")]
-        )
-      ])
     ])
   }
 ]
@@ -55541,6 +55581,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/MovieComments.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/MovieComments.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MovieComments_vue_vue_type_template_id_7a4c2ae9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MovieComments.vue?vue&type=template&id=7a4c2ae9& */ "./resources/js/components/MovieComments.vue?vue&type=template&id=7a4c2ae9&");
+/* harmony import */ var _MovieComments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MovieComments.vue?vue&type=script&lang=js& */ "./resources/js/components/MovieComments.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _MovieComments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MovieComments_vue_vue_type_template_id_7a4c2ae9___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MovieComments_vue_vue_type_template_id_7a4c2ae9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/MovieComments.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/MovieComments.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/MovieComments.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieComments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MovieComments.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MovieComments.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieComments_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/MovieComments.vue?vue&type=template&id=7a4c2ae9&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/MovieComments.vue?vue&type=template&id=7a4c2ae9& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieComments_vue_vue_type_template_id_7a4c2ae9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MovieComments.vue?vue&type=template&id=7a4c2ae9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MovieComments.vue?vue&type=template&id=7a4c2ae9&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieComments_vue_vue_type_template_id_7a4c2ae9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MovieComments_vue_vue_type_template_id_7a4c2ae9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Pagination.vue":
 /*!************************************************!*\
   !*** ./resources/js/components/Pagination.vue ***!
@@ -55605,6 +55714,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Pagination_vue_vue_type_template_id_d7acf176___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Pagination_vue_vue_type_template_id_d7acf176___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ZedBanner.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/ZedBanner.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ZedBanner_vue_vue_type_template_id_43ebbaca___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ZedBanner.vue?vue&type=template&id=43ebbaca& */ "./resources/js/components/ZedBanner.vue?vue&type=template&id=43ebbaca&");
+/* harmony import */ var _ZedBanner_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ZedBanner.vue?vue&type=script&lang=js& */ "./resources/js/components/ZedBanner.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ZedBanner_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ZedBanner_vue_vue_type_template_id_43ebbaca___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ZedBanner_vue_vue_type_template_id_43ebbaca___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ZedBanner.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ZedBanner.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/ZedBanner.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ZedBanner_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ZedBanner.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ZedBanner.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ZedBanner_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ZedBanner.vue?vue&type=template&id=43ebbaca&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/ZedBanner.vue?vue&type=template&id=43ebbaca& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ZedBanner_vue_vue_type_template_id_43ebbaca___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ZedBanner.vue?vue&type=template&id=43ebbaca& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ZedBanner.vue?vue&type=template&id=43ebbaca&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ZedBanner_vue_vue_type_template_id_43ebbaca___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ZedBanner_vue_vue_type_template_id_43ebbaca___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

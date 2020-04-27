@@ -67,61 +67,32 @@
                     </div>
 
                     <div class="row mt-5"> 
-                        <div class="post-comments-box">
-                            <div class="container text-center"> 
-                                    <div class="row form-wrapper">
-                                        <div class="col-md-4 post-comment-title">
-                                            <h3 class="text-primary"> Comments >> </h3>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div v-if="movieComments.length > 0"> 
-                                                <div class="card mb-3" v-for="(comment, key) in movieDetails.comments" :key="key">
-                                                        <div class="card-body"> 
-                                                            <p class="card-text text-left">{{ comment.comment }}</p> 
-                                                        </div>
-                                                        <div class="card-footer text-muted"> 
-                                                            <div class=" float-left"> {{ comment.formatted_created_at }}</div>
-                                                            <div class=" float-right"> {{ comment.poster_name }}</div>
-                                                        </div>
-                                                    </div>
-                                                </div> 
-                                        </div>
-                                    </div> 
-                            </div>
-                        </div> 
+                       <MovieComments :movieComments="movieComments"></MovieComments>
                     </div>       
                 </div>
             </div>
 
         </div>
 
-
-        <div class="jumbotron" :style="bottomBannerBackgroundImage ? bottomBannerBackgroundImage : ''">
-            <div class="overlay">
-                <div class="container">
-                    <h1 class="display-4">Hello, world!</h1>
-                    <p class="lead">
-                        In a land of myth, and a time of magic, the destiny of a great kingdom rests on the shoulders of a young boy. His name....
-                        Merlin.
-                    </p>
-                    <hr class="my-4">
-                    <p> A quote from the drama series Merlin </p>
-                    <a class="btn btn-primary btn-lg" href="javascript:void(0)" role="button">Learn more</a>
-                </div>
-            </div>
-        </div>
+        <ZedBanner></ZedBanner>
+        
     </div>
 </template>
 <script>
+import MovieComments from '../components/MovieComments'
+import ZedBanner from '../components/ZedBanner'
 export default {
     name: "MovieDetails",
+    components: {
+        MovieComments,
+        ZedBanner
+    },
     data() {
         return {
             processingDetails: false,
             serverResponse: [], 
             movieDetails: {},
             movieComments: [],
-            bottomBannerBackgroundImage: 'background-image: url("' + require('../../images/banner22.jpg') + '")'
         }
     },
     mounted() {
