@@ -38706,10 +38706,36 @@ var render = function() {
             _vm._v(
               "\n            You need to be logged in to post a comment.\n            "
             ),
-            _vm._m(0)
+            _c("p", { staticClass: "mt-2 mb-2" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-primary",
+                  on: {
+                    click: function($event) {
+                      return _vm.$router.push({ name: "login" })
+                    }
+                  }
+                },
+                [_vm._v("Login")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-success",
+                  on: {
+                    click: function($event) {
+                      return _vm.$router.push({ name: "register" })
+                    }
+                  }
+                },
+                [_vm._v("Register")]
+              )
+            ])
           ])
         : _c("div", { staticClass: "row form-wrapper" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-8" }, [
               _c(
@@ -38717,7 +38743,7 @@ var render = function() {
                 { attrs: { method: "POST", action: "/movies/comment/store" } },
                 [
                   _c("div", { staticClass: "form-group row" }, [
-                    _vm._m(2),
+                    _vm._m(1),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-6" }, [
                       _c(
@@ -38741,7 +38767,7 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(2)
                 ]
               )
             ])
@@ -38750,22 +38776,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "mt-2 mb-2" }, [
-      _c("a", { staticClass: "btn btn-primary", attrs: { href: "/login" } }, [
-        _vm._v("Login")
-      ]),
-      _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "btn btn-success", attrs: { href: "/register" } },
-        [_vm._v("Register")]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

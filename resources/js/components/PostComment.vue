@@ -5,8 +5,8 @@
             <div v-if="!$store.getters.isLoggedIn" class="alert alert-danger">
                 You need to be logged in to post a comment.
                 <p class="mt-2 mb-2">
-                    <a class="btn btn-primary" href="/login">Login</a>
-                    <a class="btn btn-success" href="/register">Register</a>
+                    <a class="btn btn-primary" @click="$router.push({ name: 'login' })">Login</a>
+                    <a class="btn btn-success"  @click="$router.push({ name: 'register' })">Register</a>
                 </p>
             </div>
 
