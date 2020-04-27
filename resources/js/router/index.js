@@ -2,6 +2,7 @@ import Home from '../views/Home'
 import MovieDetails from '../views/MovieDetails'
 import Movies from '../views/Movies'
 import Login from '../views/Login'
+import Register from '../views/Register'
 
 const routes = [
     {
