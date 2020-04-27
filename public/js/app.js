@@ -56467,6 +56467,11 @@ var routes = [{
   name: 'login',
   component: _views_Login__WEBPACK_IMPORTED_MODULE_3__["default"],
   guard: 'guest'
+}, {
+  path: '/register',
+  name: 'register',
+  component: Register,
+  guard: 'guest'
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
