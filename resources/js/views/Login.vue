@@ -7,12 +7,12 @@
                         <h4 class="p-0 m-0"><b>LOGIN</b></h4> 
                     </div>
                     <div class="card-body pt-5 pb-5">
-                        <form method="POST" action="#" @submit.prevent="login">
+                        <form method="POST" action="#" @submit.prevent="validateLogin">
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right"> Email Address </label>
                                 <div class="col-md-6" >
                                     <input type="email" class="form-control" name="email" v-model="email"
-                                        required autocomplete="email" autofocus placeholder="Email address" 
+                                         autocomplete="email" autofocus placeholder="Email address" 
                                         v-validate="'required|email'" :class="{ 'is-invalid' : errors.has('email') }">
                                     <span class="text-danger">{{ errors.first('email') }}</span>
                                 </div>
@@ -21,7 +21,7 @@
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right"> Password </label>
                                 <div class="col-md-6">
-                                    <input type="password" name="password" class="form-control" required autocomplete="current-password"
+                                    <input type="password" name="password" class="form-control"  autocomplete="current-password"
                                      v-validate="'required'"  :class="{ 'is-invalid' : errors.has('password') }"  
                                      v-model="password" placeholder="Password"> 
                                      <span class="text-danger">{{ errors.first('password') }}</span>
@@ -30,9 +30,12 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary btn-lg">
-                                       Login
-                                    </button> 
+                                    <div class="lds-ring" v-if="processing">
+                                        <div></div><div></div><div></div><div></div>
+                                    </div> 
+                                    <div v-else>
+                                        <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -48,12 +51,42 @@ export default {
     name: 'Login',
     data() {
         return {
-            email: '',
-            password: ''
+            email: 'moxie4lyf@gmail.com',
+            password: '12345',
+            processing: false
         }
     }, 
-     methods: {
-       
+    methods: {
+        validateLogin() {
+            this.$validator.validateAll().then(result => {
+                if(result) {
+                    this.login(); 
+                }
+                return false;
+            })
+        },
+        login() {
+            this.processing = true
+            return;
+            this.$store.dispatch('login')
+            .then((response) => {     
+                 
+            })
+            .catch(error => { 
+                let errDisplay = []
+                if (error.response.data.errors !== null && error.response.data.errors !== undefined) {
+                    errDisplay = typeof error.response.data.errors === 'object' ? Object.values(error.response.data.errors) : [error.response.data.errors]
+                } 
+                this.serverResponse = [{
+                    'status': 'error',
+                    'message': 'An error occured. Request was not processed',
+                    'errors':  errDisplay
+                }]   
+            })
+            .finally(() => {
+                    this.processing = false  
+            })
+        }
     }
 }
 </script>

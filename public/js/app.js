@@ -2418,6 +2418,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+//
+//
+//
 //
 //
 //
@@ -2466,11 +2471,45 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Login',
   data: function data() {
     return {
-      email: '',
-      password: ''
+      email: 'moxie4lyf@gmail.com',
+      password: '12345',
+      processing: false
     };
   },
-  methods: {}
+  methods: {
+    validateLogin: function validateLogin() {
+      var _this = this;
+
+      this.$validator.validateAll().then(function (result) {
+        if (result) {
+          _this.login();
+        }
+
+        return false;
+      });
+    },
+    login: function login() {
+      var _this2 = this;
+
+      this.processing = true;
+      return;
+      this.$store.dispatch('login').then(function (response) {})["catch"](function (error) {
+        var errDisplay = [];
+
+        if (error.response.data.errors !== null && error.response.data.errors !== undefined) {
+          errDisplay = _typeof(error.response.data.errors) === 'object' ? Object.values(error.response.data.errors) : [error.response.data.errors];
+        }
+
+        _this2.serverResponse = [{
+          'status': 'error',
+          'message': 'An error occured. Request was not processed',
+          'errors': errDisplay
+        }];
+      })["finally"](function () {
+        _this2.processing = false;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -50189,7 +50228,7 @@ var render = function() {
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
-                    return _vm.login($event)
+                    return _vm.validateLogin($event)
                   }
                 }
               },
@@ -50225,7 +50264,6 @@ var render = function() {
                       attrs: {
                         type: "email",
                         name: "email",
-                        required: "",
                         autocomplete: "email",
                         autofocus: "",
                         placeholder: "Email address"
@@ -50278,7 +50316,6 @@ var render = function() {
                       attrs: {
                         type: "password",
                         name: "password",
-                        required: "",
                         autocomplete: "current-password",
                         placeholder: "Password"
                       },
@@ -50299,7 +50336,27 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(1)
+                _c("div", { staticClass: "form-group row mb-0" }, [
+                  _c("div", { staticClass: "col-md-8 offset-md-4" }, [
+                    _vm.processing
+                      ? _c("div", { staticClass: "lds-ring" }, [
+                          _c("div"),
+                          _c("div"),
+                          _c("div"),
+                          _c("div")
+                        ])
+                      : _c("div", [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary btn-lg",
+                              attrs: { type: "submit" }
+                            },
+                            [_vm._v("Login")]
+                          )
+                        ])
+                  ])
+                ])
               ]
             )
           ])
@@ -50315,24 +50372,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header text-center" }, [
       _c("h4", { staticClass: "p-0 m-0" }, [_c("b", [_vm._v("LOGIN")])])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row mb-0" }, [
-      _c("div", { staticClass: "col-md-8 offset-md-4" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary btn-lg", attrs: { type: "submit" } },
-          [
-            _vm._v(
-              "\n                                   Login\n                                "
-            )
-          ]
-        )
-      ])
     ])
   }
 ]
