@@ -11,10 +11,10 @@
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right"> Email Address </label>
 
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" v-model="email"
+                                <div class="col-md-6"  :class="{error: validation.hasError('email')}">
+                                    <input id="email" type="email" class="form-control" name="email" v-model="email"
                                         required autocomplete="email" autofocus placeholder="Email address">
-                                        <!-- <div class="message">{{ validation.firstError('email') }}</div> -->
+                                        <div class="message">{{ validation.firstError('email') }}</div>
                                     <!-- @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -56,20 +56,15 @@
         </div>
     </div>
 </template>
-<script>
- 
+<script> 
+  
 export default {
     name: 'Login',
-    data: function() {
+    data() {
         return {
             email: ''
         }
-    },
-    validators: {
-      email: function (value) {
-        return SimpleVueValidation.Validator.value(value).required().email();
-      }
-    },
+    }, 
      methods: {
       submit: function () {
         this.$validate()
