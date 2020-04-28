@@ -2492,8 +2492,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       var _this2 = this;
 
       this.processing = true;
-      return;
-      this.$store.dispatch('login').then(function (response) {})["catch"](function (error) {
+      this.$store.dispatch('login', {
+        email: this.email,
+        password: this.password
+      }).then(function (response) {})["catch"](function (error) {
         var errDisplay = [];
 
         if (error.response.data.errors !== null && error.response.data.errors !== undefined) {
@@ -67731,6 +67733,18 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     movieDetails: function movieDetails(context, payload) {
       return new Promise(function (resolve, reject) {
         axios.get('/movies/' + payload.id).then(function (response) {
+          resolve(response);
+        })["catch"](function (errors) {
+          reject(errors);
+        });
+      });
+    },
+    login: function login(context, payload) {
+      return new Promise(function (resolve, reject) {
+        axios.post('/login', {
+          email: payload.email,
+          password: payload.password
+        }).then(function (response) {
           resolve(response);
         })["catch"](function (errors) {
           reject(errors);

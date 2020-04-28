@@ -66,12 +66,14 @@ export default {
             })
         },
         login() {
-            this.processing = true
-            return;
-            this.$store.dispatch('login')
-            .then((response) => {     
-                 
+            this.processing = true 
+            this.$store.dispatch('login', {
+                email: this.email,
+                password: this.password
             })
+            .then((response) => {     
+                
+            })  
             .catch(error => { 
                 let errDisplay = []
                 if (error.response.data.errors !== null && error.response.data.errors !== undefined) {

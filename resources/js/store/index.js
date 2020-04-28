@@ -44,6 +44,20 @@ export const store = new Vuex.Store({
                     reject(errors)
                 })
             })
+        },
+        login(context, payload) {
+            return new Promise((resolve, reject) => {
+                axios.post('/login', {
+                    email: payload.email,
+                    password: payload.password
+                })
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(errors => {
+                    reject(errors)
+                })
+            })
         }
     }
 })
