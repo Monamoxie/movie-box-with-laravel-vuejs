@@ -17,9 +17,6 @@ export const store = new Vuex.Store({
        }
     },
 
-    mutations: {
-        
-    },
 
     actions: {
         loadMovies(context, payload) {
@@ -66,6 +63,16 @@ export const store = new Vuex.Store({
                     reject(errors)
                 })
             })
+        },
+        setUserAccess(context, payload) {
+            context.commit('mutateAccessToken', payload.access_token)
         }
-    }
+    },
+
+    mutations: {
+        mutateAccessToken(state, payload) {
+            state.accessToken = payload.access_token
+        }
+    },
+    
 })

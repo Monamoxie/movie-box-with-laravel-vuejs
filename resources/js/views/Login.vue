@@ -81,12 +81,7 @@ export default {
             processing: false,
             serverResponse: []
         }
-    }, 
-    props: {
-        propsMessage: {
-            type: String
-        }
-    },
+    },  
     methods: {
         validateLogin() {
             this.$validator.validateAll().then(result => {
@@ -103,7 +98,12 @@ export default {
                 password: this.password
             })
             .then((response) => {     
-                // this.$store.dispatch('setAccessToken')
+                this.$store.dispatch('setUserAccess', {
+                    access_token: response.data.data
+                }) 
+                 this.$router.push({ name: 'movies', params: {
+                    propsMessage: 'Welcome Back!!! You are logged in'
+                } })
             })  
             .catch(error => { 
                 let errDisplay = []

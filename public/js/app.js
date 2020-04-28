@@ -2273,9 +2273,6 @@ __webpack_require__.r(__webpack_exports__);
       type: String,
       required: true
     }
-  },
-  mounted: function mounted() {
-    console.log(this.movieId);
   }
 });
 
@@ -2502,11 +2499,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       serverResponse: []
     };
   },
-  props: {
-    propsMessage: {
-      type: String
-    }
-  },
   methods: {
     validateLogin: function validateLogin() {
       var _this = this;
@@ -2526,7 +2518,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       this.$store.dispatch('login', {
         email: this.email,
         password: this.password
-      }).then(function (response) {// this.$store.dispatch('setAccessToken')
+      }).then(function (response) {
+        _this2.$store.dispatch('setUserAccess', {
+          access_token: response.data.data
+        });
+
+        _this2.$router.push({
+          name: 'movies',
+          params: {
+            propsMessage: 'Welcome Back!!! You are logged in'
+          }
+        });
       })["catch"](function (error) {
         var errDisplay = [];
 
@@ -68285,7 +68287,6 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       return state.accessToken !== null;
     }
   },
-  mutations: {},
   actions: {
     loadMovies: function loadMovies(context, payload) {
       // axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
@@ -68323,6 +68324,14 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
           reject(errors);
         });
       });
+    },
+    setUserAccess: function setUserAccess(context, payload) {
+      context.commit('mutateAccessToken', payload.access_token);
+    }
+  },
+  mutations: {
+    mutateAccessToken: function mutateAccessToken(state, payload) {
+      state.accessToken = payload.access_token;
     }
   }
 });

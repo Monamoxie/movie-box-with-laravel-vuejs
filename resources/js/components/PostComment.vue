@@ -58,9 +58,6 @@ export default {
             type: String,
             required: true
         }
-    },
-    mounted() {
-        console.log(this.movieId)
     }
 }
 </script>
