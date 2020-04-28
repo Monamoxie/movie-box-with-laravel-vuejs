@@ -6,7 +6,7 @@
                     <div class="card-header text-center"> 
                         <h4 class="p-0 m-0"><b>LOGIN</b></h4> 
                     </div>
-                    <div class="card-body">
+                    <div class="card-body pt-5 pb-5">
                         <form method="POST" action="#" @submit.prevent="login">
                            
                             <div class="form-group row">

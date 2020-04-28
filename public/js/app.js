@@ -39074,7 +39074,7 @@ var render = function() {
         _c("div", { staticClass: "card shadow" }, [
           _vm._m(0),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "card-body pt-5 pb-5" }, [
             _c(
               "form",
               {
