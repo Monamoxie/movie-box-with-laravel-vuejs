@@ -2479,13 +2479,27 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Login',
   data: function data() {
     return {
       email: 'moxie4lyf@gmail.com',
       password: '12345',
-      processing: false
+      processing: false,
+      serverResponse: []
     };
   },
   props: {
@@ -2512,11 +2526,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       this.$store.dispatch('login', {
         email: this.email,
         password: this.password
-      }).then(function (response) {})["catch"](function (error) {
+      }).then(function (response) {
+        _this2.$store.dispatch('setAccessToken');
+      })["catch"](function (error) {
         var errDisplay = [];
 
         if (error.response.data.errors !== null && error.response.data.errors !== undefined) {
-          errDisplay = _typeof(error.response.data.errors) === 'object' ? Object.values(error.response.data.errors) : [error.response.data.errors];
+          errDisplay = _typeof(error.response.data.errors) === 'object' ? Object.values(error.response.data.errors) : [{
+            0: error.response.data.errors
+          }];
         }
 
         _this2.serverResponse = [{
@@ -50387,11 +50405,48 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "card-body pt-5 pb-5" }, [
             ("propsMessage" in this.$route.params) &
-            (this.$route.params.propsMessage !== "")
+            (this.$route.params.propsMessage !== "") &
+            (_vm.serverResponse.length < 1)
               ? _c("div", { staticClass: "alert alert-success" }, [
                   _c("p", [
                     _vm._v(_vm._s(this.$route.params.propsMessage) + " ")
                   ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.serverResponse.length > 0
+              ? _c("div", [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "alert alert-danger alert-dismissible text-center"
+                    },
+                    [
+                      _c("h2", { staticClass: "alert-heading" }, [
+                        _vm._v("An error occured")
+                      ]),
+                      _vm._v(" "),
+                      _vm.serverResponse[0].errors.length > 0
+                        ? _c(
+                            "div",
+                            _vm._l(_vm.serverResponse[0].errors, function(
+                              error,
+                              key
+                            ) {
+                              return _c("p", { key: key }, [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(error[0]) +
+                                    "\n                                "
+                                )
+                              ])
+                            }),
+                            0
+                          )
+                        : _vm._e()
+                    ]
+                  )
                 ])
               : _vm._e(),
             _vm._v(" "),

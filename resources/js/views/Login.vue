@@ -9,8 +9,21 @@
                     </div>
                     <div class="card-body pt-5 pb-5">
 
-                        <div v-if="('propsMessage' in this.$route.params) & this.$route.params.propsMessage !== '' " class="alert alert-success">
+                        <div v-if="('propsMessage' in this.$route.params) 
+                            & this.$route.params.propsMessage !== '' 
+                            & serverResponse.length < 1 " class="alert alert-success">
                             <p>{{ this.$route.params.propsMessage }} </p>
+                        </div>
+
+                        <div v-if="serverResponse.length > 0">
+                            <div class="alert alert-danger alert-dismissible text-center">
+                                <h2 class="alert-heading">An error occured</h2>
+                                <div v-if="serverResponse[0].errors.length > 0">
+                                    <p v-for="(error, key) in serverResponse[0].errors" :key="key">
+                                        {{ error[0] }}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
                         <form method="POST" action="#" @submit.prevent="validateLogin">
@@ -65,7 +78,8 @@ export default {
         return {
             email: 'moxie4lyf@gmail.com',
             password: '12345',
-            processing: false
+            processing: false,
+            serverResponse: []
         }
     }, 
     props: {
@@ -89,12 +103,12 @@ export default {
                 password: this.password
             })
             .then((response) => {     
-                
+                this.$store.dispatch('setAccessToken')
             })  
             .catch(error => { 
                 let errDisplay = []
                 if (error.response.data.errors !== null && error.response.data.errors !== undefined) {
-                    errDisplay = typeof error.response.data.errors === 'object' ? Object.values(error.response.data.errors) : [error.response.data.errors]
+                     errDisplay = typeof error.response.data.errors === 'object' ? Object.values(error.response.data.errors) : [{0: error.response.data.errors }]
                 } 
                 this.serverResponse = [{
                     'status': 'error',
