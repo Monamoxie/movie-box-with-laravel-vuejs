@@ -31,9 +31,13 @@ class UserService
      * @param array
      * @return bool
      */    
-    public function authUser(Array $payload): ?object
+    public function login(Array $payload): ?object
     {
-        if (!Auth::attempt(['email' => $payload['email'], 'password' => $payload['password'])) {
+        if (! 
+            Auth::attempt([
+                'email' => $payload['email'], 
+                'password' => $payload['password']
+            ]) ) {
             return null;
         } 
         $user = User::where('email', $payload['email'])->first();

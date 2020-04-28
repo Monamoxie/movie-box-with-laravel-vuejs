@@ -15,21 +15,19 @@ class LoginController extends Controller
     */
     public function login(Request $request, UserService $userService)
     {
-dd('ddd');
+ 
         $request->validate([ 
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
         ]);
         
         
-        $user = $userService->authUser($request->all());
+        $user = $userService->login($request->all());
 
         if ($user === null) { 
             return $this->errorResponse('Invalid Credentials. Please enter a valid username and password', 'An error occured',  402);
         }
-        else {  
-            $user = User::where('email', $request->email)->first();
-            $user->token = $user->createToken('user')->accessToken;
+        else {   
             return $this->successResponse('Successfully authenticated', $user);    
         } 
     }
