@@ -47,10 +47,18 @@ export const store = new Vuex.Store({
         },
         login(context, payload) {
             return new Promise((resolve, reject) => {
-                axios.post('/login', {
-                    email: payload.email,
-                    password: payload.password
+                axios.post('/login',  payload)
+                .then(response => {
+                    resolve(response)
                 })
+                .catch(errors => {
+                    reject(errors)
+                })
+            })
+        },
+        register(context, payload) {
+            return new Promise((resolve, reject) => {
+                axios.post('/register',  payload)
                 .then(response => {
                     resolve(response)
                 })

@@ -3,10 +3,16 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card shadow">
+                  
                     <div class="card-header text-center"> 
                         <h4 class="p-0 m-0"><b>LOGIN</b></h4> 
                     </div>
                     <div class="card-body pt-5 pb-5">
+
+                        <div v-if="('propsMessage' in this.$route.params) & this.$route.params.propsMessage !== '' " class="alert alert-success">
+                            <p>{{ this.$route.params.propsMessage }} </p>
+                        </div>
+
                         <form method="POST" action="#" @submit.prevent="validateLogin">
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right"> Email Address </label>
@@ -28,7 +34,7 @@
                                 </div>
                             </div> 
 
-                            <div class="form-group row mb-0">
+                            <div class="form-group row">
                                 <div class="col-md-8 offset-md-4">
                                     <div class="lds-ring" v-if="processing">
                                         <div></div><div></div><div></div><div></div>
@@ -36,6 +42,12 @@
                                     <div v-else>
                                         <button type="submit" class="btn btn-primary btn-lg">Login</button>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-0">
+                                <div class="col-md-8 offset-md-4">
+                                    <p> Not yet a member? <a href="#" @click.prevent="$router.push( { name: 'register'} )">Register</a> </p>
                                 </div>
                             </div>
                         </form>
@@ -56,6 +68,11 @@ export default {
             processing: false
         }
     }, 
+    props: {
+        propsMessage: {
+            type: String
+        }
+    },
     methods: {
         validateLogin() {
             this.$validator.validateAll().then(result => {
@@ -89,6 +106,9 @@ export default {
                     this.processing = false  
             })
         }
+    },
+    mounted() {
+        console.log()
     }
 }
 </script>

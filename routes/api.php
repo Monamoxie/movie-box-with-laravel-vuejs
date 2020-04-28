@@ -13,6 +13,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api',  ], function() {
     Route::post("/movies", "MoviesController@listMovies");
     Route::get("/movies/{id}", "MoviesController@movieDetails");
     Route::get("/login", "LoginController@login");
+    Route::get("/register", "RegisterController@register");
     
    
     Route::group(['middleware' => 'auth:api'], function () {
