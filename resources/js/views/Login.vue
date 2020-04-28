@@ -10,29 +10,21 @@
                         <form method="POST" action="#" @submit.prevent="login">
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right"> Email Address </label>
-
-                                <div class="col-md-6"  :class="{error: validation.hasError('email')}">
-                                    <input id="email" type="email" class="form-control" name="email" v-model="email"
-                                        required autocomplete="email" autofocus placeholder="Email address">
-                                        <div class="message">{{ validation.firstError('email') }}</div>
-                                    <!-- @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror -->
+                                <div class="col-md-6" >
+                                    <input type="email" class="form-control" name="email" v-model="email"
+                                        required autocomplete="email" autofocus placeholder="Email address" 
+                                        v-validate="'required|email'" :class="{ 'is-invalid' : errors.has('email') }">
+                                    <span class="text-danger">{{ errors.first('email') }}</span>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right"> Password </label>
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required autocomplete="current-password"
-                                        placeholder="Password">
-                                    <!-- @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror -->
+                                    <input type="password" name="password" class="form-control" required autocomplete="current-password"
+                                     v-validate="'required'"  :class="{ 'is-invalid' : errors.has('password') }"  
+                                     v-model="password" placeholder="Password"> 
+                                     <span class="text-danger">{{ errors.first('password') }}</span>
                                 </div>
                             </div> 
 
@@ -40,13 +32,7 @@
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary btn-lg">
                                        Login
-                                    </button>
-
-                                    <!-- {{-- @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif --}} -->
+                                    </button> 
                                 </div>
                             </div>
                         </form>
@@ -62,18 +48,12 @@ export default {
     name: 'Login',
     data() {
         return {
-            email: ''
+            email: '',
+            password: ''
         }
     }, 
      methods: {
-      submit: function () {
-        this.$validate()
-          .then(function (success) {
-            if (success) {
-              alert('Validation succeeded!');
-            }
-          });
-      }
+       
     }
 }
 </script>
