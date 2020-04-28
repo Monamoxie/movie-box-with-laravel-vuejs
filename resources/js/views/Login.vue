@@ -8,13 +8,13 @@
                     </div>
                     <div class="card-body pt-5 pb-5">
                         <form method="POST" action="#" @submit.prevent="login">
-                           
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right"> Email Address </label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="" 
+                                    <input type="email" class="form-control" v-model="email"
                                         required autocomplete="email" autofocus placeholder="Email address">
+                                        <!-- <div class="message">{{ validation.firstError('email') }}</div> -->
                                     <!-- @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -57,7 +57,28 @@
     </div>
 </template>
 <script>
+ 
 export default {
     name: 'Login',
+    data: function() {
+        return {
+            email: ''
+        }
+    },
+    validators: {
+      email: function (value) {
+        return SimpleVueValidation.Validator.value(value).required().email();
+      }
+    },
+     methods: {
+      submit: function () {
+        this.$validate()
+          .then(function (success) {
+            if (success) {
+              alert('Validation succeeded!');
+            }
+          });
+      }
+    }
 }
 </script>

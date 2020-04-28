@@ -3,9 +3,13 @@ import VueRouter from 'vue-router'
 import routes from './router/index'
 import Base from './Base'
 import {store} from './store/index'
+import SimpleVueValidation from 'simple-vue-validator';
+
+const Validator = SimpleVueValidation.Validator
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
+Vue.use(SimpleVueValidation);
 
 require('./bootstrap');
 
