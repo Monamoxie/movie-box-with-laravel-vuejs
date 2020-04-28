@@ -103,7 +103,7 @@ export default {
                 password: this.password
             })
             .then((response) => {     
-                this.$store.dispatch('setAccessToken')
+                // this.$store.dispatch('setAccessToken')
             })  
             .catch(error => { 
                 let errDisplay = []

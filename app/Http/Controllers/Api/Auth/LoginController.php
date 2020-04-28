@@ -1,33 +1,36 @@
 <?php
-
+ 
 namespace App\Http\Controllers\Api\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Controllers\Controller; 
+use App\Services\UserService; 
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
 { 
     /** Login user 
-     * @param Illuminate\Http\Request;
+     * @param Illuminate\Http\Request
+     * @param App\Services\UserService
      * @return Response
     */
-    public function login(Request $request)
+    public function login(Request $request, UserService $userService)
     {
+dd('ddd');
         $request->validate([ 
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
         ]);
+        
+        
+        $user = $userService->authUser($request->all());
 
-         
-        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password], 1)) {
-            return response()->json('Invalid Credentials. Please enter a valid username and password', 402);
+        if ($user === null) { 
+            return $this->errorResponse('Invalid Credentials. Please enter a valid username and password', 'An error occured',  402);
         }
         else {  
             $user = User::where('email', $request->email)->first();
             $user->token = $user->createToken('user')->accessToken;
-            return response()->json($user, 200);    
+            return $this->successResponse('Successfully authenticated', $user);    
         } 
     }
 

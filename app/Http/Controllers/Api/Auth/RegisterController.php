@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use App\Services\UserService;
-use App\User; 
+use App\Http\Controllers\Controller; 
+use App\Services\UserService; 
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
 
     /** Register user 
-     * @param Illuminate\Http\Request;
+     * @param Illuminate\Http\Request
+     * @param App\Services\UserService; 
      * @return Response
     */
     public function register(Request $request, UserService $userService) 

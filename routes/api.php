@@ -8,31 +8,31 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
  
 // 
-Route::group(['prefix' => 'v1', 'namespace' => 'Api',  ], function() {
+Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function() {
 
     Route::post("/movies", "MoviesController@listMovies");
     Route::get("/movies/{id}", "MoviesController@movieDetails");
-    Route::get("/login", "LoginController@login");
-    Route::get("/register", "RegisterController@register");
+
+    Route::group(['namespace' => 'Auth'], function() {
+        Route::post("/login", "LoginController@login");
+        Route::post("/register", "RegisterController@register");
+    });
     
    
-    Route::group(['middleware' => 'auth:api'], function () {
-        Route::post("/movies/store", "MoviesApiController@storeMovie");
-    });
+    // Route::group(['middleware' => 'auth:api'], function () {
+    //     Route::post("/movies/store", "MoviesApiController@storeMovie");
+    // });
 
-    
-    Route::get("/movies/{slug}", "MoviesController@movieDetails");
+     
 
-Route::post("/movies/comment/store", "MoviesController@storeMovieComment")->middleware('auth');
-Route::get("/movies/create/new", "MoviesController@createMovie")->middleware('auth');
-Route::post("/movies/store", "MoviesController@storeMovie")->middleware('auth');
+        // Route::post("/movies/comment/store", "MoviesController@storeMovieComment")->middleware('auth');
+        // Route::get("/movies/create/new", "MoviesController@createMovie")->middleware('auth');
+        // Route::post("/movies/store", "MoviesController@storeMovie")->middleware('auth');
+        
 
-Auth::routes();
-
-Route::group(['namespace' => 'Auth'], function () {
-    Route::get('/logout', 'LoginController@logout');
-});
-
-Route::get('/home', 'HomeController@index')->name('home');
+        // Route::group(['namespace' => 'Auth'], function () {
+        //     Route::get('/logout', 'LoginController@logout');
+        // });
+ 
 
 });

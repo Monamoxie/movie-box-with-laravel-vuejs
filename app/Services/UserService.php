@@ -2,14 +2,15 @@
 
 namespace App\Services;
 
-use App\User; 
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;  
 
 class UserService
 {
 
     /**
-     * Returns all the movies in the table in descending order
+     * Create new user
      * @param array
      * @return bool
      */
@@ -24,6 +25,20 @@ class UserService
         }
         return false;
     }
-  
+
+    /**
+     * Auth user in to account
+     * @param array
+     * @return bool
+     */    
+    public function authUser(Array $payload): ?object
+    {
+        if (!Auth::attempt(['email' => $payload['email'], 'password' => $payload['password'])) {
+            return null;
+        } 
+        $user = User::where('email', $payload['email'])->first();
+        $user->access_token = $user->createToken('user')->accessToken;
+        return $user;     
+    }
     
 }

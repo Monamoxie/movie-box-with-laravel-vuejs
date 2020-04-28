@@ -2526,8 +2526,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       this.$store.dispatch('login', {
         email: this.email,
         password: this.password
-      }).then(function (response) {
-        _this2.$store.dispatch('setAccessToken');
+      }).then(function (response) {// this.$store.dispatch('setAccessToken')
       })["catch"](function (error) {
         var errDisplay = [];
 
