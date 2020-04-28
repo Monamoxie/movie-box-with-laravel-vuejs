@@ -65,12 +65,13 @@ export const store = new Vuex.Store({
             })
         },
         setUserAccess(context, payload) {
+            localStorage.setItem('access_token', payload.access_token)
             context.commit('mutateAccessToken', payload.access_token)
         }
     },
 
     mutations: {
-        mutateAccessToken(state, payload) {
+        mutateAccessToken(state, payload) { 
             state.accessToken = payload.access_token
         }
     },

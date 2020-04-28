@@ -29,13 +29,17 @@ const routes = [
         path: '/login',
         name: 'login',
         component: Login,
-        guard: 'guest'
+        meta: { 
+            guard: 'guest',
+        },
     },
     {
         path: '/register',
         name: 'register',
         component: Register,
-        guard: 'guest'
+        meta: { 
+            guard: 'guest',
+        },
     }
 ]
 

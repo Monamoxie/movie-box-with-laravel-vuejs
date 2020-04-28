@@ -67728,7 +67728,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history'
 });
 
-__webpack_require__(/*! ./router/guards */ "./resources/js/router/guards.js")(router);
+__webpack_require__(/*! ./router/guards */ "./resources/js/router/guards.js")(router, _store_index__WEBPACK_IMPORTED_MODULE_4__["store"]);
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
@@ -68178,7 +68178,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = function (router) {
+module.exports = function (router, store) {
   router.beforeEach(function (to, from, next) {
     if (to.matched.some(function (record) {
       return record.meta.guard === 'auth:api';
@@ -68196,7 +68196,7 @@ module.exports = function (router) {
     } else if (to.matched.some(function (record) {
       return record.meta.guard === 'guest';
     })) {
-      if (store.getters.loggedIn) {
+      if (store.getters.isLoggedIn) {
         next({
           name: 'movies'
         });
@@ -68250,12 +68250,16 @@ var routes = [{
   path: '/login',
   name: 'login',
   component: _views_Login__WEBPACK_IMPORTED_MODULE_3__["default"],
-  guard: 'guest'
+  meta: {
+    guard: 'guest'
+  }
 }, {
   path: '/register',
   name: 'register',
   component: _views_Register__WEBPACK_IMPORTED_MODULE_4__["default"],
-  guard: 'guest'
+  meta: {
+    guard: 'guest'
+  }
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
@@ -68326,6 +68330,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       });
     },
     setUserAccess: function setUserAccess(context, payload) {
+      localStorage.setItem('access_token', payload.access_token);
       context.commit('mutateAccessToken', payload.access_token);
     }
   },

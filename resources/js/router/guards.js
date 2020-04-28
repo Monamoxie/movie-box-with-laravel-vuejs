@@ -1,4 +1,4 @@
-module.exports = (router) => {
+module.exports = (router, store) => {
     router.beforeEach((to, from, next) => {
         if (to.matched.some(record => record.meta.guard === 'auth:api')) { 
           if (!store.getters.isLoggedIn) {
@@ -11,7 +11,7 @@ module.exports = (router) => {
           }
         }
         else if (to.matched.some(record => record.meta.guard === 'guest')) { 
-          if (store.getters.loggedIn) {
+          if (store.getters.isLoggedIn) {
             next({
               name: 'movies'
             })

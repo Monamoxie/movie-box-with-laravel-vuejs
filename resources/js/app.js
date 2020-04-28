@@ -16,7 +16,7 @@ const router = new VueRouter({
     mode: 'history'
 })
 
-require('./router/guards')(router)
+require('./router/guards')(router, store)
   
 const app = new Vue({
     el: '#app',
