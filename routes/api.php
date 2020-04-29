@@ -12,14 +12,10 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function() {
 
     Route::post("/movies", "MoviesController@listMovies");
     Route::get("/movies/{id}", "MoviesController@movieDetails");
+    Route::post("/login", "LoginController@login");
+    Route::post("/register", "RegisterController@register");
+    Route::post('/logout', 'LogoutController@logout')->middleware('auth:api');
 
-    Route::group(['namespace' => 'Auth'], function() {
-        Route::post("/login", "LoginController@login");
-        Route::post("/register", "RegisterController@register");
-        
-        Route::post('/logout', 'LogoutController@logout')->middleware('auth:api');
-    });
-    
    
     Route::group(['middleware' => 'auth:api'], function () {
         Route::post("/movie/{id}/comment/new", "MoviesController@newComment");
