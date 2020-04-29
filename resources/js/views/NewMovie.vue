@@ -53,7 +53,7 @@
                 <label for="name" class="col-md-4 col-form-label text-md-right"><i>Rating</i></label>
                 <div class="col-md-6">
                     <select  name="rating" class="form-control">
-                        <option value="{{ old('rating') }}">{{ old('rating') }}</option>
+                        <option value=""></option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>

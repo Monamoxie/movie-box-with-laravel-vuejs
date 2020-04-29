@@ -57,7 +57,7 @@ const routes = [
         component: NewMovie,
         meta: { 
             guard: 'auth:api',
-        },
+        }
     }
 ]
 
