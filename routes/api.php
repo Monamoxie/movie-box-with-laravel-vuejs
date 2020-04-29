@@ -19,20 +19,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function() {
    
     Route::group(['middleware' => 'auth:api'], function () {
         Route::post("/movie/{id}/comment/new", "MoviesController@newComment");
-        
-        // Route::post("/movies/store", "MoviesApiController@storeMovie");
+        Route::post("/movies/new", "MoviesController@newMovie");
     });
-
-     
-
-        
-        // Route::get("/movies/create/new", "MoviesController@createMovie")->middleware('auth');
-        // Route::post("/movies/store", "MoviesController@storeMovie")->middleware('auth');
-        
-
-        // Route::group(['namespace' => 'Auth'], function () {
-        //     
-        // });
  
-
 });
