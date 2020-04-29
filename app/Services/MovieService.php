@@ -53,7 +53,15 @@ class MovieService
         return $data;
     }
 
-   
+    /**
+     * Check if movie exists by id
+     * @param string id
+     * @return bool
+     */
+    public function movieExistsById(String $id): bool
+    {
+        return Movie::where('id', $id)->count() > 0;
+    }
 
     /**
      * Returns the Id of a movie from DB using the ID

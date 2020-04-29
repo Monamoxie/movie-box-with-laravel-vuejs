@@ -2109,6 +2109,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'MovieComments',
   props: {
@@ -2216,7 +2219,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-//
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2277,11 +2281,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostComment',
   data: function data() {
-    return {
+    return _defineProperty({
       comment: 'Mona Moxie',
       processing: false,
       serverResponse: []
-    };
+    }, "processing", false);
   },
   props: {
     movieId: {
@@ -2293,12 +2297,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     postComment: function postComment() {
       var _this = this;
 
+      this.processing = true;
       this.$store.dispatch('postComment', {
         comment: this.comment,
         movieId: this.movieId
       }).then(function (response) {
-        _this.movieDetails = response.data.data.movie;
-        _this.movieComments = response.data.data.comments;
+        _this.$emit('displayNewComment', {
+          commentData: response.data.data
+        });
       })["catch"](function (error) {
         var errDisplay = '';
 
@@ -2316,7 +2322,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           'errors': errDisplay
         }];
       })["finally"](function () {
-        _this.processingDetails = false;
+        _this.processing = false;
       });
     }
   }
@@ -2795,6 +2801,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     })["finally"](function () {
       _this.processingDetails = false;
     });
+  },
+  methods: {
+    displayNewComment: function displayNewComment(payload) {
+      this.movieComments.unshift(payload.commentData);
+    }
   }
 });
 
@@ -49934,7 +49945,11 @@ var render = function() {
                 }),
                 0
               )
-            : _vm._e()
+            : _c("div", { staticClass: "alert alert-warning" }, [
+                _vm._v(
+                  "\n                        No comment yet. Be the first.\n                    "
+                )
+              ])
         ])
       ])
     ])
@@ -50216,10 +50231,8 @@ var render = function() {
                 ? _c("div", { staticClass: "form-group row mb-0 text-left" }, [
                     _vm._m(2)
                   ])
-                : _c("div", { staticClass: "text-center" }, [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "muted" }, [_vm._v(" Loading...")])
+                : _c("div", { staticClass: "form-group row mt-2" }, [
+                    _vm._m(3)
                   ]),
               _vm._v(" "),
               _vm.serverResponse.length > 0 && !_vm.processing
@@ -50245,7 +50258,7 @@ var render = function() {
                                 return _c("p", { key: key }, [
                                   _vm._v(
                                     "\n                                    " +
-                                      _vm._s(error) +
+                                      _vm._s(error[0]) +
                                       "\n                                "
                                   )
                                 ])
@@ -50306,7 +50319,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "lds-ring mt-5" }, [
+    return _c("div", { staticClass: "lds-ring col-md-6 offset-md-4" }, [
       _c("div"),
       _c("div"),
       _c("div"),
@@ -51058,7 +51071,8 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("PostComment", {
-                              attrs: { movieId: _vm.movieDetails.id }
+                              attrs: { movieId: _vm.movieDetails.id },
+                              on: { displayNewComment: _vm.displayNewComment }
                             })
                           ],
                           1
@@ -68481,7 +68495,6 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   },
   getters: {
     isLoggedIn: function isLoggedIn(state) {
-      console.log('It is ' + state.accessToken);
       return state.accessToken !== null && state.accessToken !== '';
     }
   },
@@ -68532,8 +68545,6 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     },
     postComment: function postComment(context, payload) {
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.accessToken;
-      console.log(context.state.accessToken); // console.log(axios.defaults.headers.common)
-
       return new Promise(function (resolve, reject) {
         axios.post('/movie/' + payload.movieId + '/comment/new', {
           comment: payload.comment

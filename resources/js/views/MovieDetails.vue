@@ -74,7 +74,7 @@
                             <MovieComments :movieComments="movieComments"></MovieComments>
                         </div>   
 
-                        <PostComment :movieId="movieDetails.id"></PostComment>
+                        <PostComment :movieId="movieDetails.id" @displayNewComment="displayNewComment"></PostComment>
                     </div>
 
                 </div>
@@ -132,6 +132,11 @@ export default {
         .finally(() => {
             this.processingDetails = false  
         })
+    },
+    methods: {
+        displayNewComment(payload) { 
+            this.movieComments.unshift(payload.commentData)
+        }
     }
 }
 </script>

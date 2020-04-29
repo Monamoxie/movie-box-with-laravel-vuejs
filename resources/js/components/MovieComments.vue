@@ -15,8 +15,11 @@
                                         <div class=" float-left"> {{ comment.formatted_created_at }}</div>
                                         <div class=" float-right"> {{ comment.poster_name }}</div>
                                     </div>
-                                </div>
-                            </div> 
+                            </div>
+                        </div> 
+                        <div v-else class="alert alert-warning">
+                            No comment yet. Be the first.
+                        </div>  
                     </div>
                 </div> 
         </div>

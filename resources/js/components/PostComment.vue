@@ -31,11 +31,10 @@
                             </div>
                         </div>
 
-                        <div class="text-center" v-else>
-                            <div class="lds-ring mt-5">
+                        <div class="form-group row mt-2" v-else>
+                            <div class="lds-ring col-md-6 offset-md-4">
                                 <div></div><div></div><div></div><div></div>
-                            </div>
-                            <p class="muted"> Loading...</p>
+                            </div> 
                         </div>
 
                         <div v-if="serverResponse.length > 0 && !processing">
@@ -43,7 +42,7 @@
                                 <h4 class="alert-heading">{{ serverResponse[0].message }}</h4>
                                 <div v-if="serverResponse[0].errors.length > 0">
                                     <p v-for="(error, key) in serverResponse[0].errors" :key="key">
-                                        {{ error }}
+                                        {{ error[0] }}
                                     </p>
                                 </div>
                             </div>
@@ -63,7 +62,8 @@ export default {
         return {
             comment: 'Mona Moxie',
             processing: false,
-            serverResponse: []
+            serverResponse: [],
+            processing: false
         }
     },
     props: {
@@ -74,13 +74,15 @@ export default {
     },
     methods: {
         postComment() {
+            this.processing = true 
             this.$store.dispatch('postComment', {
                 comment: this.comment,
                 movieId: this.movieId
             })
              .then((response) => {     
-                this.movieDetails = response.data.data.movie
-                this.movieComments = response.data.data.comments
+                this.$emit('displayNewComment', {
+                    commentData: response.data.data
+                }) 
             })
             .catch(error => { 
                 let errDisplay = ''
@@ -97,7 +99,7 @@ export default {
                 }]   
             })
             .finally(() => {
-                this.processingDetails = false  
+                this.processing = false  
             })
         }
     }

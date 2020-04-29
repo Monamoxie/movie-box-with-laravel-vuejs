@@ -10,8 +10,7 @@ export const store = new Vuex.Store({
     },
 
     getters: {
-       isLoggedIn(state) {
-        console.log('It is ' + state.accessToken)
+       isLoggedIn(state) { 
         return state.accessToken !== null && state.accessToken !== ''
        }
     },
@@ -72,8 +71,6 @@ export const store = new Vuex.Store({
         }, 
         postComment(context, payload) {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.accessToken
-            console.log(context.state.accessToken)
-            // console.log(axios.defaults.headers.common)
             return new Promise((resolve, reject) => {
                 axios.post('/movie/' + payload.movieId + '/comment/new', {
                     comment: payload.comment

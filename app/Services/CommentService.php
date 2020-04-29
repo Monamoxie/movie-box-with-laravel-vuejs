@@ -4,6 +4,7 @@ namespace App\Services;
  
 use App\Comment;
 use App\Services\MovieService;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class CommentService
@@ -11,24 +12,24 @@ class CommentService
  
 
     /**
-     * Store a new movie Comment
-     * 
-     * @param String $slug, String $comment
-     * 
-     * @return bool 
-     */
-    public function newMovieComment(String $slug, String $comment): bool
-    {
-        $movieService = new MovieService();
-        $movieID = $movieService->movieId($slug);
-        if (!Comment::create([
+     * Create a new comment by for a movie
+     * @param string movieId 
+     * @param string comment
+     * @return int 
+    */
+    public function newComment(String $movieId, String $comment): ?object
+    { 
+        if (!$comment = Comment::create([
             'comment' => $comment,
-            'movie_id' => $movieID,
+            'movie_id' => $movieId,
             'poster' => Auth::id(),
         ])) {
-            return false;
+            return null;
         }
-        return true;
+        $init = Carbon::parse($comment->created_at); 
+        $comment->formatted_created_at = $init->toRfc7231String();
+        $comment->poster_name = $comment->user->name;
+        return $comment;
     }
 
     
