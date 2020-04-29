@@ -99,7 +99,7 @@ export default {
             })
             .then((response) => {     
                 this.$store.dispatch('setUserAccess', {
-                    access_token: response.data.data
+                    access_token: response.data.data.access_token
                 }) 
                  this.$router.push({ name: 'movies', params: {
                     propsMessage: 'Welcome Back!!! You are logged in'

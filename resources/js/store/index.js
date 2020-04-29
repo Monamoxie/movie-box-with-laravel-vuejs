@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import axios from 'axios'
-
 
 
 Vue.use(Vuex)
@@ -13,14 +11,14 @@ export const store = new Vuex.Store({
 
     getters: {
        isLoggedIn(state) {
-         return state.accessToken !== null
+        console.log('It is ' + state.accessToken)
+        return state.accessToken !== null && state.accessToken !== ''
        }
     },
 
 
     actions: {
         loadMovies(context, payload) {
-            // axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
             return new Promise((resolve, reject) => {
                 axios.post('/movies?page=' + payload.page)
                 .then(response => {
@@ -67,12 +65,44 @@ export const store = new Vuex.Store({
         setUserAccess(context, payload) {
             localStorage.setItem('access_token', payload.access_token)
             context.commit('mutateAccessToken', payload.access_token)
+        },
+        unsetUserAccess(context, payload) {
+            localStorage.removeItem('access_token')
+            context.commit('mutateAccessToken', null)
+        }, 
+        postComment(context, payload) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.accessToken
+            console.log(context.state.accessToken)
+            // console.log(axios.defaults.headers.common)
+            return new Promise((resolve, reject) => {
+                axios.post('/movie/' + payload.movieId + '/comment/new', {
+                    comment: payload.comment
+                })
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(errors => {
+                    reject(errors)
+                })
+            })
+        },
+        logout(context, payload) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.accessToken
+            return new Promise((resolve, reject) => {
+                axios.post('/logout')
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(errors => {
+                    reject(errors)
+                })
+            })
         }
     },
 
     mutations: {
-        mutateAccessToken(state, payload) { 
-            state.accessToken = payload.access_token
+        mutateAccessToken(state, accessToken) { 
+            state.accessToken = accessToken
         }
     },
     

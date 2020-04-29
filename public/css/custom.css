@@ -266,7 +266,10 @@ a:hover {
     padding: 40px 0;
     margin: 30px auto;
 } 
- 
+.logout-container {
+    margin: 40px auto;
+    min-height: 500px;
+}
 
 
 

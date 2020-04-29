@@ -3,6 +3,8 @@ import MovieDetails from '../views/MovieDetails'
 import Movies from '../views/Movies'
 import Login from '../views/Login'
 import Register from '../views/Register'
+import Logout from '../views/Logout'
+
 
 const routes = [
     {
@@ -39,6 +41,14 @@ const routes = [
         component: Register,
         meta: { 
             guard: 'guest',
+        },
+    },
+    {
+        path: '/logout',
+        name: 'logout',
+        component: Logout,
+        meta: { 
+            guard: 'auth:api',
         },
     }
 ]

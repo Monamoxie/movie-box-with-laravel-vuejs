@@ -41,7 +41,7 @@ class UserService
             return null;
         } 
         $user = User::where('email', $payload['email'])->first();
-        $user->access_token = $user->createToken('user')->accessToken;
+        $user->access_token = $user->createToken($payload['email'])->accessToken;
         return $user;     
     }
     
