@@ -19,7 +19,7 @@ export const store = new Vuex.Store({
     actions: {
         loadMovies(context, payload) {
             return new Promise((resolve, reject) => {
-                axios.post('/movies?page=' + payload.page)
+                axios.get('/movies?page=' + payload.page)
                 .then(response => {
                     resolve(response)
                 })
@@ -83,10 +83,23 @@ export const store = new Vuex.Store({
                 })
             })
         },
+        newMovie(context, payload) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.accessToken
+            axios.defaults.headers.post['Content-Type'] = 'multipart/form-data'
+            return new Promise((resolve, reject) => {
+                axios.post('/movie/new', payload)
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(errors => {
+                    reject(errors)
+                })
+            })
+        },
         logout(context, payload) {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.accessToken
             return new Promise((resolve, reject) => {
-                axios.post('/logout')
+                axios.get('/logout')
                 .then(response => {
                     resolve(response)
                 })

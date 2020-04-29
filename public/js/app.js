@@ -2996,7 +2996,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'NewMovie',
+  data: function data() {
+    return {
+      title: 'A movie',
+      country: 'Nigeria',
+      genre: 'action',
+      ticketPrice: '2300',
+      rating: '2',
+      banner: null,
+      description: 'A new order of description'
+    };
+  },
+  methods: {
+    newMovie: function newMovie() {
+      console.log(this.banner);
+      var formData = new FormData();
+      formData.append('banner', this.banner, this.banner.name); // axios.post('my-domain.com/file-upload', formData)
+
+      this.$store.dispatch('newMovie', {
+        banner: this.banner
+      }); // {
+      //     title: this.title,
+      //     country: this.country,
+      //     genre: this.genre,
+      //     ticketPrice: this.ticketPrice,
+      //     rating: this.rating,
+      //     banner: this.banner,
+      //     description: this.description
+      // }
+    },
+    uploadBanner: function uploadBanner(event) {
+      this.banner = event.target.files[0];
+    }
+  },
+  mounted: function mounted() {
+    console.log(this.banner);
+  }
+});
 
 /***/ }),
 
@@ -51374,172 +51413,337 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container higher-dv" }, [
+    _c("h3", { staticClass: "text-center mb-2 mt-2" }, [
+      _vm._v(" New Movie Review ")
+    ]),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        attrs: { method: "POST", enctype: "multipart/form-data" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.newMovie($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "form-group row" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.title,
+                  expression: "title"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.title = $event.target.value
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.country,
+                  expression: "country"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.country },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.country = $event.target.value
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.genre,
+                  expression: "genre"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.genre },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.genre = $event.target.value
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _vm._m(3),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.ticketPrice,
+                  expression: "ticketPrice"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.ticketPrice },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.ticketPrice = $event.target.value
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _vm._m(4),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.rating,
+                    expression: "rating"
+                  }
+                ],
+                staticClass: "form-control",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.rating = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { value: "" } }),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "1" } }, [_vm._v("1")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "2" } }, [_vm._v("2")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "3" } }, [_vm._v("3")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "4" } }, [_vm._v("4")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "5" } }, [_vm._v("5")])
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _vm._m(5),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.description,
+                  expression: "description"
+                }
+              ],
+              staticClass: "form-control mb2",
+              attrs: { autofocus: "" },
+              domProps: { value: _vm.description },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.description = $event.target.value
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _vm._m(6),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
+              staticClass: "form-control mb2",
+              attrs: { type: "file", accept: "image/*" },
+              on: {
+                change: function($event) {
+                  return _vm.uploadBanner($event)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(7)
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container higher-dv pt-3" }, [
-      _c("h3", { staticClass: "text-center mb-2 mt-2" }, [
-        _vm._v(" Add New Movie ")
-      ]),
-      _vm._v(" "),
-      _c(
-        "form",
-        { attrs: { method: "POST", enctype: "multipart/form-data" } },
-        [
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 col-form-label text-md-right",
-                attrs: { for: "name" }
-              },
-              [_c("i", [_vm._v("Title")])]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", name: "title" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 col-form-label text-md-right",
-                attrs: { for: "name" }
-              },
-              [_c("i", [_vm._v("Country")])]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", name: "country" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 col-form-label text-md-right",
-                attrs: { for: "name" }
-              },
-              [_c("i", [_vm._v("Genre")])]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", name: "genre" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 col-form-label text-md-right",
-                attrs: { for: "name" }
-              },
-              [_c("i", [_vm._v("Ticket Price")])]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", name: "ticket_price" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 col-form-label text-md-right",
-                attrs: { for: "name" }
-              },
-              [_c("i", [_vm._v("Rating")])]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c(
-                "select",
-                { staticClass: "form-control", attrs: { name: "rating" } },
-                [
-                  _c("option", { attrs: { value: "" } }),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "1" } }, [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2" } }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "3" } }, [_vm._v("3")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "4" } }, [_vm._v("4")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "5" } }, [_vm._v("5")])
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 col-form-label text-md-right",
-                attrs: { for: "name" }
-              },
-              [_c("i", [_vm._v("Description")])]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("textarea", {
-                staticClass: "form-control mb2",
-                attrs: { name: "description", autofocus: "" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 col-form-label text-md-right",
-                attrs: { for: "name" }
-              },
-              [_c("i", [_vm._v("Photo")])]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("input", {
-                staticClass: "form-control mb2",
-                attrs: { type: "file", name: "photo" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row mb-0" }, [
-            _c("div", { staticClass: "col-md-6 offset-md-4" }, [
-              _c(
-                "button",
-                { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-                [_vm._v("\n                    Submit\n                ")]
-              )
-            ])
-          ])
-        ]
-      )
+    return _c(
+      "label",
+      {
+        staticClass: "col-md-4 col-form-label text-md-right",
+        attrs: { for: "name" }
+      },
+      [_c("i", [_vm._v("Title")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-md-4 col-form-label text-md-right",
+        attrs: { for: "name" }
+      },
+      [_c("i", [_vm._v("Country")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-md-4 col-form-label text-md-right",
+        attrs: { for: "name" }
+      },
+      [_c("i", [_vm._v("Genre")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-md-4 col-form-label text-md-right",
+        attrs: { for: "name" }
+      },
+      [_c("i", [_vm._v("Ticket Price")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-md-4 col-form-label text-md-right",
+        attrs: { for: "name" }
+      },
+      [_c("i", [_vm._v("Rating")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-md-4 col-form-label text-md-right",
+        attrs: { for: "name" }
+      },
+      [_c("i", [_vm._v("Review")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-md-4 col-form-label text-md-right",
+        attrs: { for: "name" }
+      },
+      [_c("i", [_vm._v("Photo")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row mb-0" }, [
+      _c("div", { staticClass: "col-md-6 offset-md-4" }, [
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("\n                    Submit\n                ")]
+        )
+      ])
     ])
   }
 ]
@@ -68803,7 +69007,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   actions: {
     loadMovies: function loadMovies(context, payload) {
       return new Promise(function (resolve, reject) {
-        axios.post('/movies?page=' + payload.page).then(function (response) {
+        axios.get('/movies?page=' + payload.page).then(function (response) {
           resolve(response);
         })["catch"](function (errors) {
           reject(errors);
@@ -68857,10 +69061,21 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
         });
       });
     },
+    newMovie: function newMovie(context, payload) {
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.accessToken;
+      axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+      return new Promise(function (resolve, reject) {
+        axios.post('/movie/new', payload).then(function (response) {
+          resolve(response);
+        })["catch"](function (errors) {
+          reject(errors);
+        });
+      });
+    },
     logout: function logout(context, payload) {
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.accessToken;
       return new Promise(function (resolve, reject) {
-        axios.post('/logout').then(function (response) {
+        axios.get('/logout').then(function (response) {
           resolve(response);
         })["catch"](function (errors) {
           reject(errors);

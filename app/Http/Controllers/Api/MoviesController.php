@@ -59,6 +59,28 @@ class MoviesController extends Controller
         } 
     }
 
+    public function newMovie(Request $request, MovieService $movieService)
+    {
+        dd($request->all());   
+        $request->validate([
+            'title' => ['required', 'string', 'unique:movies'],
+            'country' => ['required', 'string'],
+            'genre' => ['required', 'string'],
+            'ticket_price' => ['required', 'numeric'],
+            'rating' => ['required', 'numeric'],
+            'description' => ['required', 'string'],
+            'photo' => ['required', 'file', 'image', 'mimes:jpeg,jpg,png', 'max:5120']
+        ]);
+
+        $newMovie = $movieService->newMovie($request->all());
+        if ($newMovie === false) {
+            return redirect()->back()->withInput()->with('danger', 'An error occured. Please try again');
+        }
+        else {
+            return redirect("/movies/create/new")->with('success', 'Movie has been successfully posted');
+        }
+    }
+
 
 
     
