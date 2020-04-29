@@ -3012,28 +3012,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     newMovie: function newMovie() {
-      console.log(this.banner);
       var formData = new FormData();
-      formData.append('banner', this.banner, this.banner.name); // axios.post('my-domain.com/file-upload', formData)
-
-      this.$store.dispatch('newMovie', {
-        banner: this.banner
-      }); // {
-      //     title: this.title,
-      //     country: this.country,
-      //     genre: this.genre,
-      //     ticketPrice: this.ticketPrice,
-      //     rating: this.rating,
-      //     banner: this.banner,
-      //     description: this.description
-      // }
+      formData.append('title', this.title);
+      formData.append('country', this.country);
+      formData.append('genre', this.genre);
+      formData.append('ticketPrice', this.ticketPrice);
+      formData.append('rating', this.rating);
+      formData.append('description', this.description);
+      formData.append('banner', this.banner, this.banner.name);
+      this.$store.dispatch('newMovie', formData);
     },
     uploadBanner: function uploadBanner(event) {
       this.banner = event.target.files[0];
     }
-  },
-  mounted: function mounted() {
-    console.log(this.banner);
   }
 });
 
@@ -69052,7 +69043,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     postComment: function postComment(context, payload) {
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.accessToken;
       return new Promise(function (resolve, reject) {
-        axios.post('/movie/' + payload.movieId + '/comment/new', {
+        axios.put('/movie/' + payload.movieId + '/comment/new', {
           comment: payload.comment
         }).then(function (response) {
           resolve(response);

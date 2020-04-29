@@ -105,32 +105,21 @@ export default {
     },
     methods: {
         newMovie() {
-            console.log(this.banner)
-            
+             
             const formData = new FormData()
+            formData.append('title', this.title)
+            formData.append('country', this.country)
+            formData.append('genre', this.genre)
+            formData.append('ticketPrice', this.ticketPrice)
+            formData.append('rating', this.rating)
+            formData.append('description', this.description)
             formData.append('banner', this.banner, this.banner.name)
-
-            // axios.post('my-domain.com/file-upload', formData)
-            this.$store.dispatch('newMovie', {
-                banner: this.banner
-            })
-
-            // {
-            //     title: this.title,
-            //     country: this.country,
-            //     genre: this.genre,
-            //     ticketPrice: this.ticketPrice,
-            //     rating: this.rating,
-            //     banner: this.banner,
-            //     description: this.description
-            // }
+ 
+            this.$store.dispatch('newMovie', formData) 
         },
         uploadBanner(event) {
             this.banner = event.target.files[0]
         }
-    },
-    mounted() {
-        console.log(this.banner)
-    }
+    } 
 }
 </script>

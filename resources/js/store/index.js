@@ -72,7 +72,7 @@ export const store = new Vuex.Store({
         postComment(context, payload) {
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.accessToken
             return new Promise((resolve, reject) => {
-                axios.post('/movie/' + payload.movieId + '/comment/new', {
+                axios.put('/movie/' + payload.movieId + '/comment/new', {
                     comment: payload.comment
                 })
                 .then(response => {

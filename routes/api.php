@@ -12,7 +12,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function() {
 
    
     Route::group(['middleware' => 'auth:api'], function () {
-        Route::post("/movie/{id}/comment/new", "MoviesController@newComment");
+        Route::put("/movie/{id}/comment/new", "MoviesController@newComment");
         Route::post("/movie/new", "MoviesController@newMovie");
     });
  
