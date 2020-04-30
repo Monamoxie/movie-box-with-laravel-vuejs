@@ -65,9 +65,7 @@ class MovieService
 
     /**
      * Returns the Id of a movie from DB using the ID
-     * 
      * @param String $slug
-     * 
      * @return String id
      */
     public function movieId(String $slug): string
@@ -76,10 +74,8 @@ class MovieService
     }
 
     /**
-     * Stores a new movie into the DB
-     * 
+     * Stores a new movie review
      * @param array 
-     * 
      * @return bool
      */
     public function newMovie(Array $data): bool

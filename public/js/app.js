@@ -2906,6 +2906,36 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3013,36 +3043,61 @@ __webpack_require__.r(__webpack_exports__);
   name: 'NewMovie',
   data: function data() {
     return {
-      title: '',
+      title: 'A new movie review title',
       country: 'Nigeria',
       genre: 'action',
       ticketPrice: '2300',
-      rating: '22',
+      rating: '3',
       banner: null,
-      description: 'A new order of description'
+      description: 'A new time for a new movie review',
+      processing: false,
+      serverResponse: []
     };
   },
   methods: {
     validateSubmission: function validateSubmission() {
+      var _this = this;
+
       this.$validator.validateAll().then(function (result) {
         if (result) {
-          // this.newMovie(); 
-          alert('all set');
+          _this.newMovie();
         }
 
         return false;
       });
     },
     newMovie: function newMovie() {
+      var _this2 = this;
+
+      this.processing = true;
       var formData = new FormData();
       formData.append('title', this.title);
       formData.append('country', this.country);
       formData.append('genre', this.genre);
-      formData.append('ticketPrice', this.ticketPrice);
+      formData.append('ticket_price', this.ticketPrice);
       formData.append('rating', this.rating);
       formData.append('description', this.description);
-      formData.append('banner', this.banner, this.banner.name);
-      this.$store.dispatch('newMovie', formData);
+      formData.append('photo', this.banner, this.banner.name);
+      this.$store.dispatch('newMovie', formData).then(function (response) {
+        _this2.movieDetails = response.data.data.movie;
+        _this2.movieComments = response.data.data.comments;
+      })["catch"](function (error) {
+        var errDisplay = '';
+
+        if (error.response.data.errors !== null && error.response.data.errors !== undefined) {
+          errDisplay = _typeof(error.response.data.errors) === 'object' ? Object.values(error.response.data.errors) : [error.response.data.errors];
+        } else {
+          errDisplay = [];
+        }
+
+        _this2.serverResponse = [{
+          'status': 'error',
+          'message': error.response.data.message,
+          'errors': errDisplay
+        }];
+      })["finally"](function () {
+        _this2.processing = false;
+      });
     },
     uploadBanner: function uploadBanner(event) {
       this.banner = event.target.files[0];
@@ -49937,7 +49992,7 @@ var render = function() {
           { staticClass: "row" },
           [
             _vm._l(_vm.movies, function(movie, key) {
-              return _c("div", { key: key, staticClass: "col-md-4" }, [
+              return _c("div", { key: key, staticClass: "col-md-4 col-sm-6" }, [
                 _c("div", { staticClass: "card mb-4 shadow-sm" }, [
                   _c("img", {
                     staticClass: "card-img-top",
@@ -51431,6 +51486,98 @@ var render = function() {
       _vm._v(" New Movie Review ")
     ]),
     _vm._v(" "),
+    _vm.serverResponse.length > 0
+      ? _c(
+          "div",
+          [
+            _vm.serverResponse[0].status === "error"
+              ? _c("di", [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "alert alert-danger alert-dismissible text-center"
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "close",
+                          attrs: {
+                            href: "#",
+                            "data-dismiss": "alert",
+                            "aria-label": "close"
+                          }
+                        },
+                        [_vm._v("×")]
+                      ),
+                      _vm._v(" "),
+                      _c("h2", { staticClass: "alert-heading" }, [
+                        _vm._v("An error occured")
+                      ]),
+                      _vm._v(" "),
+                      _vm.serverResponse[0].errors.length > 0
+                        ? _c(
+                            "div",
+                            _vm._l(_vm.serverResponse[0].errors, function(
+                              error,
+                              key
+                            ) {
+                              return _c("p", { key: key }, [
+                                _vm._v(
+                                  "\n                        " +
+                                    _vm._s(error[0]) +
+                                    "\n                    "
+                                )
+                              ])
+                            }),
+                            0
+                          )
+                        : _vm._e()
+                    ]
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.serverResponse[0].status === "success"
+              ? _c("di", [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "alert alert-success alert-dismissible text-center"
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "close",
+                          attrs: {
+                            href: "#",
+                            "data-dismiss": "alert",
+                            "aria-label": "close"
+                          }
+                        },
+                        [_vm._v("×")]
+                      ),
+                      _vm._v(" "),
+                      _c("h2", { staticClass: "alert-heading" }, [
+                        _c("i", { staticClass: "fa fa-check-o" })
+                      ]),
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(_vm.serverResponse[0].message) +
+                          "\n            "
+                      )
+                    ]
+                  )
+                ])
+              : _vm._e()
+          ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
     _c(
       "form",
       {
@@ -51575,13 +51722,17 @@ var render = function() {
                 {
                   name: "validate",
                   rawName: "v-validate",
-                  value: "required",
-                  expression: "'required'"
+                  value: "required|decimal:2",
+                  expression: "'required|decimal:2'"
                 }
               ],
               staticClass: "form-control",
               class: { "is-invalid": _vm.errors.has("ticket_price") },
-              attrs: { type: "text", name: "ticket_price" },
+              attrs: {
+                type: "text",
+                name: "ticket_price",
+                "data-vv-as": "ticket price"
+              },
               domProps: { value: _vm.ticketPrice },
               on: {
                 input: function($event) {
@@ -51704,18 +51855,33 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "col-md-6" }, [
             _c("input", {
+              directives: [
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "required|image|mimes:image/*|size:2048",
+                  expression: "'required|image|mimes:image/*|size:2048'"
+                }
+              ],
               staticClass: "form-control mb2",
-              attrs: { type: "file", accept: "image/*" },
+              class: { "is-invalid": _vm.errors.has("banner") },
+              attrs: { type: "file", name: "banner", accept: "image/*" },
               on: {
                 change: function($event) {
                   return _vm.uploadBanner($event)
                 }
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-danger" }, [
+              _vm._v(_vm._s(_vm.errors.first("banner")))
+            ])
           ])
         ]),
         _vm._v(" "),
-        _vm._m(7)
+        !_vm.processing
+          ? _c("div", { staticClass: "form-group row mb-0" }, [_vm._m(7)])
+          : _c("div", { staticClass: "form-group row mt-0" }, [_vm._m(8)])
       ]
     )
   ])
@@ -51816,13 +51982,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row mb-0" }, [
-      _c("div", { staticClass: "col-md-6 offset-md-4" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("\n                    Submit\n                ")]
-        )
+    return _c("div", { staticClass: "col-md-6 offset-md-4" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("\n                    Submit\n                ")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-6 offset-md-4" }, [
+      _c("div", { staticClass: "lds-ring" }, [
+        _c("div"),
+        _c("div"),
+        _c("div"),
+        _c("div")
       ])
     ])
   }

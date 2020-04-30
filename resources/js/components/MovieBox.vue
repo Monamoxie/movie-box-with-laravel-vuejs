@@ -8,7 +8,7 @@
         </div>
 
         <div class="row" v-else> 
-            <div class="col-md-4"  v-for="(movie, key) in movies" :key="key">
+            <div class="col-md-4 col-sm-6"  v-for="(movie, key) in movies" :key="key">
                 <div class="card mb-4 shadow-sm">
                     <img class="card-img-top" :src="photoPath(movie.photo)" alt="Card image cap" @click="movieDetails(movie.id, movie.slug)">
                     <div class="card-body">

@@ -61,15 +61,15 @@ class MoviesController extends Controller
 
     public function newMovie(Request $request, MovieService $movieService)
     {
-        dd($request->all());   
+        dd(public_path());
         $request->validate([
-            'title' => ['required', 'string', 'unique:movies'],
+            'title' => ['required', 'string'],
             'country' => ['required', 'string'],
             'genre' => ['required', 'string'],
             'ticket_price' => ['required', 'numeric'],
             'rating' => ['required', 'numeric'],
             'description' => ['required', 'string'],
-            'photo' => ['required', 'file', 'image', 'mimes:jpeg,jpg,png', 'max:5120']
+            'photo' => ['required', 'file', 'image', 'mimes:jpeg,jpg,png', 'max:2048']
         ]);
 
         $newMovie = $movieService->newMovie($request->all());

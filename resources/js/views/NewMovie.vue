@@ -1,11 +1,7 @@
 <template> 
     <div class="container mt-5 pt-5 pb-5">
         <!-- @if(session()->has('danger'))
-        <div class="alert alert-danger alert-dismissible text-center"> 
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <h4 class="alert-heading">Error Message: </h4>
-            {!! Session::get('danger') !!}
-        </div>
+        
         @elseif(session()->has('success'))
             <div class="alert alert-success alert-dismissible text-center"> 
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -14,12 +10,33 @@
             </div>
         @endif -->
 
+
+
         <h3 class="text-center mb-2 mt-2"> New Movie Review </h3>
-        <!-- @if($errors->any())
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-danger mt-2">{{ $error }}</div>
-            @endforeach
-        @endif -->
+      
+        <div v-if="serverResponse.length > 0">
+           <di v-if="serverResponse[0].status === 'error'">
+                <div class="alert alert-danger alert-dismissible text-center">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <h2 class="alert-heading">An error occured</h2>
+                    <div v-if="serverResponse[0].errors.length > 0">
+                        <p v-for="(error, key) in serverResponse[0].errors" :key="key">
+                            {{ error[0] }}
+                        </p>
+                    </div>
+                </div>
+            </di>
+
+            <di v-if="serverResponse[0].status === 'success'">
+                <div class="alert alert-success alert-dismissible text-center">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <h2 class="alert-heading"><i class="fa fa-check-o"></i></h2>
+                    {{ serverResponse[0].message }}
+                </div>
+            </di>
+
+        </div>
+        
         <form method="POST" enctype="multipart/form-data" @submit.prevent="validateSubmission">
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right"><i>Title</i></label>
@@ -52,7 +69,7 @@
                 <label for="name" class="col-md-4 col-form-label text-md-right"><i>Ticket Price</i></label>
                 <div class="col-md-6">
                     <input type="text" v-model="ticketPrice" name="ticket_price" class="form-control"
-                    v-validate="'required'" :class="{ 'is-invalid' : errors.has('ticket_price') }">
+                    v-validate="'required|decimal:2'" :class="{ 'is-invalid' : errors.has('ticket_price') }" data-vv-as="ticket price">
                     <span class="text-danger">{{ errors.first('ticket_price') }}</span>
                 </div>
             </div>
@@ -85,18 +102,29 @@
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right"><i>Photo</i></label>
                 <div class="col-md-6">
-                    <input type="file" class="form-control mb2" 
-                        accept="image/*" @change="uploadBanner($event)">
+                    <input type="file" name="banner" class="form-control mb2"  accept="image/*" @change="uploadBanner($event)"
+                        v-validate="'required|image|mimes:image/*|size:2048'" :class="{ 'is-invalid' : errors.has('banner') }">
+                        <span class="text-danger">{{ errors.first('banner') }}</span>
                 </div>
             </div>
 
-            <div class="form-group row mb-0">
+            <div class="form-group row mb-0" v-if="!processing">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary">
                         Submit
                     </button>
                 </div>
             </div>
+
+            <div class="form-group row mt-0" v-else>
+                <div class="col-md-6 offset-md-4">
+                    <div class="lds-ring">
+                        <div></div><div></div><div></div><div></div>
+                    </div> 
+                </div>
+            </div>
+
+            
 
         </form>
     </div> 
@@ -106,37 +134,59 @@ export default {
     name: 'NewMovie',
     data() {
         return {
-            title: '',
+            title: 'A new movie review title',
             country: 'Nigeria',
             genre: 'action',
             ticketPrice: '2300',
-            rating: '22',
+            rating: '3',
             banner: null,
-            description: 'A new order of description'
+            description: 'A new time for a new movie review',
+            processing: false,
+            serverResponse: []
         }
     },
     methods: {
          validateSubmission() {
             this.$validator.validateAll().then(result => {
                 if(result) { 
-                    // this.newMovie(); 
-                    alert('all set');
+                    this.newMovie();  
                 }
                 return false;
             })
         },
         newMovie() {
-             
+            this.processing = true 
             const formData = new FormData()
             formData.append('title', this.title)
             formData.append('country', this.country)
             formData.append('genre', this.genre)
-            formData.append('ticketPrice', this.ticketPrice)
+            formData.append('ticket_price', this.ticketPrice)
             formData.append('rating', this.rating)
             formData.append('description', this.description)
-            formData.append('banner', this.banner, this.banner.name)
+            formData.append('photo', this.banner, this.banner.name)
  
             this.$store.dispatch('newMovie', formData) 
+            .then((response) => {     
+            this.movieDetails = response.data.data.movie
+            this.movieComments = response.data.data.comments
+        })
+        .catch(error => { 
+            let errDisplay = ''
+            if (error.response.data.errors !== null && error.response.data.errors !== undefined) {
+                errDisplay = typeof error.response.data.errors === 'object' ? Object.values(error.response.data.errors) : [error.response.data.errors]
+            } 
+            else {
+                errDisplay = []
+            }
+            this.serverResponse = [{
+                'status': 'error',
+                'message': error.response.data.message,
+                'errors':  errDisplay
+            }]   
+            })
+            .finally(() => {
+                this.processing = false  
+            })
         },
         uploadBanner(event) {
             this.banner = event.target.files[0]
