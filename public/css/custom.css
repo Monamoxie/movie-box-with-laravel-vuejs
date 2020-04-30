@@ -273,6 +273,9 @@ a:hover {
 textarea {
     resize: none;
 }
+.new-movie-container {
+    min-height: 550px;
+}
 
 
 

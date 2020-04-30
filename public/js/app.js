@@ -3030,16 +3030,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'NewMovie',
   data: function data() {
@@ -51485,17 +51475,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container mt-5 pt-5 pb-5" }, [
-    _c("h3", { staticClass: "text-center mb-2 mt-2" }, [
-      _vm._v(" New Movie Review ")
-    ]),
-    _vm._v(" "),
-    _vm.serverResponse.length > 0
-      ? _c(
-          "div",
-          [
+  return _c(
+    "div",
+    { staticClass: "container new-movie-container mt-5 pt-5 pb-5" },
+    [
+      _c("h3", { staticClass: "text-center mb-2 mt-2" }, [
+        _vm._v(" New Movie Review ")
+      ]),
+      _vm._v(" "),
+      _vm.serverResponse.length > 0
+        ? _c("div", [
             _vm.serverResponse[0].status === "error"
-              ? _c("di", [
+              ? _c("div", [
                   _c(
                     "div",
                     {
@@ -51577,318 +51568,321 @@ var render = function() {
                   )
                 ])
               : _vm._e()
-          ],
-          1
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        attrs: { method: "POST", enctype: "multipart/form-data" },
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.validateSubmission($event)
-          }
-        }
-      },
-      [
-        _c("div", { staticClass: "form-group row" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.title,
-                  expression: "title"
-                },
-                {
-                  name: "validate",
-                  rawName: "v-validate",
-                  value: "required|min:3",
-                  expression: "'required|min:3'"
-                }
-              ],
-              staticClass: "form-control",
-              class: { "is-invalid": _vm.errors.has("title") },
-              attrs: { type: "text", name: "title" },
-              domProps: { value: _vm.title },
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.serverResponse.length < 1 ||
+      (_vm.serverResponse.length > 0 &&
+        _vm.serverResponse[0].status !== "success")
+        ? _c(
+            "form",
+            {
+              attrs: { method: "POST", enctype: "multipart/form-data" },
               on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.title = $event.target.value
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.validateSubmission($event)
                 }
               }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "text-danger" }, [
-              _vm._v(_vm._s(_vm.errors.first("title")))
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.country,
-                  expression: "country"
-                },
-                {
-                  name: "validate",
-                  rawName: "v-validate",
-                  value: "required|min:3",
-                  expression: "'required|min:3'"
-                }
-              ],
-              staticClass: "form-control",
-              class: { "is-invalid": _vm.errors.has("country") },
-              attrs: { type: "text", name: "country" },
-              domProps: { value: _vm.country },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.country = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "text-danger" }, [
-              _vm._v(_vm._s(_vm.errors.first("country")))
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _vm._m(2),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.genre,
-                  expression: "genre"
-                },
-                {
-                  name: "validate",
-                  rawName: "v-validate",
-                  value: "required",
-                  expression: "'required'"
-                }
-              ],
-              staticClass: "form-control",
-              class: { "is-invalid": _vm.errors.has("genre") },
-              attrs: { type: "text", name: "genre" },
-              domProps: { value: _vm.genre },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.genre = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "text-danger" }, [
-              _vm._v(_vm._s(_vm.errors.first("genre")))
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _vm._m(3),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.ticketPrice,
-                  expression: "ticketPrice"
-                },
-                {
-                  name: "validate",
-                  rawName: "v-validate",
-                  value: "required|decimal:2",
-                  expression: "'required|decimal:2'"
-                }
-              ],
-              staticClass: "form-control",
-              class: { "is-invalid": _vm.errors.has("ticket_price") },
-              attrs: {
-                type: "text",
-                name: "ticket_price",
-                "data-vv-as": "ticket price"
-              },
-              domProps: { value: _vm.ticketPrice },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.ticketPrice = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "text-danger" }, [
-              _vm._v(_vm._s(_vm.errors.first("ticket_price")))
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _vm._m(4),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.rating,
-                    expression: "rating"
-                  },
-                  {
-                    name: "validate",
-                    rawName: "v-validate",
-                    value: "required",
-                    expression: "'required'"
-                  }
-                ],
-                staticClass: "form-control",
-                class: { "is-invalid": _vm.errors.has("rating") },
-                attrs: { name: "rating" },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.rating = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  }
-                }
-              },
-              [
-                _c("option", { attrs: { value: "" } }),
+            },
+            [
+              _c("div", { staticClass: "form-group row" }, [
+                _vm._m(0),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "1" } }, [_vm._v("1")]),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.title,
+                        expression: "title"
+                      },
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|min:3",
+                        expression: "'required|min:3'"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: { "is-invalid": _vm.errors.has("title") },
+                    attrs: { type: "text", name: "title" },
+                    domProps: { value: _vm.title },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.title = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.first("title")))
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _vm._m(1),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "2" } }, [_vm._v("2")]),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.country,
+                        expression: "country"
+                      },
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|min:3",
+                        expression: "'required|min:3'"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: { "is-invalid": _vm.errors.has("country") },
+                    attrs: { type: "text", name: "country" },
+                    domProps: { value: _vm.country },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.country = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.first("country")))
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _vm._m(2),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "3" } }, [_vm._v("3")]),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.genre,
+                        expression: "genre"
+                      },
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required",
+                        expression: "'required'"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: { "is-invalid": _vm.errors.has("genre") },
+                    attrs: { type: "text", name: "genre" },
+                    domProps: { value: _vm.genre },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.genre = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.first("genre")))
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _vm._m(3),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "4" } }, [_vm._v("4")]),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.ticketPrice,
+                        expression: "ticketPrice"
+                      },
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|decimal:2",
+                        expression: "'required|decimal:2'"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: { "is-invalid": _vm.errors.has("ticket_price") },
+                    attrs: {
+                      type: "text",
+                      name: "ticket_price",
+                      "data-vv-as": "ticket price"
+                    },
+                    domProps: { value: _vm.ticketPrice },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.ticketPrice = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.first("ticket_price")))
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _vm._m(4),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "5" } }, [_vm._v("5")])
-              ]
-            ),
-            _vm._v(" "),
-            _c("span", { staticClass: "text-danger" }, [
-              _vm._v(_vm._s(_vm.errors.first("rating")))
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _vm._m(5),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.description,
-                  expression: "description"
-                },
-                {
-                  name: "validate",
-                  rawName: "v-validate",
-                  value: "required",
-                  expression: "'required'"
-                }
-              ],
-              staticClass: "form-control mb2",
-              class: { "is-invalid": _vm.errors.has("description") },
-              attrs: { name: "description", rows: "5" },
-              domProps: { value: _vm.description },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.description = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "text-danger" }, [
-              _vm._v(_vm._s(_vm.errors.first("description")))
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group row" }, [
-          _vm._m(6),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "validate",
-                  rawName: "v-validate",
-                  value: "required|image|mimes:image/*|size:2048",
-                  expression: "'required|image|mimes:image/*|size:2048'"
-                }
-              ],
-              staticClass: "form-control mb2",
-              class: { "is-invalid": _vm.errors.has("banner") },
-              attrs: { type: "file", name: "banner", accept: "image/*" },
-              on: {
-                change: function($event) {
-                  return _vm.uploadBanner($event)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "text-danger" }, [
-              _vm._v(_vm._s(_vm.errors.first("banner")))
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        !_vm.processing
-          ? _c("div", { staticClass: "form-group row mb-0" }, [_vm._m(7)])
-          : _c("div", { staticClass: "form-group row mt-0" }, [_vm._m(8)])
-      ]
-    )
-  ])
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.rating,
+                          expression: "rating"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "required",
+                          expression: "'required'"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { "is-invalid": _vm.errors.has("rating") },
+                      attrs: { name: "rating" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.rating = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "" } }),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [_vm._v("1")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [_vm._v("2")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3" } }, [_vm._v("3")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "4" } }, [_vm._v("4")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "5" } }, [_vm._v("5")])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.first("rating")))
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _vm._m(5),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.description,
+                        expression: "description"
+                      },
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required",
+                        expression: "'required'"
+                      }
+                    ],
+                    staticClass: "form-control mb2",
+                    class: { "is-invalid": _vm.errors.has("description") },
+                    attrs: { name: "description", rows: "5" },
+                    domProps: { value: _vm.description },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.description = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.first("description")))
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _vm._m(6),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required|image|mimes:image/*|size:2048",
+                        expression: "'required|image|mimes:image/*|size:2048'"
+                      }
+                    ],
+                    staticClass: "form-control mb2",
+                    class: { "is-invalid": _vm.errors.has("banner") },
+                    attrs: { type: "file", name: "banner", accept: "image/*" },
+                    on: {
+                      change: function($event) {
+                        return _vm.uploadBanner($event)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.first("banner")))
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              !_vm.processing
+                ? _c("div", { staticClass: "form-group row mb-0" }, [_vm._m(7)])
+                : _c("div", { staticClass: "form-group row mt-0" }, [_vm._m(8)])
+            ]
+          )
+        : _vm._e()
+    ]
+  )
 }
 var staticRenderFns = [
   function() {

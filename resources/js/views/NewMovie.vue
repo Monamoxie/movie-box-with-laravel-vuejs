@@ -1,22 +1,11 @@
 <template> 
-    <div class="container mt-5 pt-5 pb-5">
-        <!-- @if(session()->has('danger'))
-        
-        @elseif(session()->has('success'))
-            <div class="alert alert-success alert-dismissible text-center"> 
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <h4 class="alert-heading">Congratulations!!!</h4>
-                {!! Session::get('success') !!}
-            </div>
-        @endif -->
-
-
-
+    <div class="container new-movie-container mt-5 pt-5 pb-5">
+       
         <h3 class="text-center mb-2 mt-2"> New Movie Review </h3>
       
         <div v-if="serverResponse.length > 0">
 
-           <di v-if="serverResponse[0].status === 'error'">
+           <div v-if="serverResponse[0].status === 'error'">
                 <div class="alert alert-danger alert-dismissible text-center">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <h2 class="alert-heading">An error occured</h2>
@@ -26,7 +15,7 @@
                         </p>
                     </div>
                 </div>
-            </di>
+            </div>
 
             <div v-if="serverResponse[0].status === 'success'">
                 <div class="alert alert-success alert-dismissible text-center">
@@ -38,7 +27,8 @@
 
         </div>
         
-        <form method="POST" enctype="multipart/form-data" @submit.prevent="validateSubmission">
+        <form method="POST" enctype="multipart/form-data" @submit.prevent="validateSubmission" 
+            v-if="serverResponse.length < 1 || (serverResponse.length > 0 && serverResponse[0].status !== 'success')">
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right"><i>Title</i></label>
                 <div class="col-md-6">
@@ -173,6 +163,7 @@ export default {
                     'message': response.data.message,
                     'errors':  []
                 }] 
+                
             })
             .catch(error => { 
                 let errDisplay = ''
