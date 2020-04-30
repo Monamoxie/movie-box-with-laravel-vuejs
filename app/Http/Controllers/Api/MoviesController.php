@@ -59,6 +59,11 @@ class MoviesController extends Controller
         } 
     }
 
+    /**
+     * Post new movie review
+     * @param Illuminate\Http\Request, App\Services\CommenService
+     * @return Response
+     */
     public function newMovie(Request $request, MovieService $movieService)
     { 
         $request->validate([
@@ -78,8 +83,5 @@ class MoviesController extends Controller
         return $this->successResponse('Movie review was successfully created');
         
     }
-
-
-
     
 }
