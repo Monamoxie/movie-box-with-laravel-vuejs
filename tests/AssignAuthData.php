@@ -1,10 +1,7 @@
 <?php
 
-namespace Tests;
-
- 
-use App\Models\User;
-use Illuminate\Contracts\Console\Kernel;
+namespace Tests; 
+use App\User; 
 
 trait AssignAuthData
 {
@@ -27,16 +24,25 @@ trait AssignAuthData
      */
     public $userEmail;
 
+    /**
+     * A pregenerated password for this user\
+     * @return string
+     */
+    public $userPassword;
+
     public function generateUser(): User
-    {       
+    {    
+        \Artisan::call('passport:install');
+
         $this->userEmail = $this->faker->email;
+        $this->userPassword = $this->faker->password;
 
         $this->user = new User(); 
         $this->user->email = $this->userEmail;
         $this->user->name = $this->faker->firstName() . '' . $this->faker->lastName;
-        $this->user->password = $this->faker->password;
+        $this->user->password = $this->userPassword;
         $this->user->save();
-        $this->createToken(); 
+        $this->createToken();  
         return $this->user;
     }
 
@@ -46,8 +52,8 @@ trait AssignAuthData
      */
     protected function createToken(): string
     { 
-        $this->token = $this->user->createToken($this->userEmail)->accessToken; 
-        return $this->token;
+        $this->accessToken = $this->user->createToken($this->userEmail)->accessToken; 
+        return $this->accessToken;
     } 
 
     /**
@@ -58,7 +64,7 @@ trait AssignAuthData
     { 
         return [
             'Accept' => 'application/json', 
-            'Authorization' => 'Bearer '.$this->token
+            'Authorization' => 'Bearer '.$this->accessToken
         ];
     }
 
