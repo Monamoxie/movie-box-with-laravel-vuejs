@@ -50711,7 +50711,7 @@ var staticRenderFns = [
               _c("span", { staticClass: "text-white font-weight-bold " }, [
                 _vm._v("Movie")
               ]),
-              _vm._v(" Shows from around the world")
+              _vm._v(" reviews around the globe")
             ]),
             _vm._v(" "),
             _c(

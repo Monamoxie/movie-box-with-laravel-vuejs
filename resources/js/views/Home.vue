@@ -6,7 +6,7 @@
                   <div class="banner-text" > 
                          <div class="header-img-text">
                             <h2> LATEST & EXCLUSIVE </h2> 
-                            <p class="mt-3 mb-5 banner-para-wthree"><span class="text-white font-weight-bold ">Movie</span> Shows from around the world</p>
+                            <p class="mt-3 mb-5 banner-para-wthree"><span class="text-white font-weight-bold ">Movie</span> reviews around the globe</p>
                             <a href="/movies" class="btn btn-outline-primary btn-lg btn-explore">Explore the Box</a>
                         </div>  
                     </div>
