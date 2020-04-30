@@ -14,7 +14,7 @@ class RegisterTest extends TestCase
     /**
      * @test
     */
-    public function user_reg_request_should_fail_if_missing_required_details()
+    public function fail_if_missing_required_details()
     {
         $response = $this->withHeaders([
             'Accept' => 'application/json'])
@@ -27,7 +27,7 @@ class RegisterTest extends TestCase
     /**
      * @test
     */
-    public function  user_reg_request_should_fail_if_one_of_inputs_not_correct_type()
+    public function fail_if_one_of_inputs_not_correct_type()
     {
         $response = $this->withHeaders([
             'Accept' => 'application/json'])
@@ -44,7 +44,7 @@ class RegisterTest extends TestCase
     /**
      * @test
     */
-    public function user_reg_request_should_pass_if_required_inputs_are_provided_and_correct()
+    public function pass_if_required_inputs_are_provided_and_correct()
     { 
         $email = $this->faker->email; 
         $password = Hash::make($this->faker->password);
