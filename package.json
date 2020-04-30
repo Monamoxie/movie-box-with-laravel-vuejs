@@ -23,7 +23,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
         "minimist": ">=1.2.3",
         "popper": "^1.0.1",
         "vee-validate": "^2.2.15",
