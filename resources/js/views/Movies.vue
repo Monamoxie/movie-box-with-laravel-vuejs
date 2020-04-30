@@ -71,7 +71,6 @@
                 serverResponse: {}, 
                 processing: false
             } 
-        },
-        
+        },   
     }
 </script>
