@@ -49939,7 +49939,7 @@ var staticRenderFns = [
     return _c(
       "button",
       {
-        staticClass: "navbar-toggler",
+        staticClass: "navbar-toggler float-right",
         attrs: {
           type: "button",
           "data-toggle": "collapse",
@@ -50716,7 +50716,10 @@ var staticRenderFns = [
             _vm._v(" "),
             _c(
               "a",
-              { staticClass: "btn button-style", attrs: { href: "/movies" } },
+              {
+                staticClass: "btn btn-outline-primary btn-lg btn-explore",
+                attrs: { href: "/movies" }
+              },
               [_vm._v("Explore the Box")]
             )
           ])
