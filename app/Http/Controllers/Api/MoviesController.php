@@ -60,8 +60,7 @@ class MoviesController extends Controller
     }
 
     public function newMovie(Request $request, MovieService $movieService)
-    {
-        dd(public_path());
+    { 
         $request->validate([
             'title' => ['required', 'string'],
             'country' => ['required', 'string'],
@@ -73,12 +72,11 @@ class MoviesController extends Controller
         ]);
 
         $newMovie = $movieService->newMovie($request->all());
-        if ($newMovie === false) {
-            return redirect()->back()->withInput()->with('danger', 'An error occured. Please try again');
-        }
-        else {
-            return redirect("/movies/create/new")->with('success', 'Movie has been successfully posted');
-        }
+        if ($newMovie === false) { 
+            return $this->errorResponse('Movie review was not created', 'An error occured');
+        } 
+        return $this->successResponse('Movie review was successfully created');
+        
     }
 
 

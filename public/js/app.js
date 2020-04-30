@@ -3039,6 +3039,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'NewMovie',
   data: function data() {
@@ -3079,8 +3080,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       formData.append('description', this.description);
       formData.append('photo', this.banner, this.banner.name);
       this.$store.dispatch('newMovie', formData).then(function (response) {
-        _this2.movieDetails = response.data.data.movie;
-        _this2.movieComments = response.data.data.comments;
+        _this2.serverResponse = [{
+          'status': 'success',
+          'message': response.data.message,
+          'errors': []
+        }];
       })["catch"](function (error) {
         var errDisplay = '';
 
@@ -51540,7 +51544,7 @@ var render = function() {
               : _vm._e(),
             _vm._v(" "),
             _vm.serverResponse[0].status === "success"
-              ? _c("di", [
+              ? _c("div", [
                   _c(
                     "div",
                     {
@@ -51562,7 +51566,7 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _c("h2", { staticClass: "alert-heading" }, [
-                        _c("i", { staticClass: "fa fa-check-o" })
+                        _vm._v(" Congratulations!!! ")
                       ]),
                       _vm._v(
                         "\n                " +

@@ -86,7 +86,7 @@ class MovieService
         $extension = strtolower($data['photo']->extension());
         $newFileName =  md5($data['title'])  . '.' . $extension;
     
-        if (!$data['photo']->storeAs('images', $newFileName, 'public_dir')) {
+        if (!$data['photo']->storeAs('uploads/images', $newFileName, 'public')) {
             return false;
         }
 

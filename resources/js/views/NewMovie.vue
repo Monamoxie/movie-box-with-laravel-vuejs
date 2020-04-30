@@ -15,6 +15,7 @@
         <h3 class="text-center mb-2 mt-2"> New Movie Review </h3>
       
         <div v-if="serverResponse.length > 0">
+
            <di v-if="serverResponse[0].status === 'error'">
                 <div class="alert alert-danger alert-dismissible text-center">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -27,13 +28,13 @@
                 </div>
             </di>
 
-            <di v-if="serverResponse[0].status === 'success'">
+            <div v-if="serverResponse[0].status === 'success'">
                 <div class="alert alert-success alert-dismissible text-center">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <h2 class="alert-heading"><i class="fa fa-check-o"></i></h2>
+                    <h2 class="alert-heading"> Congratulations!!! </h2>
                     {{ serverResponse[0].message }}
                 </div>
-            </di>
+            </div>
 
         </div>
         
@@ -167,22 +168,25 @@ export default {
  
             this.$store.dispatch('newMovie', formData) 
             .then((response) => {     
-            this.movieDetails = response.data.data.movie
-            this.movieComments = response.data.data.comments
-        })
-        .catch(error => { 
-            let errDisplay = ''
-            if (error.response.data.errors !== null && error.response.data.errors !== undefined) {
-                errDisplay = typeof error.response.data.errors === 'object' ? Object.values(error.response.data.errors) : [error.response.data.errors]
-            } 
-            else {
-                errDisplay = []
-            }
-            this.serverResponse = [{
-                'status': 'error',
-                'message': error.response.data.message,
-                'errors':  errDisplay
-            }]   
+                 this.serverResponse = [{
+                    'status': 'success',
+                    'message': response.data.message,
+                    'errors':  []
+                }] 
+            })
+            .catch(error => { 
+                let errDisplay = ''
+                if (error.response.data.errors !== null && error.response.data.errors !== undefined) {
+                    errDisplay = typeof error.response.data.errors === 'object' ? Object.values(error.response.data.errors) : [error.response.data.errors]
+                } 
+                else {
+                    errDisplay = []
+                }
+                this.serverResponse = [{
+                    'status': 'error',
+                    'message': error.response.data.message,
+                    'errors':  errDisplay
+                }]   
             })
             .finally(() => {
                 this.processing = false  
