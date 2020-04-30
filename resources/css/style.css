@@ -270,6 +270,9 @@ a:hover {
     margin: 40px auto;
     min-height: 500px;
 }
+textarea {
+    resize: none;
+}
 
 
 

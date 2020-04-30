@@ -1,5 +1,5 @@
 <template> 
-    <div class="container higher-dv">
+    <div class="container mt-5 pt-5 pb-5">
         <!-- @if(session()->has('danger'))
         <div class="alert alert-danger alert-dismissible text-center"> 
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -20,39 +20,48 @@
                 <div class="alert alert-danger mt-2">{{ $error }}</div>
             @endforeach
         @endif -->
-        <form method="POST" enctype="multipart/form-data" @submit.prevent="newMovie">
+        <form method="POST" enctype="multipart/form-data" @submit.prevent="validateSubmission">
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right"><i>Title</i></label>
                 <div class="col-md-6">
-                    <input type="text" v-model="title" class="form-control">
+                    <input type="text" v-model="title" name="title" class="form-control" 
+                     v-validate="'required|min:3'" :class="{ 'is-invalid' : errors.has('title') }">
+                    <span class="text-danger">{{ errors.first('title') }}</span>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right"><i>Country</i></label>
                 <div class="col-md-6">
-                    <input type="text" v-model="country" class="form-control">
+                    <input type="text" v-model="country" name="country" class="form-control" 
+                     v-validate="'required|min:3'" :class="{ 'is-invalid' : errors.has('country') }">
+                     <span class="text-danger">{{ errors.first('country') }}</span>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right"><i>Genre</i></label>
                 <div class="col-md-6">
-                    <input type="text" v-model="genre" class="form-control">
+                    <input type="text" v-model="genre" name="genre" class="form-control"
+                    v-validate="'required'" :class="{ 'is-invalid' : errors.has('genre') }">
+                    <span class="text-danger">{{ errors.first('genre') }}</span>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right"><i>Ticket Price</i></label>
                 <div class="col-md-6">
-                    <input type="text" v-model="ticketPrice" class="form-control">
+                    <input type="text" v-model="ticketPrice" name="ticket_price" class="form-control"
+                    v-validate="'required'" :class="{ 'is-invalid' : errors.has('ticket_price') }">
+                    <span class="text-danger">{{ errors.first('ticket_price') }}</span>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right"><i>Rating</i></label>
                 <div class="col-md-6">
-                    <select v-model="rating" class="form-control">
+                    <select v-model="rating" name="rating" class="form-control" 
+                    v-validate="'required'" :class="{ 'is-invalid' : errors.has('rating') }">
                         <option value=""></option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -60,13 +69,16 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
+                     <span class="text-danger">{{ errors.first('rating') }}</span>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right"><i>Review</i></label>
                 <div class="col-md-6">
-                    <textarea class="form-control mb2" v-model="description" autofocus></textarea> 
+                    <textarea class="form-control mb2" v-model="description" name="description" rows="5"
+                    v-validate="'required'" :class="{ 'is-invalid' : errors.has('description') }"></textarea> 
+                    <span class="text-danger">{{ errors.first('description') }}</span>
                 </div>
             </div>
 
@@ -94,16 +106,25 @@ export default {
     name: 'NewMovie',
     data() {
         return {
-            title: 'A movie',
+            title: '',
             country: 'Nigeria',
             genre: 'action',
             ticketPrice: '2300',
-            rating: '2',
+            rating: '22',
             banner: null,
             description: 'A new order of description'
         }
     },
     methods: {
+         validateSubmission() {
+            this.$validator.validateAll().then(result => {
+                if(result) { 
+                    // this.newMovie(); 
+                    alert('all set');
+                }
+                return false;
+            })
+        },
         newMovie() {
              
             const formData = new FormData()

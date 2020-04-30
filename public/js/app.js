@@ -2997,20 +2997,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'NewMovie',
   data: function data() {
     return {
-      title: 'A movie',
+      title: '',
       country: 'Nigeria',
       genre: 'action',
       ticketPrice: '2300',
-      rating: '2',
+      rating: '22',
       banner: null,
       description: 'A new order of description'
     };
   },
   methods: {
+    validateSubmission: function validateSubmission() {
+      this.$validator.validateAll().then(function (result) {
+        if (result) {
+          // this.newMovie(); 
+          alert('all set');
+        }
+
+        return false;
+      });
+    },
     newMovie: function newMovie() {
       var formData = new FormData();
       formData.append('title', this.title);
@@ -51404,7 +51426,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container higher-dv" }, [
+  return _c("div", { staticClass: "container mt-5 pt-5 pb-5" }, [
     _c("h3", { staticClass: "text-center mb-2 mt-2" }, [
       _vm._v(" New Movie Review ")
     ]),
@@ -51416,7 +51438,7 @@ var render = function() {
         on: {
           submit: function($event) {
             $event.preventDefault()
-            return _vm.newMovie($event)
+            return _vm.validateSubmission($event)
           }
         }
       },
@@ -51432,10 +51454,17 @@ var render = function() {
                   rawName: "v-model",
                   value: _vm.title,
                   expression: "title"
+                },
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "required|min:3",
+                  expression: "'required|min:3'"
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text" },
+              class: { "is-invalid": _vm.errors.has("title") },
+              attrs: { type: "text", name: "title" },
               domProps: { value: _vm.title },
               on: {
                 input: function($event) {
@@ -51445,7 +51474,11 @@ var render = function() {
                   _vm.title = $event.target.value
                 }
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-danger" }, [
+              _vm._v(_vm._s(_vm.errors.first("title")))
+            ])
           ])
         ]),
         _vm._v(" "),
@@ -51460,10 +51493,17 @@ var render = function() {
                   rawName: "v-model",
                   value: _vm.country,
                   expression: "country"
+                },
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "required|min:3",
+                  expression: "'required|min:3'"
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text" },
+              class: { "is-invalid": _vm.errors.has("country") },
+              attrs: { type: "text", name: "country" },
               domProps: { value: _vm.country },
               on: {
                 input: function($event) {
@@ -51473,7 +51513,11 @@ var render = function() {
                   _vm.country = $event.target.value
                 }
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-danger" }, [
+              _vm._v(_vm._s(_vm.errors.first("country")))
+            ])
           ])
         ]),
         _vm._v(" "),
@@ -51488,10 +51532,17 @@ var render = function() {
                   rawName: "v-model",
                   value: _vm.genre,
                   expression: "genre"
+                },
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "required",
+                  expression: "'required'"
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text" },
+              class: { "is-invalid": _vm.errors.has("genre") },
+              attrs: { type: "text", name: "genre" },
               domProps: { value: _vm.genre },
               on: {
                 input: function($event) {
@@ -51501,7 +51552,11 @@ var render = function() {
                   _vm.genre = $event.target.value
                 }
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-danger" }, [
+              _vm._v(_vm._s(_vm.errors.first("genre")))
+            ])
           ])
         ]),
         _vm._v(" "),
@@ -51516,10 +51571,17 @@ var render = function() {
                   rawName: "v-model",
                   value: _vm.ticketPrice,
                   expression: "ticketPrice"
+                },
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "required",
+                  expression: "'required'"
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text" },
+              class: { "is-invalid": _vm.errors.has("ticket_price") },
+              attrs: { type: "text", name: "ticket_price" },
               domProps: { value: _vm.ticketPrice },
               on: {
                 input: function($event) {
@@ -51529,7 +51591,11 @@ var render = function() {
                   _vm.ticketPrice = $event.target.value
                 }
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-danger" }, [
+              _vm._v(_vm._s(_vm.errors.first("ticket_price")))
+            ])
           ])
         ]),
         _vm._v(" "),
@@ -51546,9 +51612,17 @@ var render = function() {
                     rawName: "v-model",
                     value: _vm.rating,
                     expression: "rating"
+                  },
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: "required",
+                    expression: "'required'"
                   }
                 ],
                 staticClass: "form-control",
+                class: { "is-invalid": _vm.errors.has("rating") },
+                attrs: { name: "rating" },
                 on: {
                   change: function($event) {
                     var $$selectedVal = Array.prototype.filter
@@ -51578,7 +51652,11 @@ var render = function() {
                 _vm._v(" "),
                 _c("option", { attrs: { value: "5" } }, [_vm._v("5")])
               ]
-            )
+            ),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-danger" }, [
+              _vm._v(_vm._s(_vm.errors.first("rating")))
+            ])
           ])
         ]),
         _vm._v(" "),
@@ -51593,10 +51671,17 @@ var render = function() {
                   rawName: "v-model",
                   value: _vm.description,
                   expression: "description"
+                },
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "required",
+                  expression: "'required'"
                 }
               ],
               staticClass: "form-control mb2",
-              attrs: { autofocus: "" },
+              class: { "is-invalid": _vm.errors.has("description") },
+              attrs: { name: "description", rows: "5" },
               domProps: { value: _vm.description },
               on: {
                 input: function($event) {
@@ -51606,7 +51691,11 @@ var render = function() {
                   _vm.description = $event.target.value
                 }
               }
-            })
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-danger" }, [
+              _vm._v(_vm._s(_vm.errors.first("description")))
+            ])
           ])
         ]),
         _vm._v(" "),
