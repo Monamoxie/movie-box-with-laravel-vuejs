@@ -1,8 +1,7 @@
 <?php
 
 namespace Tests\Unit;
-
-use Illuminate\Foundation\Testing\DatabaseMigrations; 
+ 
 use Tests\TestCase; 
 
 class ListMoviesTest extends TestCase
@@ -46,7 +45,7 @@ class ListMoviesTest extends TestCase
     public function movies_list_should_pass_if_request_is_okay()
     {
         $this->newMovie();
-        
+
         $response = $this->withHeaders($this->authHeaders())
         ->json('GET', '/api/v1/movies');       
         $response->assertStatus(200);  

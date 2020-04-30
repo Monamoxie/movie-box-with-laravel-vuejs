@@ -1,9 +1,7 @@
 <?php
 
 namespace Tests\Unit;
-
-use App\User;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+ 
 use Illuminate\Http\UploadedFile; 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str as IlluminateStr;
