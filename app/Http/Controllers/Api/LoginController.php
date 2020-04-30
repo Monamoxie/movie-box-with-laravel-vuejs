@@ -21,7 +21,6 @@ class LoginController extends Controller
             'password' => ['required', 'string'],
         ]);
         
-        
         $user = $userService->login($request->all());
 
         if ($user === null) { 
