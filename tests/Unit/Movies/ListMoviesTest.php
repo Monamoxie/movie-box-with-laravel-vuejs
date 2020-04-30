@@ -23,20 +23,7 @@ class ListMoviesTest extends TestCase
             ->json('POST', '/api/v1/movies');
         $response->assertStatus(405); 
     }
-
-    /**
-     * @group movieslist
-     * @test
-     */
-    public function fail_if_user_not_authenticated()
-    {
-        $response = $this->withHeaders([
-            'Accept' => 'application/json'
-        ])
-        ->json('GET', '/api/v1/movies');
-            
-        $response->assertStatus(200);  
-    }
+ 
   
     /**
      * @group movieslist

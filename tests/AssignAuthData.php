@@ -1,6 +1,8 @@
 <?php
 
-namespace Tests; 
+namespace Tests;
+
+use App\Movie;
 use App\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -9,28 +11,35 @@ trait AssignAuthData
 {
     /**
      * A newly generated user
-     * @return \App\Models\User
+     * @return null|\App\Models\User
      */
     public $user;
     
     /**
      * A newly generated access token
-     * @return String
+     * @return null|string
      */    
     public $accessToken;
 
 
     /**
      * A pregenerated email address for this user
-     * @return string
+     * @return null|string
      */
     public $userEmail;
 
     /**
      * A pregenerated password for this user\
-     * @return string
+     * @return null|string
      */
     public $userPassword;
+
+    /**
+     * Id of a newly created movie
+     * @return null|string
+     */
+    public $newMovieId;
+    
 
     public function generateUser(): User
     {    
@@ -82,19 +91,24 @@ trait AssignAuthData
          
         $title = ucfirst($this->faker->words[0]) . ' ' . ucfirst($this->faker->words[0]);
         $ticketPrice = rand(2300, 4000); 
+        $rating = rand(2, 5);
         
         $this->withHeaders($this->authHeaders())
         ->json('POST', '/api/v1/movie/new', [
             'title' => $title,
             'description' => $this->faker->text(200),
             'release_date' => $this->faker->dateTime(),
-            'rating' => rand(2, 5),
+            'rating' => $rating,
             'ticket_price' => $ticketPrice,
             'country' => $this->faker->country,
             'genre' => $this->faker->randomElement(['action', 'romance', 'comedy', 'classical']),
             'photo' => $photo
         ]);
-         
+
+        $id = Movie::where('title', $title)->where('rating', $rating)->first()['id'];
+        
+        $this->newMovieId = $id;
+
         return true;
     
     }
