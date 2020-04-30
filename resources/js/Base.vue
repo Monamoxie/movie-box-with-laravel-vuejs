@@ -58,7 +58,7 @@
         <router-view :key="$route.fullPath"></router-view>
         <footer class="footer">
             <div class="container">
-                <span class="text-muted">  &copy; {{ new Date().getFullYear() }} <br/>  All rights reserved. </span>
+                <span class="text-muted">  &copy; {{ new Date().getFullYear() }} <br/>  Developed by Mona Moxiegit . </span>
             </div> 
         </footer>
     </div>    

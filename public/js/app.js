@@ -49908,7 +49908,7 @@ var render = function() {
           _c("span", { staticClass: "text-muted" }, [
             _vm._v("  © " + _vm._s(new Date().getFullYear()) + " "),
             _c("br"),
-            _vm._v("  All rights reserved. ")
+            _vm._v("  Developed by Mona Moxiegit . ")
           ])
         ])
       ])
