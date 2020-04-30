@@ -2545,8 +2545,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   name: 'Login',
   data: function data() {
     return {
-      email: 'moxie4lyf@gmail.com',
-      password: '12345',
+      email: '',
+      password: '',
       processing: false,
       serverResponse: []
     };

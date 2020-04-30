@@ -76,8 +76,8 @@ export default {
     name: 'Login',
     data() {
         return {
-            email: 'moxie4lyf@gmail.com',
-            password: '12345',
+            email: '',
+            password: '',
             processing: false,
             serverResponse: []
         }
