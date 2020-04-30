@@ -3034,13 +3034,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   name: 'NewMovie',
   data: function data() {
     return {
-      title: 'A new movie review title',
-      country: 'Nigeria',
-      genre: 'action',
-      ticketPrice: '2300',
-      rating: '3',
+      title: '',
+      country: '',
+      genre: '',
+      ticketPrice: '',
+      rating: '',
       banner: null,
-      description: 'A new time for a new movie review',
+      description: '',
       processing: false,
       serverResponse: []
     };
