@@ -91,10 +91,10 @@ export default {
     name: 'Register',
     data() {
         return {
-            name: 'Mona Moxie',
-            email: 'moxie4lyf@gmail.com',
-            password: '12345',
-            confirmPassword: '12345',
+            name: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
             processing: false,
             serverResponse: []
         }
