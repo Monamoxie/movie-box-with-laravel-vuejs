@@ -1,7 +1,9 @@
 <?php
 
 namespace Tests; 
-use App\User; 
+use App\User;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 trait AssignAuthData
 {
@@ -66,6 +68,35 @@ trait AssignAuthData
             'Accept' => 'application/json', 
             'Authorization' => 'Bearer '.$this->accessToken
         ];
+    }
+
+    /**
+     * create a new movie
+     * @return bool
+     */
+    public function newMovie(): bool
+    {
+        Storage::fake(); 
+
+        $photo = UploadedFile::fake()->image('ao.png');
+         
+        $title = ucfirst($this->faker->words[0]) . ' ' . ucfirst($this->faker->words[0]);
+        $ticketPrice = rand(2300, 4000); 
+        
+        $this->withHeaders($this->authHeaders())
+        ->json('POST', '/api/v1/movie/new', [
+            'title' => $title,
+            'description' => $this->faker->text(200),
+            'release_date' => $this->faker->dateTime(),
+            'rating' => rand(2, 5),
+            'ticket_price' => $ticketPrice,
+            'country' => $this->faker->country,
+            'genre' => $this->faker->randomElement(['action', 'romance', 'comedy', 'classical']),
+            'photo' => $photo
+        ]);
+         
+        return true;
+    
     }
 
 
