@@ -40,23 +40,16 @@
 - If everything works fine, then run *php artisan serve*
 - Copy the url and visit it on your web browser.
 
-## API Deployment Approch
-
-Ability to view the list or details of a movie sits behind an API endpoint. 
-
-In a normal setting, I would return JSON data to the JS and allow it worry about rendering and all.
-But for ease and speed, I chose to follow a different route. The API will compile the view files and send to JS to insert into the DOM. It's faster that way and just for this purpose.
  
 ## Credit
-- Pexels.com -Stock photos
-- W3layouts.com -Layout concept
+- Pexels.com -Stock photos 
 - Pixabay.com -Stock photos
 
 ## PHP Unit Test
-<p align="center"><img src="public/images/circle_ci_test.png"></p>
+<p align="center"><img src="resources/images/circle_ci_test.png"></p>
+
+<p align="center"><img src="resources/images/home_snapshot.png"></p>
  
 ## License
 
 This software is open-sourced software and licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-<p align="center"><img src="public/images/home_snapshot.png"></p>
