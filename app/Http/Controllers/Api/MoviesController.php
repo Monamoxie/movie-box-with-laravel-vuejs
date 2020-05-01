@@ -44,8 +44,8 @@ class MoviesController extends Controller
       
         $request->validate([
             'comment' => ['required', 'string', 'min:1']
-        ]);
-
+        ]); 
+        
         $movieId = preg_replace('#[^a-z0-9-]#i', '', $request->id);
         if(!$movieService->movieExistsById($movieId)) {
             return  $this->errorResponse('This movie does not exist', 'An error occured');

@@ -50,7 +50,7 @@ trait AssignAuthData
 
         $this->user = new User(); 
         $this->user->email = $this->userEmail;
-        $this->user->name = $this->faker->firstName() . '' . $this->faker->lastName;
+        $this->user->name = $this->faker->firstName() . ' ' . $this->faker->lastName;
         $this->user->password = $this->userPassword;
         $this->user->save();
         $this->createToken();  

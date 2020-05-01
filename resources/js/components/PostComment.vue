@@ -10,7 +10,7 @@
                 </p>
             </div>
            
-            <div  class="row form-wrapper">
+            <div v-else class="row form-wrapper">
                 <div class="col-md-4 post-comment-title">
                     <h3 class="text-primary">Post a comment >> </h3>
                 </div>
@@ -60,7 +60,7 @@ export default {
     name: 'PostComment',
     data() {
         return {
-            comment: 'Mona Moxie',
+            comment: '',
             processing: false,
             serverResponse: [],
             processing: false

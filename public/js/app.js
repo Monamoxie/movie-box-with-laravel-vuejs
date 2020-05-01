@@ -2282,7 +2282,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   name: 'PostComment',
   data: function data() {
     return _defineProperty({
-      comment: 'Mona Moxie',
+      comment: '',
       processing: false,
       serverResponse: []
     }, "processing", false);
@@ -50385,99 +50385,99 @@ var render = function() {
               )
             ])
           ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "row form-wrapper" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-8" }, [
-          _c(
-            "form",
-            {
-              attrs: { method: "POST" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.postComment($event)
-                }
-              }
-            },
-            [
-              _c("div", { staticClass: "form-group row" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.comment,
-                        expression: "comment"
-                      }
-                    ],
-                    staticClass: "form-control mb2",
-                    attrs: { name: "comment", autofocus: "", required: "" },
-                    domProps: { value: _vm.comment },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.comment = $event.target.value
-                      }
+        : _c("div", { staticClass: "row form-wrapper" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-8" }, [
+              _c(
+                "form",
+                {
+                  attrs: { method: "POST" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.postComment($event)
                     }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              !_vm.processing
-                ? _c("div", { staticClass: "form-group row mb-0 text-left" }, [
-                    _vm._m(2)
-                  ])
-                : _c("div", { staticClass: "form-group row mt-2" }, [
-                    _vm._m(3)
+                  }
+                },
+                [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.comment,
+                            expression: "comment"
+                          }
+                        ],
+                        staticClass: "form-control mb2",
+                        attrs: { name: "comment", autofocus: "", required: "" },
+                        domProps: { value: _vm.comment },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.comment = $event.target.value
+                          }
+                        }
+                      })
+                    ])
                   ]),
-              _vm._v(" "),
-              _vm.serverResponse.length > 0 && !_vm.processing
-                ? _c("div", [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "alert alert-danger alert-dismissible text-center mt-2"
-                      },
-                      [
-                        _c("h4", { staticClass: "alert-heading" }, [
-                          _vm._v(_vm._s(_vm.serverResponse[0].message))
-                        ]),
-                        _vm._v(" "),
-                        _vm.serverResponse[0].errors.length > 0
-                          ? _c(
-                              "div",
-                              _vm._l(_vm.serverResponse[0].errors, function(
-                                error,
-                                key
-                              ) {
-                                return _c("p", { key: key }, [
-                                  _vm._v(
-                                    "\n                                    " +
-                                      _vm._s(error[0]) +
-                                      "\n                                "
-                                  )
-                                ])
-                              }),
-                              0
-                            )
-                          : _vm._e()
-                      ]
-                    )
-                  ])
-                : _vm._e()
-            ]
-          )
-        ])
-      ])
+                  _vm._v(" "),
+                  !_vm.processing
+                    ? _c(
+                        "div",
+                        { staticClass: "form-group row mb-0 text-left" },
+                        [_vm._m(2)]
+                      )
+                    : _c("div", { staticClass: "form-group row mt-2" }, [
+                        _vm._m(3)
+                      ]),
+                  _vm._v(" "),
+                  _vm.serverResponse.length > 0 && !_vm.processing
+                    ? _c("div", [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "alert alert-danger alert-dismissible text-center mt-2"
+                          },
+                          [
+                            _c("h4", { staticClass: "alert-heading" }, [
+                              _vm._v(_vm._s(_vm.serverResponse[0].message))
+                            ]),
+                            _vm._v(" "),
+                            _vm.serverResponse[0].errors.length > 0
+                              ? _c(
+                                  "div",
+                                  _vm._l(_vm.serverResponse[0].errors, function(
+                                    error,
+                                    key
+                                  ) {
+                                    return _c("p", { key: key }, [
+                                      _vm._v(
+                                        "\n                                    " +
+                                          _vm._s(error[0]) +
+                                          "\n                                "
+                                      )
+                                    ])
+                                  }),
+                                  0
+                                )
+                              : _vm._e()
+                          ]
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              )
+            ])
+          ])
     ])
   ])
 }
