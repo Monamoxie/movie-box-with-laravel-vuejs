@@ -1,7 +1,7 @@
 <p align="center"><img src="resources/images/logo.png"></p>
 
 ## Circle CI Test
-[![CircleCI](https://circleci.com/gh/Monamoxie/movie-box.svg?style=svg)](https://circleci.com/gh/Monamoxie/movie-box)
+[![CircleCI](https://circleci.com/gh/Monamoxie/movie-box-with-laravel-vuejs.svg?style=svg)](https://circleci.com/gh/Monamoxie/movie-box-with-laravel-vuejs)
 
 
 ## Technology Stack and Tools
