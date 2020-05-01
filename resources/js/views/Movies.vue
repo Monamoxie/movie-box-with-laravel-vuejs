@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="higher-dv">
         <div class="box-jumbotron bg-white ">
             <div class="container">
                 <h1 class="text-center">Movie Catalogs</h1>
