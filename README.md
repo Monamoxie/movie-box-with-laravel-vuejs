@@ -1,4 +1,4 @@
-<p align="center"><img src="public/images/logo2.png"></p>
+<p align="center"><img src="resources/images/logo.png"></p>
 
 ## Circle CI Test
 [![CircleCI](https://circleci.com/gh/Monamoxie/movie-box.svg?style=svg)](https://circleci.com/gh/Monamoxie/movie-box)
