@@ -33,7 +33,7 @@ class MoviesAddCommentTest extends TestCase
     
     /**
      * @group movie_add_comment
-     * 
+     * @test
      */
     public function fail_if_user_not_authenticated()
     {
@@ -43,8 +43,7 @@ class MoviesAddCommentTest extends TestCase
         ->json('PUT', '/api/v1/movie/' . $this->newMovieId . '/comment/new', [
             'comment' => $this->faker->word
         ]);
-        $response->dump(); 
-        
+    
         $response->assertStatus(401);  
     }
 
