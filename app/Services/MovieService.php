@@ -2,8 +2,7 @@
 
 namespace App\Services;
 
-use App\Movie;
-use App\Comment;
+use App\Movie; 
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use stdClass;
@@ -20,6 +19,7 @@ class MovieService
     {
         return Movie::orderBy('release_date')->paginate(6);
     }
+
 
     /**
      * Returns the full details of a particular movie
@@ -53,6 +53,7 @@ class MovieService
         return $data;
     }
 
+
     /**
      * Check if movie exists by id
      * @param string id
@@ -63,6 +64,7 @@ class MovieService
         return Movie::where('id', $id)->count() > 0;
     }
 
+
     /**
      * Returns the Id of a movie from DB using the ID
      * @param String $slug
@@ -72,6 +74,7 @@ class MovieService
     {
         return Movie::select('id')->where('slug', $slug)->first()['id'];
     }
+
 
     /**
      * Stores a new movie review

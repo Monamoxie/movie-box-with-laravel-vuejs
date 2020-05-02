@@ -88,9 +88,11 @@
     </div>
 </template>
 <script>
+
 import MovieComments from '../components/MovieComments'
 import ZedBanner from '../components/ZedBanner'
 import PostComment from '../components/PostComment'
+
 export default {
     name: "MovieDetails",
     components: {
