@@ -10,9 +10,5 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::any('/{any?}', "IndexController@index")->where('any', '^(?!api).*$');
-// Route::get('/{any?}', 'AppController@show')->where('catchall', '^(?!api).*$')->name('administration');
-
-
-
+ 
+Route::get('/{any?}', 'IndexController@index')->where('any', '^(?!api).*$');
