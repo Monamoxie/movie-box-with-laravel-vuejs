@@ -3,6 +3,7 @@
   "scripts": {
     "test:unit": "vue-cli-service test:unit",
     "test": "jest",
+    "test-watch": "npm run test -- --watch",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "dev": "npm run development",
