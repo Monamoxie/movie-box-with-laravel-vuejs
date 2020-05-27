@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <header> 
-              <nav class="navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow ">
+            <!-- <nav class="navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow ">
             
                 <div class="navbar-brand col-sm-3 col-md-3 mr-0">
                     <span class="logo-holder">
@@ -41,26 +41,22 @@
                             <li class="nav-item" :class="this.$route.path === '/logout' ? 'active' : '' "  v-if="$store.getters.isLoggedIn "
                                 @click="$router.push({ name: 'logout' })">
                                 <span class="nav-link">Logout</span>
-                            </li>
-                            
-                            <!-- <li class="nav-item"><router-link class="nav-link" :to="{ name : 'login' }">Login</router-link></li>
-                            <li class="nav-item" :class="this.$route.path === '/register' ? 'active' : '' " v-if="!loggedIn"><router-link class="nav-link" :to="{ name : 'register' }">Register</router-link></li>
-                            <li class="nav-item" v-if="loggedIn"><router-link  class="nav-link" :to="{ name : 'logout' }">Logout</router-link></li> -->
+                            </li> 
                         </ul>
                     </div>
                 </div>
                 
-            </nav>
+            </nav> -->
 
         </header>
 
         
         <router-view :key="$route.fullPath"></router-view>
-        <footer class="footer">
+        <!-- <footer class="footer">
             <div class="container">
                 <span class="text-muted">  &copy; {{ new Date().getFullYear() }} <br/>  Developed by Mona Moxie. </span>
             </div> 
-        </footer>
+        </footer> -->
     </div>    
 </template>
 <script>

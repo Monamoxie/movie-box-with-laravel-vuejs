@@ -1969,10 +1969,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
   data: function data() {
@@ -50024,209 +50020,14 @@ var render = function() {
     "div",
     { staticClass: "wrapper" },
     [
-      _c("header", [
-        _c(
-          "nav",
-          {
-            staticClass:
-              "navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow "
-          },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-9 col-md-9" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "collapse navbar-collapse",
-                  attrs: { id: "navbarTogglerDemo03" }
-                },
-                [
-                  _c("ul", { staticClass: "navbar-nav ml-auto top-nav" }, [
-                    _c(
-                      "li",
-                      {
-                        staticClass: "nav-item",
-                        class: this.$route.path === "/" ? "active" : "",
-                        on: {
-                          click: function($event) {
-                            return _vm.$router.push({ name: "home" })
-                          }
-                        }
-                      },
-                      [
-                        _c("span", { staticClass: "nav-link" }, [
-                          _vm._v("Home")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass: "nav-item",
-                        class:
-                          this.$route.name === "movies" ||
-                          this.$route.name === "movieDetails" ||
-                          this.$route.name === "moviesPaged"
-                            ? "active"
-                            : "",
-                        on: {
-                          click: function($event) {
-                            return _vm.$router.push({ name: "movies" })
-                          }
-                        }
-                      },
-                      [
-                        _c("span", { staticClass: "nav-link" }, [
-                          _vm._v("Movies")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass: "nav-item",
-                        class:
-                          this.$route.path === "/movie/new" ? "active" : "",
-                        on: {
-                          click: function($event) {
-                            return _vm.$router.push({ name: "new-movie" })
-                          }
-                        }
-                      },
-                      [
-                        _c("span", { staticClass: "nav-link" }, [
-                          _vm._v("New Review")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    !_vm.$store.getters.isLoggedIn
-                      ? _c(
-                          "li",
-                          {
-                            staticClass: "nav-item",
-                            class:
-                              this.$route.path === "/login" ? "active" : "",
-                            on: {
-                              click: function($event) {
-                                return _vm.$router.push({ name: "login" })
-                              }
-                            }
-                          },
-                          [
-                            _c("span", { staticClass: "nav-link" }, [
-                              _vm._v("Login")
-                            ])
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    !_vm.$store.getters.isLoggedIn
-                      ? _c(
-                          "li",
-                          {
-                            staticClass: "nav-item",
-                            class:
-                              this.$route.path === "/register" ? "active" : "",
-                            on: {
-                              click: function($event) {
-                                return _vm.$router.push({ name: "register" })
-                              }
-                            }
-                          },
-                          [
-                            _c("span", { staticClass: "nav-link" }, [
-                              _vm._v("Register")
-                            ])
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.$store.getters.isLoggedIn
-                      ? _c(
-                          "li",
-                          {
-                            staticClass: "nav-item",
-                            class:
-                              this.$route.path === "/logout" ? "active" : "",
-                            on: {
-                              click: function($event) {
-                                return _vm.$router.push({ name: "logout" })
-                              }
-                            }
-                          },
-                          [
-                            _c("span", { staticClass: "nav-link" }, [
-                              _vm._v("Logout")
-                            ])
-                          ]
-                        )
-                      : _vm._e()
-                  ])
-                ]
-              )
-            ])
-          ]
-        )
-      ]),
+      _c("header"),
       _vm._v(" "),
-      _c("router-view", { key: _vm.$route.fullPath }),
-      _vm._v(" "),
-      _c("footer", { staticClass: "footer" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("span", { staticClass: "text-muted" }, [
-            _vm._v("  © " + _vm._s(new Date().getFullYear()) + " "),
-            _c("br"),
-            _vm._v("  Developed by Mona Moxie. ")
-          ])
-        ])
-      ])
+      _c("router-view", { key: _vm.$route.fullPath })
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "navbar-brand col-sm-3 col-md-3 mr-0" }, [
-      _c("span", { staticClass: "logo-holder" }, [
-        _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
-          _c("img", {
-            staticClass: "logo",
-            attrs: { src: __webpack_require__(/*! ../images/logo.png */ "./resources/images/logo.png"), alt: "Logo" }
-          })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler float-right",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarTogglerDemo03",
-          "aria-controls": "navbarTogglerDemo03",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("span", { staticClass: "navbar-toggler-icon" })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -68829,17 +68630,6 @@ module.exports = "/images/1.jpeg?0caef3c0d0b15203d98f4af511a4b79f";
 /***/ (function(module, exports) {
 
 module.exports = "/images/banner22.jpg?d9d56c971271cb65bcfcbaf821250b0f";
-
-/***/ }),
-
-/***/ "./resources/images/logo.png":
-/*!***********************************!*\
-  !*** ./resources/images/logo.png ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/logo.png?6db396ba07cf216ae943f64416a4813d";
 
 /***/ }),
 
