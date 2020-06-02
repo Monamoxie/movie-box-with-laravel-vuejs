@@ -42,7 +42,7 @@
             
                 <div v-else class="album py-5 bg-light">
                     <div class="container"> 
-                        <!-- <movie-box :movies="movies" :paginationParam="paginationParam"></movie-box> -->
+                        <movie-box :movies="movies" :paginationParam="paginationParam"></movie-box>
                     </div>
                 </div>
             </div>

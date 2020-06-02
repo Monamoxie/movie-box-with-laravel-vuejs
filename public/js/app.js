@@ -50028,8 +50028,10 @@ var render = function() {
               "navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow "
           },
           [
+            _vm._m(0),
+            _vm._v(" "),
             _c("div", { staticClass: "col-sm-9 col-md-9" }, [
-              _vm._m(0),
+              _vm._m(1),
               _vm._v(" "),
               _c(
                 "div",
@@ -50185,6 +50187,21 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "navbar-brand col-sm-3 col-md-3 mr-0" }, [
+      _c("span", { staticClass: "logo-holder" }, [
+        _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
+          _c("img", {
+            staticClass: "logo",
+            attrs: { src: __webpack_require__(/*! ../images/logo.png */ "./resources/images/logo.png"), alt: "Logo" }
+          })
+        ])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -50927,7 +50944,19 @@ var render = function() {
                     )
                   ])
                 : _c("div", { staticClass: "album py-5 bg-light" }, [
-                    _c("div", { staticClass: "container" })
+                    _c(
+                      "div",
+                      { staticClass: "container" },
+                      [
+                        _c("movie-box", {
+                          attrs: {
+                            movies: _vm.movies,
+                            paginationParam: _vm.paginationParam
+                          }
+                        })
+                      ],
+                      1
+                    )
                   ])
             ])
       ]),
@@ -68796,6 +68825,17 @@ module.exports = "/images/1.jpeg?0caef3c0d0b15203d98f4af511a4b79f";
 /***/ (function(module, exports) {
 
 module.exports = "/images/banner22.jpg?d9d56c971271cb65bcfcbaf821250b0f";
+
+/***/ }),
+
+/***/ "./resources/images/logo.png":
+/*!***********************************!*\
+  !*** ./resources/images/logo.png ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/logo.png?6db396ba07cf216ae943f64416a4813d";
 
 /***/ }),
 
