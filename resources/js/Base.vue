@@ -1,15 +1,15 @@
 <template>
     <div class="wrapper">
         <header> 
-            <!-- <nav class="navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow ">
+            <nav class="navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow ">
             
-                <div class="navbar-brand col-sm-3 col-md-3 mr-0">
+                <!-- <div class="navbar-brand col-sm-3 col-md-3 mr-0">
                     <span class="logo-holder">
                         <a class="navbar-brand" href="/">
                             <img src="../images/logo.png" class="logo" alt="Logo">
                         </a> 
                     </span>
-                </div>
+                </div> -->
                 
                 <div class="col-sm-9 col-md-9">
                     <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,17 +46,17 @@
                     </div>
                 </div>
                 
-            </nav> -->
+            </nav>
 
         </header>
 
         
         <router-view :key="$route.fullPath"></router-view>
-        <!-- <footer class="footer">
+        <footer class="footer">
             <div class="container">
                 <span class="text-muted">  &copy; {{ new Date().getFullYear() }} <br/>  Developed by Mona Moxie. </span>
             </div> 
-        </footer> -->
+        </footer>
     </div>    
 </template>
 <script>

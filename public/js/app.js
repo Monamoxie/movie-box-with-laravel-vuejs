@@ -2442,8 +2442,8 @@ __webpack_require__.r(__webpack_exports__);
   mixins: [_mixins_MovieBoxMixin__WEBPACK_IMPORTED_MODULE_1__["default"]],
   data: function data() {
     return {
-      topBannerBackgroundImage: 'background-image:url("' + __webpack_require__(/*! ../../images/1.jpeg */ "./resources/images/1.jpeg") + ' ")',
-      bottomBannerBackgroundImage: 'background-image: url("' + __webpack_require__(/*! ../../images/banner22.jpg */ "./resources/images/banner22.jpg") + '")',
+      topBannerBackgroundImage: 'background-image:url("../../images/1.jpeg")',
+      bottomBannerBackgroundImage: 'background-image: url("../../images/banner22.jpg")',
       movies: [],
       paginationParam: {},
       serverResponse: {},
@@ -50020,14 +50020,192 @@ var render = function() {
     "div",
     { staticClass: "wrapper" },
     [
-      _c("header"),
+      _c("header", [
+        _c(
+          "nav",
+          {
+            staticClass:
+              "navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow "
+          },
+          [
+            _c("div", { staticClass: "col-sm-9 col-md-9" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse navbar-collapse",
+                  attrs: { id: "navbarTogglerDemo03" }
+                },
+                [
+                  _c("ul", { staticClass: "navbar-nav ml-auto top-nav" }, [
+                    _c(
+                      "li",
+                      {
+                        staticClass: "nav-item",
+                        class: this.$route.path === "/" ? "active" : "",
+                        on: {
+                          click: function($event) {
+                            return _vm.$router.push({ name: "home" })
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "nav-link" }, [
+                          _vm._v("Home")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "nav-item",
+                        class:
+                          this.$route.name === "movies" ||
+                          this.$route.name === "movieDetails" ||
+                          this.$route.name === "moviesPaged"
+                            ? "active"
+                            : "",
+                        on: {
+                          click: function($event) {
+                            return _vm.$router.push({ name: "movies" })
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "nav-link" }, [
+                          _vm._v("Movies")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "nav-item",
+                        class:
+                          this.$route.path === "/movie/new" ? "active" : "",
+                        on: {
+                          click: function($event) {
+                            return _vm.$router.push({ name: "new-movie" })
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "nav-link" }, [
+                          _vm._v("New Review")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    !_vm.$store.getters.isLoggedIn
+                      ? _c(
+                          "li",
+                          {
+                            staticClass: "nav-item",
+                            class:
+                              this.$route.path === "/login" ? "active" : "",
+                            on: {
+                              click: function($event) {
+                                return _vm.$router.push({ name: "login" })
+                              }
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "nav-link" }, [
+                              _vm._v("Login")
+                            ])
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.$store.getters.isLoggedIn
+                      ? _c(
+                          "li",
+                          {
+                            staticClass: "nav-item",
+                            class:
+                              this.$route.path === "/register" ? "active" : "",
+                            on: {
+                              click: function($event) {
+                                return _vm.$router.push({ name: "register" })
+                              }
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "nav-link" }, [
+                              _vm._v("Register")
+                            ])
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.$store.getters.isLoggedIn
+                      ? _c(
+                          "li",
+                          {
+                            staticClass: "nav-item",
+                            class:
+                              this.$route.path === "/logout" ? "active" : "",
+                            on: {
+                              click: function($event) {
+                                return _vm.$router.push({ name: "logout" })
+                              }
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "nav-link" }, [
+                              _vm._v("Logout")
+                            ])
+                          ]
+                        )
+                      : _vm._e()
+                  ])
+                ]
+              )
+            ])
+          ]
+        )
+      ]),
       _vm._v(" "),
-      _c("router-view", { key: _vm.$route.fullPath })
+      _c("router-view", { key: _vm.$route.fullPath }),
+      _vm._v(" "),
+      _c("footer", { staticClass: "footer" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("span", { staticClass: "text-muted" }, [
+            _vm._v("  © " + _vm._s(new Date().getFullYear()) + " "),
+            _c("br"),
+            _vm._v("  Developed by Mona Moxie. ")
+          ])
+        ])
+      ])
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler float-right",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarTogglerDemo03",
+          "aria-controls": "navbarTogglerDemo03",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -50749,19 +50927,7 @@ var render = function() {
                     )
                   ])
                 : _c("div", { staticClass: "album py-5 bg-light" }, [
-                    _c(
-                      "div",
-                      { staticClass: "container" },
-                      [
-                        _c("movie-box", {
-                          attrs: {
-                            movies: _vm.movies,
-                            paginationParam: _vm.paginationParam
-                          }
-                        })
-                      ],
-                      1
-                    )
+                    _c("div", { staticClass: "container" })
                   ])
             ])
       ]),

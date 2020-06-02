@@ -42,7 +42,7 @@
             
                 <div v-else class="album py-5 bg-light">
                     <div class="container"> 
-                        <movie-box :movies="movies" :paginationParam="paginationParam"></movie-box>
+                        <!-- <movie-box :movies="movies" :paginationParam="paginationParam"></movie-box> -->
                     </div>
                 </div>
             </div>
@@ -70,11 +70,11 @@ export default {
     ],
     data() {
         return {
-            topBannerBackgroundImage: 'background-image:url("' + require('../../images/1.jpeg') + ' ")',
-            bottomBannerBackgroundImage: 'background-image: url("' + require('../../images/banner22.jpg') + '")',
+            topBannerBackgroundImage: 'background-image:url("../../images/1.jpeg")',
+            bottomBannerBackgroundImage: 'background-image: url("../../images/banner22.jpg")',
             movies: [],
             paginationParam: {},
-            serverResponse: {}, 
+            serverResponse: {},  
             processing: false
         } 
     }

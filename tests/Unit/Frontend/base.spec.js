@@ -1,20 +1,29 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
+import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 import Base from '../../../resources/js/Base.vue' 
+import { store } from '../../../resources/js/store/index'
+
+const localVue = createLocalVue()
+localVue.use(VueRouter)
+localVue.use(Vuex)
  
- 
-const $route = {
+const $routes = {
     path: '/',
 }
 
-test('it works', () => {
-    expect(1 + 1).toBe(2)
+const router = new VueRouter({
+    $routes
 })
 
 test('Base view should mount without crashing', () => {
     const wrapper = shallowMount(Base, {
-        mocks: {
-            $route
-        }, 
-        stubs: ['router-link', 'router-view'] 
+        // mocks: {
+        //     $route
+        // }, 
+        localVue,
+        router,
+        store,
+        stubs: ['router-link', 'router-view']
     })
 }) 
