@@ -74,7 +74,7 @@ export default {
             bottomBannerBackgroundImage: 'background-image: url("../../images/banner22.jpg")',
             movies: [],
             paginationParam: {},
-            serverResponse: {},  
+            serverResponse: [],  
             processing: false
         } 
     }
